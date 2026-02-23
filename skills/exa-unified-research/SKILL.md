@@ -1,6 +1,6 @@
 ---
 name: exa-unified-research
-description: Unified Exa research skill using get_code_context_exa and web_search_advanced_exa. Use for code/API snippet lookup, company research, people/LinkedIn research, financial report search, research paper search, personal site search, and X/Twitter tweet search. Follow progressive disclosure: load only the relevant reference file(s) for the user intent.
+description: "Unified Exa research skill using get_code_context_exa and web_search_advanced_exa. Use for code/API snippet lookup, company research, people/LinkedIn research, financial report search, research paper search, personal site search, and X/Twitter tweet search. Follow progressive disclosure: load only the relevant reference file(s) for the user intent."
 ---
 
 # Exa Unified Research
