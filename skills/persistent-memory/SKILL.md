@@ -13,10 +13,10 @@ description: |
 
 ## 存储位置
 
-OpenClaw 工作区的记忆文件：
+通用记忆文件（适用于任何 AI Agent 框架）：
 
 ```
-~/.openclaw/workspace/
+~/.persistent-memory/
 ├── SOUL.md           # AI 自身身份定义（性格、说话方式）
 ├── USER.md           # 用户信息（名字、时区、偏好）
 ├── IDENTITY.md       # 身份标识（名字、emoji、人设）
@@ -91,47 +91,47 @@ AI 的行为准则和工具使用指南：
 按顺序读取：
 ```bash
 # 1. 核心身份
-cat ~/.openclaw/workspace/SOUL.md
+cat ~/.persistent-memory/SOUL.md
 
 # 2. 用户信息
-cat ~/.openclaw/workspace/USER.md
+cat ~/.persistent-memory/USER.md
 
 # 3. 身份定义
-cat ~/.openclaw/workspace/IDENTITY.md
+cat ~/.persistent-memory/IDENTITY.md
 
 # 4. 长期记忆
-cat ~/.openclaw/workspace/MEMORY.md
+cat ~/.persistent-memory/MEMORY.md
 
 # 5. 今日和昨日日记
-cat ~/.openclaw/workspace/memory/$(date +%Y-%m-%d).md 2>/dev/null
-cat ~/.openclaw/workspace/memory/$(date -d "yesterday" +%Y-%m-%d).md 2>/dev/null
+cat ~/.persistent-memory/memory/$(date +%Y-%m-%d).md 2>/dev/null
+cat ~/.persistent-memory/memory/$(date -d "yesterday" +%Y-%m-%d).md 2>/dev/null
 ```
 
 ### 2. 记住信息
 
 **长期信息 → MEMORY.md**
 ```bash
-echo "## 已完成任务" >> ~/.openclaw/workspace/MEMORY.md
-echo "- 2026-02-28: 安装了 Agent Reach" >> ~/.openclaw/workspace/MEMORY.md
+echo "## 已完成任务" >> ~/.persistent-memory/MEMORY.md
+echo "- 2026-02-28: 安装了 Agent Reach" >> ~/.persistent-memory/MEMORY.md
 ```
 
 **用户信息 → USER.md**
 ```bash
-echo "- **新信息**: 具体内容" >> ~/.openclaw/workspace/USER.md
+echo "- **新信息**: 具体内容" >> ~/.persistent-memory/USER.md
 ```
 
 **日常细节 → memory/YYYY-MM-DD.md**
 ```bash
 DATE=$(date +%Y-%m-%d)
-echo "### 新学到" >> ~/.openclaw/workspace/memory/$DATE.md
-echo "- fxtwitter API 可获取推文完整内容" >> ~/.openclaw/workspace/memory/$DATE.md
+echo "### 新学到" >> ~/.persistent-memory/memory/$DATE.md
+echo "- fxtwitter API 可获取推文完整内容" >> ~/.persistent-memory/memory/$DATE.md
 ```
 
 ### 3. 搜索记忆
 
 ```bash
-grep -ri "关键词" ~/.openclaw/workspace/
-ls -t ~/.openclaw/workspace/memory/ | head -7
+grep -ri "关键词" ~/.persistent-memory/
+ls -t ~/.persistent-memory/memory/ | head -7
 ```
 
 ### 4. 整理记忆（定期）
@@ -161,5 +161,51 @@ ls -t ~/.openclaw/workspace/memory/ | head -7
 4. **MEMORY.md** — 长期记忆
 5. **memory/YYYY-MM-DD.md** — 今日日记
 
+存储位置: ~/.persistent-memory/
+
 用户说"记住"时写入对应文件。
+```
+
+## 初始化
+
+```bash
+mkdir -p ~/.persistent-memory/memory
+cat > ~/.persistent-memory/MEMORY.md << 'EOF'
+# MEMORY.md - 长期记忆
+
+## 关于我
+- **名字**: [AI名字]
+- **性格**: [性格描述]
+
+## 关于用户
+- **名字**: [用户名]
+- **语言**: [语言]
+- **时区**: [时区]
+
+## 已完成任务
+
+## 技术知识
+
+## 待完成
+
+## 记住的账号
+EOF
+
+cat > ~/.persistent-memory/SOUL.md << 'EOF'
+# SOUL.md - 谁是我
+
+核心价值观和行为准则。
+EOF
+
+cat > ~/.persistent-memory/USER.md << 'EOF'
+# USER.md - 用户信息
+
+用户的基本信息。
+EOF
+
+cat > ~/.persistent-memory/IDENTITY.md << 'EOF'
+# IDENTITY.md - 身份定义
+
+名字、emoji、人设。
+EOF
 ```
