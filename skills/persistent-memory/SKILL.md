@@ -138,6 +138,66 @@ cp -r ~/.claude/memory/* ~/.persistent-memory/
 4. **安全第一**：不记录真实密码、密钥
 5. **向后兼容**：支持 Claude Code 目录
 
+## 与其他 Skill 联动
+
+### 语义搜索（与 Exa 联动）
+
+利用 Exa MCP 实现语义搜索记忆：
+
+```bash
+# 安装 exa-web-search-free skill 后可用
+mcporter call 'exa.get_code_context_exa(query: "上次配置的 Twitter", tokensNum: 1000)'
+```
+
+### 定期备份（与 cron 联动）
+
+使用 cron 定期导出记忆：
+
+```bash
+# 每周日导出记忆
+0 0 * * 0 tar -czf ~/memory-backup-$(date +\%Y-\%m-\%d).tar.gz ~/.persistent-memory/
+```
+
+## 导出/导入
+
+### 导出所有记忆
+
+```bash
+# 打包所有记忆
+tar -czf memory-backup.tar.gz ~/.persistent-memory/
+
+# 导出为单文件（可编辑）
+cat ~/.persistent-memory/MEMORY.md > memory-export.txt
+cat ~/.persistent-memory/memory/*.md >> memory-export.txt
+```
+
+### 导入备份
+
+```bash
+# 解压备份
+tar -xzf memory-backup.tar.gz -C ~/
+
+# 选择性导入（合并）
+cat memory-export.txt | while read line; do
+  # 检查是否已存在
+  grep -q "$line" ~/.persistent-memory/MEMORY.md || echo "$line" >> ~/.persistent-memory/MEMORY.md
+done
+```
+
+### 迁移指南（从 Claude Code 迁移）
+
+```bash
+# 方案一：软链接（推荐，保持同步）
+ln -s ~/.claude/memory ~/.persistent-memory
+
+# 方案二：复制（独立备份）
+cp -r ~/.claude/memory/* ~/.persistent-memory/
+
+# 方案三：合并（保留两边）
+cat ~/.claude/memory/LONGTERM.md >> ~/.persistent-memory/MEMORY.md
+cp ~/.claude/memory/daily/*.md ~/.persistent-memory/memory/
+```
+
 ## 与 AI 集成
 
 在项目的 AGENTS.md 或 CLAUDE.md 添加：
