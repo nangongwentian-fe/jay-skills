@@ -50,12 +50,13 @@ Push to `origin main`.
 
 ```bash
 rm -rf ~/.claude/skills/<skill-name>
-npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-name> -g -y
+npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-name> -g -y -a claude-code codex
 ```
 
 - `--skill <skill-name>` — only installs this specific skill, not all skills in the repo
 - `-g` — installs globally (user-level, into `~/.agents/skills/` with symlinks)
 - `-y` — non-interactive, no prompts
+- `-a claude-code codex` — only installs to Claude Code and Codex agents
 
 This replaces the manually created skill with the properly installed version (symlinks and other optimizations from the skills framework).
 
