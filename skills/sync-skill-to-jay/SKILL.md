@@ -36,9 +36,67 @@ cp -r ~/.claude/skills/<skill-name> $JAY_SKILLS_DIR/skills/
 
 Works for both new and existing skills.
 
-### 3. Commit and push
+### 3. Update jay-skills README
+
+After syncing the skill files, regenerate `$JAY_SKILLS_DIR/README.md` to reflect the current state of all skills in the repo.
+
+**How to build the README:**
+
+1. Scan all skill directories under `$JAY_SKILLS_DIR/skills/`
+2. For each skill, read its `SKILL.md` and extract:
+   - `name` (from frontmatter)
+   - `description` (from frontmatter)
+   - Any `## Examples` or `## 示例` section content (if present) — use as the "效果示例"
+3. Generate a README with the following structure:
+
+```markdown
+# Jay Skills
+
+> Jay 的 AI Agent Skills 集合，适用于 Claude Code / Codex 等 AI 编程工具。
+
+## 安装
+
+\`\`\`bash
+npx skills add https://github.com/nangongwentian-fe/jay-skills -g -y -a claude-code codex
+\`\`\`
+
+## Skills 列表
+
+| Skill | 描述 |
+|-------|------|
+| [skill-name](#skill-name) | one-line description |
+...
+
+---
+
+## skill-name
+
+**描述：** ...
+
+**触发场景：** （从 description 中提取触发条件，以要点形式列出）
+
+**效果示例：**
+
+（如果 SKILL.md 中有 Examples / 示例 section，粘贴内容；否则省略此小节）
+
+---
+（重复以上结构，每个 skill 一节）
+```
+
+**Rules:**
+- Keep descriptions concise — one sentence max in the table; full description in the detail section
+- If a skill's `SKILL.md` has no Examples section, omit "效果示例" for that skill
+- Preserve existing README content that is not auto-generated (e.g., top-level intro) if it already exists — only regenerate the skills table and detail sections
+- Write the final README in Chinese where natural; keep code/skill names in English
+
+### 5. Commit and push
 
 From `$JAY_SKILLS_DIR`:
+
+Stage both the skill files and the updated README:
+```bash
+git add skills/<skill-name> README.md
+```
 
 - New skill: `feat: add <skill-name> skill`
 - Updated skill: `improve: <brief description of what changed> in <skill-name>`
@@ -46,7 +104,7 @@ From `$JAY_SKILLS_DIR`:
 
 Push to `origin main`.
 
-### 4. Remove local skill and reinstall via npx
+### 6. Remove local skill and reinstall via npx
 
 ```bash
 rm -rf ~/.claude/skills/<skill-name>
