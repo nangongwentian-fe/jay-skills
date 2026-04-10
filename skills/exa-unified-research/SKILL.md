@@ -21,10 +21,28 @@ For mixed requests, load only the relevant subset and merge results at the end.
 ## Global Tool Restriction
 
 Only use:
-- `get_code_context_exa`
-- `web_search_advanced_exa`
+- `web_search_exa` — general web search (includes code search)
+- `web_search_advanced_exa` — advanced search with category/domain/date filters
 
-Do not use `web_search_exa` or other Exa tools unless the user explicitly overrides this skill policy.
+Do not use other Exa tools unless the user explicitly overrides this skill policy.
+
+### Deprecated Tool Mapping
+
+| Deprecated Tool | Use Instead |
+|---|---|
+| `get_code_context_exa` | `web_search_exa` |
+| `company_research_exa` | `web_search_advanced_exa` with `category: "company"` |
+| `people_search_exa` / `linkedin_search_exa` | `web_search_advanced_exa` with `category: "people"` |
+| `crawling_exa` | `web_fetch_exa` |
+| `deep_search_exa` | `web_search_advanced_exa` with `type: "deep"` |
+| `deep_researcher_start/check` | Exa Research API (not an MCP tool) |
+
+### Parameter Changes
+
+| Old Parameter | New Parameter |
+|---|---|
+| `livecrawl` | `livecrawlTimeout` (milliseconds) or `maxAgeHours` |
+| `tokensNum` | removed — use `numResults` and `textMaxCharacters` instead |
 
 ## Global Token Isolation
 

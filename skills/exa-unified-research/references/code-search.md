@@ -2,7 +2,7 @@
 
 ## Tool Restriction
 
-Only use `get_code_context_exa`.
+Only use `web_search_exa`.
 
 ## When to Use
 
@@ -16,7 +16,7 @@ Use for:
 ## Inputs
 
 - `query` (required)
-- `tokensNum` (optional, default around 5000)
+- `numResults` (optional, default 10)
 
 ## Query Patterns
 
@@ -26,9 +26,9 @@ Use for:
 
 ## Tuning
 
-- Focused snippet: 1000-3000
-- Typical task: 5000
-- Complex integration: 10000-20000
+- Quick lookup: 5-10 results
+- Typical task: 10-20 results
+- Comprehensive research: 20-50 results
 
 ## Output
 

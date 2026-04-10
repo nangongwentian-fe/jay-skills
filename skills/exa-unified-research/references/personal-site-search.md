@@ -18,7 +18,7 @@ Array-size restriction:
 - Date: `startPublishedDate`, `endPublishedDate`, `startCrawlDate`, `endCrawlDate`
 - Text: `includeText`, `excludeText` (single-item arrays)
 - Extraction: highlights/summary/context controls
-- Additional: `additionalQueries`, `livecrawl`, `subpages`, `subpageTarget`
+- Additional: `additionalQueries`, `maxAgeHours`, `livecrawlTimeout`, `subpages`, `subpageTarget`
 
 ## Examples
 

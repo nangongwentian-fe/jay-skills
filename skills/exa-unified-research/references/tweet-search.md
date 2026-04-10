@@ -18,7 +18,7 @@ For `tweet`, avoid:
 - Core: `query`, `numResults`, `type`
 - Date: `startPublishedDate`, `endPublishedDate`, `startCrawlDate`, `endCrawlDate`
 - Extraction: highlights/summary/context controls
-- Additional: `additionalQueries`, `livecrawl`, `livecrawlTimeout`
+- Additional: `additionalQueries`, `maxAgeHours`, `livecrawlTimeout`
 
 ## Examples
 
@@ -30,7 +30,7 @@ Recent tweets:
   "startPublishedDate": "2025-01-01",
   "numResults": 20,
   "type": "auto",
-  "livecrawl": "preferred"
+  "livecrawlTimeout": 5000
 }
 ```
 

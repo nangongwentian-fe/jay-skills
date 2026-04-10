@@ -79,7 +79,7 @@ Specific person deep dive:
 {
   "query": "Dario Amodei Anthropic CEO background",
   "type": "auto",
-  "livecrawl": "fallback",
+  "maxAgeHours": 24,
   "numResults": 15
 }
 ```

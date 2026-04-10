@@ -15,7 +15,7 @@ ONLY use `web_search_advanced_exa` with `category: "financial report"`.
 - Date: `startPublishedDate`, `endPublishedDate`, `startCrawlDate`, `endCrawlDate`
 - Text: `includeText` (single-item arrays only)
 - Extraction: highlights/summary/context controls
-- Additional: `additionalQueries`, `livecrawl`, `subpages`, `subpageTarget`
+- Additional: `additionalQueries`, `maxAgeHours`, `livecrawlTimeout`, `subpages`, `subpageTarget`
 
 ## Examples
 

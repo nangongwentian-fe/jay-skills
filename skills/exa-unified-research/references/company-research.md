@@ -71,7 +71,7 @@ Deep dive:
 {
   "query": "Anthropic funding rounds valuation 2024",
   "type": "deep",
-  "livecrawl": "fallback",
+  "maxAgeHours": 24,
   "numResults": 10,
   "includeDomains": ["techcrunch.com", "crunchbase.com", "bloomberg.com"]
 }
