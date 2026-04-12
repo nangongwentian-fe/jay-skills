@@ -32,15 +32,15 @@ Recommended flow:
 
 ## Category-Specific Filter Restrictions
 
-When using `category: "company"`, avoid:
-- `includeDomains` / `excludeDomains`
-- `startPublishedDate` / `endPublishedDate`
-- `startCrawlDate` / `endCrawlDate`
+When using `category: "company"`, do **not** use these parameters — they will be silently ignored or cause errors:
+- `includeDomains` / `excludeDomains` — not supported
+- `startPublishedDate` / `endPublishedDate` — not supported
+- `startCrawlDate` / `endCrawlDate` — not supported
 
 When searching without a category (or with `news`), domain/date filters generally work.
 
 Universal restriction:
-- `includeText` and `excludeText` only support single-item arrays
+- `includeText` and `excludeText` only support single-item arrays (e.g., `["single term"]`)
 
 ## LinkedIn
 

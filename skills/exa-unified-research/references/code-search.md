@@ -26,9 +26,10 @@ Use for:
 
 ## Tuning
 
-- Quick lookup: 5-10 results
-- Typical task: 10-20 results
-- Comprehensive research: 20-50 results
+Tune `numResults` by user intent (aligns with global query strategy):
+- "a few examples": 10-20 results
+- "comprehensive": 20-50 results
+- explicit number: follow user request
 
 ## Output
 

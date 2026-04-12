@@ -14,21 +14,26 @@ Read only the minimum required reference files:
 - SEC/earnings/filings: `references/financial-report-search.md`
 - Academic papers: `references/research-paper-search.md`
 - Blogs/portfolios: `references/personal-site-search.md`
-- X/Twitter discussion and sentiment: `references/tweet-search.md`
+- Social media discussion & X/Twitter sentiment: `references/social-discussion.md`
 
 For mixed requests, load only the relevant subset and merge results at the end.
 
-## Global Tool Restriction
+## Tool Restriction
 
-Only use:
+Primary tools:
 - `web_search_exa` — general web search (includes code search)
 - `web_search_advanced_exa` — advanced search with category/domain/date filters
 
-Do not use other Exa tools unless the user explicitly overrides this skill policy.
+Supplement (when search results need deeper reading):
+- `web_fetch_exa` — fetch full content from specific URLs found in search results
 
-### Deprecated Tool Mapping
+Do **not** use other Exa tools unless the user explicitly overrides this skill policy.
 
-| Deprecated Tool | Use Instead |
+### Deprecated Tool Remapping
+
+The following tools are deprecated — use the remapping instead:
+
+| Deprecated | → Use |
 |---|---|
 | `get_code_context_exa` | `web_search_exa` |
 | `company_research_exa` | `web_search_advanced_exa` with `category: "company"` |
@@ -39,10 +44,21 @@ Do not use other Exa tools unless the user explicitly overrides this skill polic
 
 ### Parameter Changes
 
-| Old Parameter | New Parameter |
+| Old | → New |
 |---|---|
 | `livecrawl` | `livecrawlTimeout` (milliseconds) or `maxAgeHours` |
 | `tokensNum` | removed — use `numResults` and `textMaxCharacters` instead |
+
+## Fallback Strategy
+
+When a search returns insufficient results:
+
+1. **Category not supported by MCP**: Some categories in the reference files (notably `tweet`) are not valid in the current Exa MCP tool. The reference files provide the correct fallback parameters.
+2. **Insufficient results**: Try removing restrictive filters (category, date, domains) or use `type: "deep"` for deeper semantic search.
+3. **Wrong result types**: If domain filtering returns articles about tweets rather than the tweets themselves, widen to no-domain-filter and note the gap.
+4. **Content too shallow**: Use `web_fetch_exa` to read the top 2-3 most relevant URLs in full, then synthesize.
+
+Always document fallback attempts and resulting coverage gaps in your output notes.
 
 ## Global Token Isolation
 
@@ -66,7 +82,26 @@ If sub-agent is unavailable, run narrow iterative queries and summarize aggressi
 
 ## Default Output Contract
 
-Return:
-1. Structured results (table or compact JSON)
-2. Source URLs with one-line relevance
-3. Notes on uncertainty/conflicts and coverage gaps
+For every research task, return all four sections:
+
+```markdown
+## Tools Used
+| # | Tool | Parameters | Purpose |
+|---|------|-----------|---------|
+| 1 | ... | ... | ... |
+
+## Structured Results
+(Use a table or compact JSON — pick whichever is clearest for the data type.
+ Group by category when mixing academic, news, social, etc.)
+
+## Source URLs with Relevance
+| URL | One-Line Relevance |
+|-----|-------------------|
+| ... | ... |
+
+## Notes: Uncertainty, Conflicts & Coverage Gaps
+- List any data conflicts between sources
+- Flag data that may be stale or unverifiable
+- Document search limitations (e.g., "tweet category unavailable, used news fallback")
+- Suggest what a user could do to fill remaining gaps
+```
