@@ -320,3 +320,204 @@ $git-commit 创建一个 git commit：
 - 把页面转成 Markdown
 - 访问 X/Twitter、微信、知乎、Medium 等平台内容
 - 绕过付费墙获取内容
+
+## Skills 列表
+
+| Skill | 描述 |
+|-------|------|
+| [buddy-reroll](#buddy-reroll) | > |
+| [code-review-uncommitted](#code-review-uncommitted) | 对 git 中未提交的代码变更进行多维度 code review，包括项目规范合规性、Bug 扫描、代码注释合规性、组件封装/架构设计合理性审查，并通过置... |
+| [de-gpt-ify](#de-gpt-ify) | 中文输出去黑话化行为准则。当模型用中文回复时自动激活，确保输出简洁、直接、自然，避免咨询黑话、网络流行语、虚假紧迫感、情感绑架等 AI 味表达。触发词：「... |
+| [exa-unified-research](#exa-unified-research) | Use this skill for ANY web research task — looking up companies, finding peop... |
+| [figma-use](#figma-use) | **MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_fig... |
+| [git-commit](#git-commit) | 基于当前 git 工作区变更生成并创建单个提交。用于用户要求“帮我提交代码”“根据当前 diff 生成 commit”“创建一次 git commit”“... |
+| [git-rebase-workflow](#git-rebase-workflow) | Git Rebase 分支同步流程，用于将当前功能分支 rebase 到最新的目标分支（如 master/main），保持提交历史整洁。适用于功能分支落后... |
+| [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode 的 Gemini 图像预览模型生成或编辑图片，并把结果保存到本地文件。用于用户要求文生图、图生图、批量出图、指定宽高比或分辨率、基... |
+| [lark-beautiful-docs](#lark-beautiful-docs) | 让飞书文档不朴素——在创建或更新飞书/Lark 文档时，强制使用高亮块（callout）、分栏（grid）、增强表格（lark-table）、画板、图表等... |
+| [lark-cli-router](#lark-cli-router) | 在需要操作飞书/Lark CLI、判断该用官方 larksuite/cli 还是社区 feishu-cli、或在两者之间组合调用时使用。适用于飞书文档导入... |
+| [progressive-disclosure-docs](#progressive-disclosure-docs) | Design, create, split, or revise Markdown/project documentation using progres... |
+| [reflect-and-remember](#reflect-and-remember) | | |
+| [show-dont-tell](#show-dont-tell) | 信息可视化呈现行为准则。当模型回复中包含对比、步骤、配置、架构等结构化信息时自动激活，确保优先使用表格、代码块、列表、树形结构等可视化格式，而不是纯文字堆... |
+| [sync-global-rules](#sync-global-rules) | > |
+| [sync-skill-to-jay](#sync-skill-to-jay) | Post-action workflow that triggers automatically after creating a new skill o... |
+| [update-claude-code](#update-claude-code) | 更新 Claude Code CLI 到最新版本。当用户说"更新 Claude Code"、"升级 Claude Code"、"update claude... |
+| [web-content-fetcher](#web-content-fetcher) | > |
+
+---
+
+## buddy-reroll
+
+**描述：** >
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## code-review-uncommitted
+
+**描述：** 对 git 中未提交的代码变更进行多维度 code review，包括项目规范合规性、Bug 扫描、代码注释合规性、组件封装/架构设计合理性审查，并通过置信度评分过滤误报。当用户要求 review 未提交的代码、review 当前改动、或使用 /code-review-uncommitted 时触发。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## de-gpt-ify
+
+**描述：** 中文输出去黑话化行为准则。当模型用中文回复时自动激活，确保输出简洁、直接、自然，避免咨询黑话、网络流行语、虚假紧迫感、情感绑架等 AI 味表达。触发词：「讲人话」「去油」「去黑话」「去 AI 味」「别那么 GPT」「正常说话」。即使没有触发词，只要模型在生成中文回复，本 skill 的规则就应当生效。也适用于用户说「这段话太 GPT 了」「帮我改成人话」「输出太油了」「说话别绕」等场景。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## exa-unified-research
+
+**描述：** Use this skill for ANY web research task — looking up companies, finding people, searching for code examples or API docs, reading tech blogs, finding academic papers, checking SEC filings or financial reports, or gauging social media sentiment. Covers any question that requires searching the internet for current information. Exa provides neural/semantic search that returns higher-quality, better-structured results than simple keyword search. Load this skill whenever the user asks you to search, research, find, look up, or investigate anything online — even if you think you can handle it with built-in search tools, this skill will produce significantly better results.
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## figma-use
+
+**描述：** **MANDATORY prerequisite** — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` directly without loading this skill first. Skipping it causes common, hard-to-debug failures. Trigger whenever the user wants to perform a write action or a unique read action that requires JavaScript execution in the Figma file context — e.g. create/edit/delete nodes, set up variables or tokens, build components and variants, modify auto-layout or fills, bind variables to properties, or inspect file structure programmatically.
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## git-commit
+
+**描述：** 基于当前 git 工作区变更生成并创建单个提交。用于用户要求“帮我提交代码”“根据当前 diff 生成 commit”“创建一次 git commit”“整理 staged/unstaged 变更并提交”，或明确提供 `git status`、`git diff HEAD`、当前分支和最近提交记录时。适用于需要分析改动、编写结构化 commit message，并执行 `git add` 和 `git commit` 的场景。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## git-rebase-workflow
+
+**描述：** Git Rebase 分支同步流程，用于将当前功能分支 rebase 到最新的目标分支（如 master/main），保持提交历史整洁。适用于功能分支落后于目标分支时，需要同步最新代码的场景。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## ikuncode-image-gen
+
+**描述：** 使用 IKunCode 的 Gemini 图像预览模型生成或编辑图片，并把结果保存到本地文件。用于用户要求文生图、图生图、批量出图、指定宽高比或分辨率、基于 IKunCode 文档落地图片生成脚本，或明确要求使用 IKunCode `gemini-3.1-flash-image-preview` / `gemini-3-pro-image-preview` 时。始终通过环境变量 `IKUNCODE_API_KEY` 读取密钥，不要把 API Key 写入代码、skill 文件、日志或提交记录。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## lark-beautiful-docs
+
+**描述：** 让飞书文档不朴素——在创建或更新飞书/Lark 文档时，强制使用高亮块（callout）、分栏（grid）、增强表格（lark-table）、画板、图表等视觉友好的富文本格式，杜绝纯文字堆砌。当用户要求写飞书文档、整理文档、美化文档、输出任何飞书/Lark 文档内容时触发。与 lark-doc skill 配合使用：lark-doc 负责执行写入命令，本 skill 负责排版设计决策。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## lark-cli-router
+
+**描述：** 在需要操作飞书/Lark CLI、判断该用官方 larksuite/cli 还是社区 feishu-cli、或在两者之间组合调用时使用。适用于飞书文档导入导出、Markdown 与飞书文档转换、Mermaid/PlantUML 导入、以及通用 Lark/飞书平台 API 操作。遇到本机未安装对应 CLI 时，先检查并按仓库 README 推荐方式安装，再继续执行任务。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## progressive-disclosure-docs
+
+**描述：** Design, create, split, or revise Markdown/project documentation using progressive disclosure so agents and humans can find the right level of detail without context bloat. Use when writing docs, README files, runbooks, architecture notes, deployment guides, troubleshooting docs, rules, skills, or when deciding whether content belongs in an existing document or should become a new document.
+
+**触发场景：**
+
+- writing docs
+- README files
+- runbooks
+- architecture notes
+- deployment guides
+- troubleshooting docs
+- rules
+- skills
+
+---
+
+## reflect-and-remember
+
+**描述：** |
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## show-dont-tell
+
+**描述：** 信息可视化呈现行为准则。当模型回复中包含对比、步骤、配置、架构等结构化信息时自动激活，确保优先使用表格、代码块、列表、树形结构等可视化格式，而不是纯文字堆砌。触发词：「用表格」「画个图」「列个表」「结构化一下」「别光用文字」「可视化」「对比一下」。即使没有触发词，只要回复中包含适合可视化的结构化信息，本 skill 的规则就应生效。也适用于：「太多字了看不下去」「能不能更直观一点」「整理成表格」等场景。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## sync-global-rules
+
+**描述：** >
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## sync-skill-to-jay
+
+**描述：** Post-action workflow that triggers automatically after creating a new skill or updating an existing skill. Ask the user whether to sync the skill to the jay-skills repository and publish to remote. Use whenever a SKILL.md has just been created or modified.
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## update-claude-code
+
+**描述：** 更新 Claude Code CLI 到最新版本。当用户说"更新 Claude Code"、"升级 Claude Code"、"update claude code"、"claude code 太旧了"、"执行 install.sh 更新"，或者想让 Claude 自我更新时，立即使用此 skill。不要等用户明确说"用 npm"——只要涉及更新 Claude Code 本身，就使用这个 skill。
+
+**触发场景：**
+
+- 相关任务触发
+
+---
+
+## web-content-fetcher
+
+**描述：** >
+
+**触发场景：**
+
+- 相关任务触发
+
+---
