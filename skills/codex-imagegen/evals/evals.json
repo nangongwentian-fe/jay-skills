@@ -1,0 +1,23 @@
+{
+  "skill_name": "codex-imagegen",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我生成一张暖色调的咖啡店内部照片，要有阳光透过窗户的感觉",
+      "expected_output": "A photorealistic warm-toned coffee shop interior image saved as a PNG file",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Generate a pixel art sword icon for a game, transparent background, 256x256",
+      "expected_output": "A pixel art sword icon PNG, ideally with transparent background via chroma-key removal",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "给我的项目生成一张 landing page 的 hero image，主题是 AI 助手，科技感蓝紫色调，保存到 /tmp/hero-image.png",
+      "expected_output": "A tech-themed AI assistant hero image in blue-purple tones, saved to /tmp/hero-image.png",
+      "files": []
+    }
+  ]
+}

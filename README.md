@@ -18,6 +18,7 @@ npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-na
 |-------|------|
 | [buddy-reroll](#buddy-reroll) | 重新掷骰 Claude Code 伙伴，获取指定物种、稀有度或闪光变体 |
 | [code-review-uncommitted](#code-review-uncommitted) | 对 git 未提交变更进行多维度 code review，含规范合规性、Bug 扫描、置信度过滤 |
+| [codex-imagegen](#codex-imagegen) | 通过 Codex CLI 的 image_gen 工具在 Claude Code 中生成 AI 图片 |
 | [de-gpt-ify](#de-gpt-ify) | 中文输出去黑话化，让 GPT 像人一样说中文，告别咨询黑话和 AI 味表达 |
 | [exa-unified-research](#exa-unified-research) | 偏好网络研究工具，使用 Exa 神经语义搜索替代内置 WebSearch/WebFetch |
 | [figma-use](#figma-use) | Figma Plugin API 操作的前置必读 skill，必须在调用 use_figma 前加载 |
@@ -60,6 +61,25 @@ npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-na
 - 要求 review 未提交的代码
 - 要求 review 当前改动 / diff
 - 使用 `/code-review-uncommitted`
+
+---
+
+## codex-imagegen
+
+**描述：** 通过 Codex CLI 的内置 `image_gen.imagegen` 工具（gpt-image-2）在 Claude Code 中生成 AI 图片。Claude Code 本身没有图片生成能力，这个 skill 利用 `codex exec` 非交互模式桥接 Codex 的图片生成工具，无需单独配置 `OPENAI_API_KEY`。
+
+**触发场景：**
+
+- 用户说"生成图片""画一张图""做个海报""生成一张照片""帮我画""生成插画"
+- 用户说 "generate an image" "create a photo of" "make an illustration" "design a poster"
+- 需要生成写实照片、插画、概念图、产品图、游戏素材、UI 模型图等 AI 位图
+- 需要透明背景图片（通过 chroma-key 去背景流程）
+
+**效果示例：**
+
+- "帮我生成一张暖色调的咖啡店内部照片" → 通过 Codex 生成写实风格咖啡店图片
+- "Generate a pixel art sword icon, transparent background" → 生成像素剑 + chroma-key 去绿幕
+- "给项目生成一张 hero image，蓝紫科技感" → 生成 AI 主题 landing page 配图并保存到指定路径
 
 ---
 
