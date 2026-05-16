@@ -1,15 +1,24 @@
 # Jay Skills
 
-> Jay 的 AI Agent Skills 集合，适用于 Claude Code / Codex 等 AI 编程工具。
+> Jay 的 AI Agent 资源集合，包含可安装的 Skills 和可执行的 Playbooks，适用于 Claude Code / Codex 等 AI 编程工具。
+
+## 内容模块
+
+| 模块 | 目录 | 用途 |
+|------|------|------|
+| Skills | [`skills/`](./skills/) | 可通过 `npx skills add` 安装，由 Agent 按场景触发 |
+| Playbooks | [`playbooks/`](./playbooks/) | 给 Agent 读取并按步骤执行的专题教程，不是可安装 skill |
 
 ## 安装
+
+以下命令只安装 `skills/` 下的内容，不会安装 `playbooks/`。
 
 ```bash
 # 安装全部 skills
 npx skills add https://github.com/nangongwentian-fe/jay-skills -g -y -a claude-code codex
 
 # 安装单个 skill
-npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-name> -g -y
+npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-name> -g -y -a claude-code codex
 ```
 
 ## Skills 列表
@@ -25,15 +34,17 @@ npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-na
 | [git-commit](#git-commit) | 基于当前 git 工作区变更生成并创建单个提交 |
 | [git-rebase-workflow](#git-rebase-workflow) | Git Rebase 分支同步流程，保持提交历史整洁 |
 | [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
-| [lark-beautiful-docs](#lark-beautiful-docs) | 让飞书文档不朴素，强制使用 callout、grid、增强表格等富文本格式 |
-| [lark-cli-router](#lark-cli-router) | 在飞书官方 CLI 和社区 feishu-cli 之间做路由判断与组合调用 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
-| [reflect-and-remember](#reflect-and-remember) | 任务完成后的反思记忆，将知识写入项目或私有 memory |
 | [show-dont-tell](#show-dont-tell) | 信息可视化呈现，让 GPT 优先用表格、代码块、列表呈现结构化信息 |
-| [sync-global-rules](#sync-global-rules) | 同步 Awesome-GlobalRule 仓库到本地 AI 编程工具配置 |
 | [sync-skill-to-jay](#sync-skill-to-jay) | 创建或更新 skill 后，询问是否同步到 jay-skills 仓库并发布 |
 | [update-claude-code](#update-claude-code) | 更新 Claude Code CLI 到最新版本 |
 | [web-content-fetcher](#web-content-fetcher) | 网页内容获取技巧集合，覆盖 Markdown 提取、付费墙绕过等场景 |
+
+## Playbooks 列表
+
+| Playbook | 描述 |
+|----------|------|
+| [codex-clash-proxy](./playbooks/codex-clash-proxy/) | 在 macOS 和 Windows 里让 Codex CLI 或 Codex.app 单独走 Clash 代理 |
 
 ---
 
@@ -224,33 +235,6 @@ $git-commit 创建一个 git commit：
 
 ---
 
-## lark-beautiful-docs
-
-**描述：** 让飞书文档不朴素——在创建或更新飞书/Lark 文档时，强制使用高亮块（callout）、分栏（grid）、增强表格（lark-table）、画板、图表等视觉友好的富文本格式，杜绝纯文字堆砌。当用户要求写飞书文档、整理文档、美化文档、输出任何飞书/Lark 文档内容时触发。与 lark-doc skill 配合使用：lark-doc 负责执行写入命令，本 skill 负责排版设计决策。
-
-**触发场景：**
-
-- 写飞书文档
-- 整理文档、美化文档
-- 输出任何飞书/Lark 文档内容
-- 杜绝纯文字堆砌，需要视觉友好的排版
-
----
-
-## lark-cli-router
-
-**描述：** 在需要操作飞书/Lark CLI、判断该用官方 larksuite/cli 还是社区 feishu-cli、或在两者之间组合调用时使用。适用于飞书文档导入导出、Markdown 与飞书文档转换、Mermaid/PlantUML 导入、以及通用 Lark/飞书平台 API 操作。遇到本机未安装对应 CLI 时，先检查并按仓库 README 推荐方式安装，再继续执行任务。
-
-**触发场景：**
-
-- 飞书文档导入导出
-- Markdown 与飞书文档转换
-- Mermaid/PlantUML 导入
-- 通用 Lark/飞书平台 API 操作
-- 需要判断用官方 CLI 还是社区 CLI
-
----
-
 ## progressive-disclosure-docs
 
 **描述：** 用渐进式披露设计、拆分和维护 Markdown / 项目文档，让读者和 agent 先看到必要信息，需要时再进入细节，避免 README 或单个文档无限膨胀。
@@ -290,32 +274,6 @@ $git-commit 创建一个 git commit：
 | 数据结构 | string / list / hash / set / zset | 仅 key-value |
 | 持久化 | 支持（RDB / AOF） | 不支持 |
 | 线程模型 | 单线程（6.0 起 IO 多线程） | 多线程 |
-
----
-
-## reflect-and-remember
-
-**描述：** 任务完成后的反思记忆 skill。在完成一个有意义的任务后主动触发，反思是否产生了值得跨会话复用的知识，并将团队共享知识写入项目 `.claude/memory/`（进 git），敏感信息写入用户私有 memory（不进 git）。触发时机：(1) 完成部署、调试、架构决策等重要任务后 (2) 踩坑或发现反直觉行为后 (3) 发现项目特有的规律/约定后 (4) 用户说"记住"、"记录"、"别忘了"、"remember"时。不要在简单代码修改、格式调整等轻量任务后触发。
-
-**触发场景：**
-
-- 完成部署、调试、架构决策等重要任务后
-- 踩坑或发现反直觉行为后
-- 发现项目特有的规律/约定后
-- 用户说"记住"、"记录"、"别忘了"、"remember"
-
----
-
-## sync-global-rules
-
-**描述：** 同步 nangongwentian-fe/Awesome-GlobalRule 仓库到本地 AI 编程工具配置。当用户说"同步规则"、"同步 global rule"、"检查规则更新"、"更新 agent rules"、"sync global rules"、"规则有没有更新"、"拉取最新规则"时，立即使用此 skill。同步目标：Claude Code (~/.claude/) 和 Codex (~/.codex/)。包含自动备份、更新检测、状态追踪功能。
-
-**触发场景：**
-
-- 用户说"同步规则"/"同步 global rule"
-- 用户说"检查规则更新"/"更新 agent rules"
-- 用户说"sync global rules"
-- 用户说"规则有没有更新"/"拉取最新规则"
 
 ---
 
