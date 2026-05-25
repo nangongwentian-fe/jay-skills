@@ -44,7 +44,7 @@
 | `variant` | 组件建议 | `default`、`active`、`warning`、`disabled` 等状态。 |
 | `reuseScope` | 建议 | `slide`、`section`、`deck`、`brand`，表示复用范围。 |
 | `transparentPreferred` | 小部件建议 | 是否优先透明背景，便于叠加到不同页面。 |
-| `semanticContent` | 小部件建议 | 通常应为 `none`，表示图片不承载文字、编号、方向。 |
+| `semanticContent` | 小部件必填 | 组件资产必须为 `none`，表示图片不承载文字、编号、方向或业务语义。 |
 | `nativePptOwns` | 小部件建议 | PPT 原生元素负责的内容，例如 `label`、`number`、`position`、`direction`。 |
 
 ## 组件级资产
@@ -93,6 +93,7 @@
 ```
 
 同一 `componentFamily` 下优先复用默认组件，只为状态差异生成少量变体。
+不要把“玻璃质感节点”“蓝色发光线”等视觉描述写进 `semanticContent`；这些内容放在 `alt` 或 `prompt`。
 
 | 组件 | 图片负责 | PPT 原生元素负责 |
 | --- | --- | --- |
@@ -123,6 +124,8 @@
 ```text
 [品质/风格] + [行业主体] + [构图/安全区] + [比例] + no text, no logo, no watermark
 ```
+
+每条图片提示词都要显式包含 `no text`、`no logo`、`no watermark`。只写 `no watermark` 不够。
 
 示例：
 

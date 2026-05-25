@@ -99,6 +99,18 @@ python3 /path/to/image-enhanced-ppt/scripts/check_image_assets.py \
 
 同一套 PPT 内，相同语义组件应复用同一 `componentFamily`，用 `variant` 区分 `default`、`active`、`warning`、`disabled` 等状态。
 
+组件资产字段要求：
+
+| 字段 | 要求 |
+| --- | --- |
+| `componentFamily` | 必须填写，用来复用同一组视觉组件。 |
+| `variant` | 必须填写，默认状态写 `default`。 |
+| `reuseScope` | 必须填写，说明复用范围。 |
+| `semanticContent` | 组件资产必须写 `none`，不要写视觉描述。 |
+| `nativePptOwns` | 必须列出 PPT 原生元素负责的语义，例如文字、编号、方向、位置。 |
+
+视觉描述写进 `alt` 或 `prompt`，不要写进 `semanticContent`。
+
 ## 图片提示词规则
 
 | 应该写 | 避免写 |
@@ -108,6 +120,8 @@ python3 /path/to/image-enhanced-ppt/scripts/check_image_assets.py \
 | 描述光线、材质、场景、主体。 | 只写抽象渐变，没有实际画面。 |
 | 按用途和组件分别生成资产。 | 一张背景图承担整页所有视觉表达。 |
 | 为组件族生成少量可复用变体。 | 每页重新生成一套相似线条和节点。 |
+
+每条图片 `prompt` 必须显式包含 `no text`、`no logo`、`no watermark`。如果用中文写提示词，也要包含等价约束：无文字、无商标、无水印。
 
 如果有图片生成工具，只让它生成位图资产。PPT 编译器或演示文稿工具继续负责文字、版式、遮罩、图表和导出。
 

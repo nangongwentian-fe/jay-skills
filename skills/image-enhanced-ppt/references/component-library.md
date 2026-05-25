@@ -42,8 +42,10 @@ PPT = 版式系统 + PPT 原生结构元素 + 图片组件库
 | `variant` | 表示状态或样式差异。 |
 | `reuseScope` | 说明复用范围：`slide`、`section`、`deck`、`brand`。 |
 | `transparentPreferred` | 小部件优先透明背景，便于叠加。 |
-| `semanticContent` | 通常为 `none`，避免图片承载语义。 |
+| `semanticContent` | 组件资产必须为 `none`，避免图片承载语义。 |
 | `nativePptOwns` | 标明哪些内容必须由 PPT 原生元素控制。 |
+
+视觉描述写进 `alt` 或 `prompt`。不要把“发光线”“玻璃节点”“警告标记”等描述写进 `semanticContent`。
 
 ## 组件族
 
@@ -84,10 +86,11 @@ PPT = 版式系统 + PPT 原生结构元素 + 图片组件库
 ## 生成提示
 
 组件提示词要强调“单个组件”，不要让图片模型生成完整页面。
+每条组件提示词都要显式包含 `no text`、`no logo`、`no watermark`。
 
 | 组件 | 提示词要点 |
 | --- | --- |
-| 流程线 | `single horizontal connector line, 12:1, no arrow, no text, transparent background` |
-| 流程节点 | `single circular process node, centered, 1:1, no number, no text, transparent background` |
-| 状态标记 | `single warning marker badge, centered, 1:1, no text, transparent background` |
-| 图标 | `single enterprise automation icon, centered, 1:1, no label, transparent background` |
+| 流程线 | `single horizontal connector line, 12:1, no arrow, no text, no logo, no watermark, transparent background` |
+| 流程节点 | `single circular process node, centered, 1:1, no number, no text, no logo, no watermark, transparent background` |
+| 状态标记 | `single warning marker badge, centered, 1:1, no text, no logo, no watermark, transparent background` |
+| 图标 | `single enterprise automation icon, centered, 1:1, no label, no text, no logo, no watermark, transparent background` |
