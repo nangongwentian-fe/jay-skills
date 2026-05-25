@@ -30,14 +30,52 @@
 | 字段 | 必填 | 用途 |
 | --- | --- | --- |
 | `id` | 是 | 幻灯片引用图片时使用的稳定标识。 |
-| `kind` | 是 | `hero-image`、`section-background`、`scene-image`、`texture` 或 `cutout`。 |
+| `kind` | 是 | `hero-image`、`section-background`、`scene-image`、`texture`、`cutout`、`flow-line`、`flow-node`、`marker` 或 `icon-asset`。 |
 | `path` | 是 | 相对项目的图片路径。 |
-| `aspectRatio` | 是 | `16:9`、`4:3` 或 `1:1`。 |
+| `aspectRatio` | 是 | `16:9`、`4:3`、`1:1`，也可以是 `8:1`、`12:1` 这类组件比例。 |
 | `alt` | 是 | 便于审核和无障碍使用的图片描述。 |
 | `usage` | 建议 | 图片会用在哪类页面。 |
 | `safeZone` | 建议 | 适合放文字的区域：`left`、`right`、`top`、`bottom`、`center` 或 `none`。 |
 | `prompt` | 建议 | 生成提示词，便于复查和重新生成。 |
 | `minWidth` / `minHeight` | 可选 | 覆盖默认尺寸阈值。 |
+
+## 组件级资产
+
+不要只列背景图。复杂页面要先拆出可组合的小部件。
+
+```json
+{
+  "assets": [
+    {
+      "id": "process-line-blue",
+      "kind": "flow-line",
+      "path": "assets/imagegen/process-line-blue.png",
+      "aspectRatio": "12:1",
+      "alt": "Blue luminous process connector line",
+      "usage": "timeline connector",
+      "minWidth": 1200,
+      "minHeight": 80,
+      "prompt": "premium blue luminous horizontal connector line, transparent or plain dark background, 12:1, no text, no logo, no arrow"
+    },
+    {
+      "id": "process-node-glass",
+      "kind": "flow-node",
+      "path": "assets/imagegen/process-node-glass.png",
+      "aspectRatio": "1:1",
+      "alt": "Glassmorphism circular process node",
+      "usage": "process milestone node",
+      "prompt": "premium glassmorphism circular process node, centered, 1:1, no text, no number, no logo"
+    }
+  ]
+}
+```
+
+| 组件 | 图片负责 | PPT 原生元素负责 |
+| --- | --- | --- |
+| `flow-line` | 线条材质、光效、纹理 | 起止点、长度、方向、连接关系 |
+| `flow-node` | 节点外观、材质、阴影 | 节点文字、编号、布局位置 |
+| `marker` | 状态视觉、强调符号 | 状态含义、标签、说明 |
+| `icon-asset` | 风格化位图图标 | 标题、说明、分组关系 |
 
 ## 页面引用
 
@@ -69,6 +107,8 @@
 | 封面 | `premium enterprise cyber operations room, dark negative space on the left, 16:9, no text, no logo` |
 | 章节页 | `minimal premium abstract supply-chain data texture, calm center area, 16:9, no text, no logo` |
 | 内容页场景图 | `realistic enterprise document automation scene, clean desk, 4:3, no readable text, no logo` |
+| 流程线 | `premium luminous horizontal connector line, subtle gradient, 12:1, no text, no arrow, no logo` |
+| 流程节点 | `premium circular glass process node, centered, 1:1, no text, no number, no logo` |
 
 ## 拒绝规则
 
@@ -81,3 +121,4 @@
 | 明显商标或水印 | 有法律和品牌风险。 |
 | 安全区细节太多 | 标题对比度容易失败。 |
 | 分辨率太低 | 大屏展示会显得粗糙。 |
+| 小部件里含文字或箭头语义 | 会削弱 PPT 原生结构的可编辑性。 |

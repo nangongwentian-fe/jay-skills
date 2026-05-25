@@ -10,7 +10,7 @@ except ImportError as exc:
     raise SystemExit("Pillow is required: python3 -m pip install pillow") from exc
 
 
-EXPECTED_RATIOS = {
+NAMED_RATIOS = {
     "16:9": 16 / 9,
     "4:3": 4 / 3,
     "1:1": 1,
@@ -41,6 +41,22 @@ def resolve_assets(spec):
     if isinstance(spec, dict):
         return spec.get("assets", [])
     return []
+
+
+def parse_ratio(value):
+    if value in NAMED_RATIOS:
+        return NAMED_RATIOS[value]
+    if not isinstance(value, str) or ":" not in value:
+        return None
+    left, right = value.split(":", 1)
+    try:
+        width = float(left)
+        height = float(right)
+    except ValueError:
+        return None
+    if width <= 0 or height <= 0:
+        return None
+    return width / height
 
 
 def main():
@@ -111,7 +127,7 @@ def main():
             }
         )
 
-        expected_ratio = EXPECTED_RATIOS.get(asset.get("aspectRatio"))
+        expected_ratio = parse_ratio(asset.get("aspectRatio"))
         if not expected_ratio:
             issues.append(f"{asset_id} has unsupported aspectRatio: {asset.get('aspectRatio')}")
         elif abs(actual_ratio - expected_ratio) > args.ratio_tolerance:

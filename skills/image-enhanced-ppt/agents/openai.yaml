@@ -1,4 +1,4 @@
 interface:
   display_name: "Image Enhanced PPT"
-  short_description: "用可复用图片资产增强可编辑企业级 PPT 幻灯片制作"
+  short_description: "用背景、场景、小部件图片资产增强可编辑 PPT"
   default_prompt: "Use $image-enhanced-ppt to create a polished editable PPTX with generated image assets."
