@@ -16,6 +16,8 @@ NAMED_RATIOS = {
     "1:1": 1,
 }
 
+COMPONENT_KINDS = {"flow-line", "flow-node", "marker", "icon-asset"}
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -68,6 +70,7 @@ def main():
 
     records = []
     issues = []
+    warnings = []
 
     if not assets:
         issues.append("no assets found; expected a JSON array or an object with an assets array")
@@ -143,6 +146,15 @@ def main():
             issues.append(f"{asset_id} appears blank")
         if brightness < 18 or brightness > 238:
             issues.append(f"{asset_id} brightness is risky: {brightness:.1f}")
+        if asset.get("kind") in COMPONENT_KINDS:
+            if not asset.get("componentFamily"):
+                warnings.append(f"{asset_id} component asset has no componentFamily")
+            if not asset.get("reuseScope"):
+                warnings.append(f"{asset_id} component asset has no reuseScope")
+            if asset.get("semanticContent") not in (None, "none"):
+                warnings.append(f"{asset_id} component asset may carry semantic content")
+            if not asset.get("nativePptOwns"):
+                warnings.append(f"{asset_id} component asset should declare nativePptOwns")
 
         records.append(record)
 
@@ -153,6 +165,7 @@ def main():
         "assetCount": len(records),
         "assets": records,
         "issues": issues,
+        "warnings": warnings,
         "manualChecks": [
             "no readable fake text",
             "no logos or watermarks unless explicitly licensed",

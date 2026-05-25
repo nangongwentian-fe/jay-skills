@@ -18,6 +18,7 @@
       "aspectRatio": "16:9",
       "alt": "Enterprise AI operations room with dark empty space on the left",
       "usage": "cover background",
+      "reuseScope": "deck",
       "safeZone": "left",
       "prompt": "premium enterprise AI operations workspace, cinematic but realistic, dark negative space on the left, 16:9, no text, no logo, no watermark"
     }
@@ -38,6 +39,13 @@
 | `safeZone` | 建议 | 适合放文字的区域：`left`、`right`、`top`、`bottom`、`center` 或 `none`。 |
 | `prompt` | 建议 | 生成提示词，便于复查和重新生成。 |
 | `minWidth` / `minHeight` | 可选 | 覆盖默认尺寸阈值。 |
+| `componentRole` | 组件建议 | `background`、`scene`、`line`、`node`、`marker`、`icon`、`decoration`。 |
+| `componentFamily` | 组件建议 | 同一组可复用组件的族名，例如 `blue-process`。 |
+| `variant` | 组件建议 | `default`、`active`、`warning`、`disabled` 等状态。 |
+| `reuseScope` | 建议 | `slide`、`section`、`deck`、`brand`，表示复用范围。 |
+| `transparentPreferred` | 小部件建议 | 是否优先透明背景，便于叠加到不同页面。 |
+| `semanticContent` | 小部件建议 | 通常应为 `none`，表示图片不承载文字、编号、方向。 |
+| `nativePptOwns` | 小部件建议 | PPT 原生元素负责的内容，例如 `label`、`number`、`position`、`direction`。 |
 
 ## 组件级资产
 
@@ -53,6 +61,13 @@
       "aspectRatio": "12:1",
       "alt": "Blue luminous process connector line",
       "usage": "timeline connector",
+      "componentRole": "line",
+      "componentFamily": "blue-process",
+      "variant": "default",
+      "reuseScope": "deck",
+      "transparentPreferred": true,
+      "semanticContent": "none",
+      "nativePptOwns": ["direction", "length", "position"],
       "minWidth": 1200,
       "minHeight": 80,
       "prompt": "premium blue luminous horizontal connector line, transparent or plain dark background, 12:1, no text, no logo, no arrow"
@@ -64,11 +79,20 @@
       "aspectRatio": "1:1",
       "alt": "Glassmorphism circular process node",
       "usage": "process milestone node",
+      "componentRole": "node",
+      "componentFamily": "blue-process",
+      "variant": "default",
+      "reuseScope": "deck",
+      "transparentPreferred": true,
+      "semanticContent": "none",
+      "nativePptOwns": ["label", "number", "position"],
       "prompt": "premium glassmorphism circular process node, centered, 1:1, no text, no number, no logo"
     }
   ]
 }
 ```
+
+同一 `componentFamily` 下优先复用默认组件，只为状态差异生成少量变体。
 
 | 组件 | 图片负责 | PPT 原生元素负责 |
 | --- | --- | --- |
