@@ -34,7 +34,6 @@ npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-na
 | [git-commit](#git-commit) | 基于当前 git 工作区变更生成并创建单个提交 |
 | [git-rebase-workflow](#git-rebase-workflow) | Git Rebase 分支同步流程，保持提交历史整洁 |
 | [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
-| [image-enhanced-ppt](#image-enhanced-ppt) | 用组件库和分层图片资产增强可编辑 PPT |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
 | [show-dont-tell](#show-dont-tell) | 信息可视化呈现，让 GPT 优先用表格、代码块、列表呈现结构化信息 |
 | [sync-skill-to-jay](#sync-skill-to-jay) | 创建或更新 skill 后，询问是否同步到 jay-skills 仓库并发布 |
@@ -233,21 +232,6 @@ $git-commit 创建一个 git commit：
 - "用 flash 生成一个皮卡丘吃蛋糕的图片，保存到当前目录"
 - "基于这张产品图，把背景改成雪山，主体不要变"
 - "帮我批量出 3 张 16:9 封面图，分辨率 2K"
-
----
-
-## image-enhanced-ppt
-
-**描述：** 用组件库、页面级资产、场景级资产、组件级资产增强可编辑 PPT/PPTX/PowerPoint 幻灯片，适用于制作或优化企业级 PPT、汇报 deck、路演稿、报告幻灯片、产品介绍、咨询风格页面。
-
-**触发场景：**
-
-- 制作或优化企业级 PPT / PPTX / PowerPoint
-- 结合 imagegen、AI 生成图片、封面主视觉、章节背景、产品图、行业场景图
-- 需要把流程图、时间线、架构图拆成流程线、节点、图标、标记等图片小部件
-- 需要复用组件库，避免每页重新生成相似线、点、图标
-- 需要高端视觉质感，但不希望把整页 PPT 变成截图
-- 需要保留文字、图表、结构和版式检查的可编辑性
 
 ---
 
