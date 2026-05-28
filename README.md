@@ -31,6 +31,30 @@ codex plugin add jay-ai-basis-env@jay-skills
 
 `jay-ai-basis-env` 包含本仓常用 skills，以及 `chrome-devtools`、`context7`、`exa` 三个 MCP 配置。使用 `context7` 和 `exa` 前，需要在运行环境提供 `CONTEXT7_API_KEY` 和 `EXA_API_KEY`。
 
+## Plugins 列表
+
+| Plugin | 描述 |
+|--------|------|
+| [jay-ai-basis-env](./plugins/jay-ai-basis-env/) | Jay 的 Codex 基础环境插件，打包常用写作、文档、代码、Git、网页研究类 skills，并内置 `chrome-devtools`、`context7`、`exa` 三个 MCP 配置 |
+
+### jay-ai-basis-env
+
+**描述：** 面向 Codex 的个人基础工作环境插件。安装后可一次性获得本仓常用 skills，以及浏览器调试、库文档查询、语义搜索三个 MCP 能力配置。
+
+**包含能力：**
+
+- 常用中文输出、结构化表达、文档维护、代码准则、Git 提交和网页内容获取 skills
+- `chrome-devtools`：用于网页调试、浏览器自动化和网络请求检查
+- `context7`：用于查询库、框架、接口和命令行工具的最新文档
+- `exa`：用于网页研究、人物/公司检索、代码示例和资料抓取
+
+**使用前配置：**
+
+```bash
+export CONTEXT7_API_KEY=...
+export EXA_API_KEY=...
+```
+
 ## Skills 列表
 
 | Skill | 描述 |
