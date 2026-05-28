@@ -1,0 +1,6 @@
+interface:
+  display_name: Show, Don't Tell
+  short_description: 用表格、列表、代码块呈现结构化信息。
+  default_prompt: 结构化呈现对比、步骤、配置和流程。
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,24 @@
+{
+  "name": "jay-ai-basis-env",
+  "version": "0.1.0",
+  "description": "Jay AI base environment with personal skills and MCP servers.",
+  "author": {
+    "name": "Jay"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Jay AI Basis Env",
+    "shortDescription": "Personal Codex skills and core MCP servers.",
+    "longDescription": "Bundles Jay's local Codex skills with Chrome DevTools, Context7, and Exa MCP server configuration.",
+    "developerName": "Jay",
+    "category": "Productivity",
+    "capabilities": [
+      "Skills",
+      "MCP"
+    ],
+    "defaultPrompt": [
+      "Use my Jay AI base environment."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "jay-skills",
+  "interface": {
+    "displayName": "Jay Skills"
+  },
+  "plugins": [
+    {
+      "name": "jay-ai-basis-env",
+      "source": {
+        "source": "local",
+        "path": "./plugins/jay-ai-basis-env"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

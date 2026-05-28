@@ -7,6 +7,7 @@
 | 模块 | 目录 | 用途 |
 |------|------|------|
 | Skills | [`skills/`](./skills/) | 可通过 `npx skills add` 安装，由 Agent 按场景触发 |
+| Plugins | [`plugins/`](./plugins/) | 可通过 Codex 插件市场安装，打包 skills 和 MCP 配置 |
 | Playbooks | [`playbooks/`](./playbooks/) | 给 Agent 读取并按步骤执行的专题教程，不是可安装 skill |
 
 ## 安装
@@ -20,6 +21,15 @@ npx skills add https://github.com/nangongwentian-fe/jay-skills -g -y -a claude-c
 # 安装单个 skill
 npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-name> -g -y -a claude-code codex
 ```
+
+## Codex 插件安装
+
+```bash
+codex plugin marketplace add nangongwentian-fe/jay-skills --ref main
+codex plugin add jay-ai-basis-env@jay-skills
+```
+
+`jay-ai-basis-env` 包含本仓常用 skills，以及 `chrome-devtools`、`context7`、`exa` 三个 MCP 配置。使用 `context7` 和 `exa` 前，需要在运行环境提供 `CONTEXT7_API_KEY` 和 `EXA_API_KEY`。
 
 ## Skills 列表
 

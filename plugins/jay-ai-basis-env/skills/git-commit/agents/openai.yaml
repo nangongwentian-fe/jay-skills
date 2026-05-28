@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Commit"
+  short_description: "Analyze git changes and create one clean commit"
+  default_prompt: "Use $git-commit to inspect the current changes and create a single git commit with a structured message."
