@@ -60,6 +60,7 @@ export EXA_API_KEY=...
 | Skill | 描述 |
 |-------|------|
 | [buddy-reroll](#buddy-reroll) | 重新掷骰 Claude Code 伙伴，获取指定物种、稀有度或闪光变体 |
+| [clean-wechat-wps-storage](#clean-wechat-wps-storage) | 清理 macOS 微信和 WPS 本机占用，先扫描、确认计划，再移到废纸篓 |
 | [code-review-uncommitted](#code-review-uncommitted) | 对 git 未提交变更进行多维度 code review，含规范合规性、Bug 扫描、置信度过滤 |
 | [codex-imagegen](#codex-imagegen) | 通过 Codex CLI 的 image_gen 工具在 Claude Code 中生成 AI 图片 |
 | [de-gpt-ify](#de-gpt-ify) | 中文输出去黑话化，让 GPT 像人一样说中文，告别咨询黑话和 AI 味表达 |
@@ -95,6 +96,19 @@ export EXA_API_KEY=...
 - 用户说 "give me a legendary dragon"
 - 用户说 "/buddy-reroll"
 - 任何自定义 Claude Code 伙伴的请求
+
+---
+
+## clean-wechat-wps-storage
+
+**描述：** 清理 macOS 上微信和 WPS Office 的本机磁盘占用。流程固定为先扫描占用、采访用户清理范围、给出清理计划，用户确认后再把应用数据移动到废纸篓。
+
+**触发场景：**
+
+- 用户说微信、WeChat、Weixin、WPS 或 WPS Office 占用空间太大
+- 用户想清理微信聊天记录、聊天图片、视频、表情、附件或缓存
+- 用户想清理 WPS 云文档本地缓存、插件、字体、日志或临时文件
+- 用户要求清理前先确认范围、给出计划，再执行移动到废纸篓
 
 ---
 
