@@ -1,0 +1,80 @@
+{
+  "skill_name": "goal-loop-builder",
+  "evals": [
+    {
+      "id": 0,
+      "name": "app-mvp-goal",
+      "prompt": "帮我做个 App，可以本地跑起来，先做 MVP。",
+      "expected_output": "选择 Codex 或 Claude /goal，输出保守 MVP 的可复制命令，并包含可保存的 goal.md 运行契约。",
+      "files": [],
+      "expectations": [
+        "runtime_choice_correct: chooses /goal rather than /loop for a local MVP build task",
+        "has_verification: includes concrete local runtime evidence such as build/start command, browser check, screenshot, logs, or command output",
+        "has_boundaries: states allowed writes and forbidden paths/systems",
+        "has_stop_pause: includes completion evidence and pause/block conditions",
+        "no_placeholders: contains no unresolved placeholders such as [TODO], <path>, TBD, 待补充, or 待定",
+        "no_dangerous_vague: avoids weak instructions such as make sure it works, keep trying, edit anything, 随便改, or 一直尝试"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "deploy-loop",
+      "prompt": "让 Claude 每 5 分钟检查部署是否完成，有问题提醒我。",
+      "expected_output": "选择 Claude /loop 5m，输出时间驱动的轮询提示，包含观察信号、报告格式、停止或升级条件，不误判成 /goal。",
+      "files": [],
+      "expectations": [
+        "runtime_choice_correct: chooses /loop 5m rather than /goal for timed deployment polling",
+        "has_verification: names concrete status sources such as CI, deployment logs, dashboard, PR, or release state",
+        "has_boundaries: states read/write boundaries and forbids deploy, rollback, merge, or production changes unless approved",
+        "has_stop_pause: includes stop, alert, escalation, timeout, or human approval conditions",
+        "no_placeholders: contains no unresolved placeholders such as [TODO], <path>, TBD, 待补充, or 待定",
+        "no_dangerous_vague: avoids weak instructions such as make sure it works, keep trying, edit anything, 随便改, or 一直尝试"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "bare-loop-md",
+      "prompt": "帮我写一个 `.claude/loop.md`，让 bare `/loop` 默认检查 PR 和 CI。",
+      "expected_output": "输出单一默认 loop prompt，可保存为 .claude/loop.md；强调 bare /loop 默认提示，不写成多个独立定时任务清单。",
+      "files": [],
+      "expectations": [
+        "runtime_choice_correct: chooses .claude/loop.md as a single default prompt for bare /loop",
+        "has_verification: names concrete observation signals such as PR status, CI checks, failing logs, reviews, or merge state",
+        "has_boundaries: states read/write boundaries and forbids unrelated changes, merging, deployment, or destructive actions",
+        "has_stop_pause: includes escalation, timeout, repeated failure, or human approval conditions",
+        "no_placeholders: contains no unresolved placeholders such as [TODO], <path>, TBD, 待补充, or 待定",
+        "no_dangerous_vague: avoids weak instructions such as make sure it works, keep trying, edit anything, 随便改, or 一直尝试"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "flaky-test-goal",
+      "prompt": "修复现有仓库里的 flaky test。",
+      "expected_output": "选择 /goal，要求先发现测试命令和最小复现，再做最小修复并连续验证目标测试。",
+      "files": [],
+      "expectations": [
+        "runtime_choice_correct: chooses /goal rather than /loop for fixing a flaky test",
+        "has_verification: requires discovering or running relevant test commands and repeated passing evidence",
+        "has_boundaries: limits writes to target test, fixtures, and directly related implementation",
+        "has_stop_pause: includes completion evidence and pause conditions for missing repro, environment, credentials, or product decisions",
+        "no_placeholders: contains no unresolved placeholders such as [TODO], <path>, TBD, 待补充, or 待定",
+        "no_dangerous_vague: avoids weak instructions such as make sure it works, keep trying, edit anything, 随便改, or 一直尝试"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "translation-negative",
+      "prompt": "把这句话翻译成英文：今天晚上不要发布。",
+      "expected_output": "不强行使用 /goal、/loop、goal.md 或 .claude/loop.md；直接给翻译或建议普通 prompt。",
+      "files": [],
+      "expectations": [
+        "runtime_choice_correct: does not force /goal, /loop, goal.md, or .claude/loop.md for a simple translation",
+        "has_verification: either not applicable for this simple prompt or gives a lightweight self-check such as preserving meaning",
+        "has_boundaries: either not applicable or clearly says no loop contract is needed",
+        "has_stop_pause: either not applicable or clearly says the task should complete in one response",
+        "no_placeholders: contains no unresolved placeholders such as [TODO], <path>, TBD, 待补充, or 待定",
+        "no_dangerous_vague: avoids weak instructions such as make sure it works, keep trying, edit anything, 随便改, or 一直尝试"
+      ]
+    }
+  ]
+}

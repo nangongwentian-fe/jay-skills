@@ -67,6 +67,7 @@ export EXA_API_KEY=...
 | [figma-use](#figma-use) | Figma Plugin API 操作的前置必读 skill，必须在调用 use_figma 前加载 |
 | [git-commit](#git-commit) | 基于当前 git 工作区变更生成并创建单个提交 |
 | [git-rebase-workflow](#git-rebase-workflow) | Git Rebase 分支同步流程，保持提交历史整洁 |
+| [goal-loop-builder](#goal-loop-builder) | 生成可复制、可验证、边界清晰的 `/goal`、`/loop`、`goal.md` 和 `.claude/loop.md` 运行契约 |
 | [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
 | [show-dont-tell](#show-dont-tell) | 信息可视化呈现，让 GPT 优先用表格、代码块、列表呈现结构化信息 |
@@ -245,6 +246,34 @@ $git-commit 创建一个 git commit：
 - 保持提交历史整洁
 - 提交 MR/PR 前同步代码
 - 避免使用 `git merge` 产生的合并提交
+
+---
+
+## goal-loop-builder
+
+**描述：** Create copy-ready, verifiable run contracts for long-horizon agent work. Use when the user asks to write, improve, or review Codex `/goal` prompts, Claude Code `/goal` conditions, Claude `/loop` prompts, `.claude/loop.md`, `goal.md`, loop engineering prompts, autonomous run instructions, stop/pause conditions, verification criteria, bounded iteration policy, or persistent Markdown instructions for agents.
+
+**触发场景：**
+
+- 编写、改进或评审 Codex `/goal` prompt
+- 编写 Claude Code `/goal` 完成条件或运行契约
+- 编写 Claude `/loop` 定时轮询 prompt
+- 编写 `.claude/loop.md` 或 `goal.md` 持久化说明
+- 为长任务定义验证证据、边界、迭代策略、停止条件和暂停条件
+
+**效果示例：**
+
+User: "帮我做个 App"
+
+Output: Recommend Codex or Claude `/goal`, create a conservative local MVP contract, include runtime verification and `goal.md`.
+
+User: "让它每 5 分钟检查部署是否完成"
+
+Output: Recommend Claude `/loop 5m ...`, include observation signals, reporting format, stop/escalation conditions, and optional `.claude/loop.md`.
+
+User: "修复现有仓库的 flaky test"
+
+Output: Recommend `/goal`, require discovery of test commands, isolated fix boundaries, regression evidence, and pause on missing repro or environment blockers.
 
 ---
 
