@@ -1,4 +1,4 @@
 interface:
   display_name: "Goal Loop Builder"
-  short_description: "生成可验证的 goal/loop 运行提示和持久化契约文件"
-  default_prompt: "Use $goal-loop-builder to turn this task into a copy-ready /goal or /loop command plus a persistent Markdown run contract."
+  short_description: "生成文件引用式 /goal prompt 和可验证的 loop 契约"
+  default_prompt: "Use $goal-loop-builder to create a short file-backed /goal prompt or copy-ready /loop contract."

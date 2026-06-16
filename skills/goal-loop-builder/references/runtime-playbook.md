@@ -7,8 +7,8 @@ Use this reference to choose the right run shape before drafting commands or Mar
 | Runtime | Use when | Starts next turn when | Stops when | Output to draft |
 |---|---|---|---|---|
 | Normal prompt | One short answer or one obvious edit | User prompts again | Current turn ends | Plain prompt |
-| Codex `/goal` | One durable outcome needs multi-step work | Previous turn finishes and goal remains active | Completion evidence is satisfied or run is blocked | `/goal ...` plus `goal.md` |
-| Claude `/goal` | One completion condition should be checked after each turn | Previous turn finishes and evaluator says not done | Evaluator confirms condition or user clears goal | `/goal ...` plus `goal.md` |
+| Codex `/goal` | One durable outcome needs multi-step work | Previous turn finishes and goal remains active | Completion evidence is satisfied or run is blocked | Short `/goal` command plus referenced `goal.md` |
+| Claude `/goal` | One completion condition should be checked after each turn | Previous turn finishes and evaluator says not done | Evaluator confirms condition or user clears goal | Short `/goal` command plus referenced `goal.md` |
 | Claude `/loop` | A prompt should run repeatedly on a timer | Interval elapses | User stops it, session ends, or prompt says to stop/escalate | `/loop <interval> <prompt>` |
 | `.claude/loop.md` | Bare `/loop` should use a custom default prompt | Bare `/loop` runs | Same as `/loop` scheduling | One default loop prompt file |
 
@@ -23,6 +23,13 @@ Draft for a verifiable finish line. Include:
 - forbidden production, credential, destructive, or unrelated actions
 - pause conditions for missing permissions, accounts, secrets, budget, legal/medical/financial judgment, or repeated blockers
 
+Write the full contract to `goal.md` or `<task-slug>.goal.md`. Return a one-line command that references the file:
+
+```text
+/goal Read @/absolute/path/to/task.goal.md and execute that run contract. Treat the Markdown file as the source of truth for outcome, verification, boundaries, stop conditions, and pause conditions.
+```
+
+Do not paste the full contract into the `/goal` command.
 Do not use `/goal` for loose backlogs or "keep improving forever".
 
 ## Claude Code `/goal`
@@ -31,7 +38,8 @@ Draft as a completion condition plus operating contract. Claude checks after eve
 
 Prefer:
 
-- "Run until X is true and proven by Y"
+- A short `/goal` command that references the Markdown contract file
+- "Run until X is true and proven by Y" inside the Markdown file
 - "Preserve A, B, C"
 - "Pause if Z is required"
 
@@ -78,10 +86,11 @@ Use when the contract should persist outside the command line.
 Keep it short and operational:
 
 - outcome
-- runtime command
 - context to inspect first
 - verification evidence
 - constraints and boundaries
 - iteration policy
 - stop and pause conditions
 - progress log location if needed
+
+Do not duplicate the full contract inside the `/goal` command. The command should only attach or reference this file.

@@ -68,7 +68,7 @@ export EXA_API_KEY=...
 | [figma-use](#figma-use) | Figma Plugin API 操作的前置必读 skill，必须在调用 use_figma 前加载 |
 | [git-commit](#git-commit) | 基于当前 git 工作区变更生成并创建单个提交 |
 | [git-rebase-workflow](#git-rebase-workflow) | Git Rebase 分支同步流程，保持提交历史整洁 |
-| [goal-loop-builder](#goal-loop-builder) | 生成可复制、可验证、边界清晰的 `/goal`、`/loop`、`goal.md` 和 `.claude/loop.md` 运行契约 |
+| [goal-loop-builder](#goal-loop-builder) | 生成文件引用式 `/goal` prompt、可验证 `goal.md` 和 `/loop` 运行契约 |
 | [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
 | [show-dont-tell](#show-dont-tell) | 信息可视化呈现，让 GPT 优先用表格、代码块、列表呈现结构化信息 |
@@ -279,7 +279,7 @@ $git-commit 创建一个 git commit：
 
 User: "帮我做个 App"
 
-Output: Recommend Codex or Claude `/goal`, create a conservative local MVP contract, include runtime verification and `goal.md`.
+Output: Recommend Codex or Claude `/goal`, create a real `app-mvp.goal.md`, then return a short one-line `/goal Read @/absolute/path/app-mvp.goal.md ...` prompt.
 
 User: "让它每 5 分钟检查部署是否完成"
 
@@ -287,7 +287,7 @@ Output: Recommend Claude `/loop 5m ...`, include observation signals, reporting 
 
 User: "修复现有仓库的 flaky test"
 
-Output: Recommend `/goal`, require discovery of test commands, isolated fix boundaries, regression evidence, and pause on missing repro or environment blockers.
+Output: Recommend `/goal`, create a real `flaky-test.goal.md`, then return a short `/goal` prompt that references it and requires discovery of test commands, isolated fix boundaries, regression evidence, and pause on missing repro or environment blockers.
 
 ---
 

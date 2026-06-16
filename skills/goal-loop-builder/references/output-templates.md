@@ -2,31 +2,29 @@
 
 Use these shapes as patterns. Replace every placeholder before returning output.
 
-## Chinese-First `/goal`
+## Chinese-First File-Backed `/goal`
 
 ```text
 推荐运行方式：Codex 或 Claude Code `/goal`，因为任务有明确完成条件，需要持续推进直到证据证明完成。
 
-可复制命令：
-/goal [具体目标结果]。
-验证：[命令、截图、日志、API 响应、PR 状态或产物证据]。
-约束：[不能改变的行为、接口、数据、风格、安全或分支规则]。
-边界：[允许写入的位置、禁止触碰的路径、工具或环境]。
-迭代策略：[一次一个聚焦改动；每次重跑相关检查；失败先读日志；连续失败后换证据来源或缩小复现]。
-完成条件：[哪些证据同时成立时停止]。
-暂停条件：[需要凭证、付费、生产数据、破坏性操作、法律/医疗/金融判断、版权素材、所有权不清或产品取舍时暂停]。
+已生成 Markdown 文件：
+[/absolute/path/to/task.goal.md](/absolute/path/to/task.goal.md)
+
+可复制 /goal prompt：
+/goal Read @/absolute/path/to/task.goal.md and execute that run contract. Treat the Markdown file as the source of truth for outcome, verification, boundaries, stop conditions, and pause conditions.
+
+文件内容摘要：
+- 目标：[一句话说明结果]
+- 验证：[最关键证据]
+- 边界：[允许和禁止的写入/操作]
+- 停止：[完成证据]
+- 暂停：[需要用户决策或权限的情况]
 ```
 
-## English-Compatible `/goal`
+## English-Compatible File-Backed `/goal`
 
 ```text
-/goal [Concrete target outcome].
-Verification: [commands, screenshots, logs, API responses, PR state, or artifact evidence].
-Constraints: [behavior, API, data, style, security, or branch rules that must not change].
-Boundaries: [allowed write locations, forbidden paths, tools, or environments].
-Iteration policy: [make one focused change at a time; rerun relevant checks; inspect logs before retrying; change evidence source or reduce to a repro after repeated failure].
-Stop when: [specific evidence proves completion].
-Pause if: [credentials, payments, production data, destructive actions, legal/medical/financial judgment, copyrighted assets, unclear ownership, or product decisions are required].
+/goal Read @/absolute/path/to/task.goal.md and execute that run contract. Treat the Markdown file as the source of truth for outcome, verification, boundaries, stop conditions, and pause conditions.
 ```
 
 ## `goal.md`
@@ -36,13 +34,7 @@ Pause if: [credentials, payments, production data, destructive actions, legal/me
 
 ## Outcome
 
-[Concrete target outcome.]
-
-## Runtime Command
-
-```text
-/goal [same target outcome and contract]
-```
+[Concrete target outcome. This is the result, not the activity.]
 
 ## Inspect First
 
@@ -76,6 +68,10 @@ Pause if: [credentials, payments, production data, destructive actions, legal/me
 ## Pause If
 
 - [Human decision, credential, budget, production, destructive, or compliance blocker.]
+
+## Progress Log
+
+- Append concise progress notes here only when useful for handoff.
 ```
 
 ## Claude `/loop`
