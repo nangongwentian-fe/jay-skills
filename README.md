@@ -68,6 +68,7 @@ export EXA_API_KEY=...
 | [figma-use](#figma-use) | Figma Plugin API 操作的前置必读 skill，必须在调用 use_figma 前加载 |
 | [git-commit](#git-commit) | 基于当前 git 工作区变更生成并创建单个提交 |
 | [git-rebase-workflow](#git-rebase-workflow) | Git Rebase 分支同步流程，保持提交历史整洁 |
+| [git-topic-commit-push](#git-topic-commit-push) | 按主题拆分 Git 改动，创建一个或多个 commit 并推送当前分支 |
 | [goal-loop-builder](#goal-loop-builder) | 生成文件引用式 `/goal` prompt、可验证 `goal.md` 和 `/loop` 运行契约 |
 | [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
@@ -260,6 +261,19 @@ $git-commit 创建一个 git commit：
 - 保持提交历史整洁
 - 提交 MR/PR 前同步代码
 - 避免使用 `git merge` 产生的合并提交
+
+---
+
+## git-topic-commit-push
+
+**描述：** Create one or more Git commits grouped by coherent change topic, then push the current branch. Use when the user asks to commit and push, submit by topic, split current changes into topical commits, or do "按照主题提交 commit 并 push"; especially when a worktree has mixed staged, unstaged, or untracked changes that need honest commit boundaries before `git push`.
+
+**触发场景：**
+
+- 用户要求 commit 并 push
+- 用户要求按照主题提交、分主题提交或拆分当前改动
+- 工作区同时存在 staged、unstaged 或 untracked 改动，需要先判断 commit 边界
+- 需要创建一个或多个诚实概括改动范围的 commit 后推送当前分支
 
 ---
 

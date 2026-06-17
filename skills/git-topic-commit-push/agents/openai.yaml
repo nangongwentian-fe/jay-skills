@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Topic Commit Push"
+  short_description: "Split Git changes into topical commits and push"
+  default_prompt: "Use $git-topic-commit-push to split current changes into topical commits and push them."
