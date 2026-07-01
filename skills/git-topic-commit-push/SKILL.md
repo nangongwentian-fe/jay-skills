@@ -1,6 +1,6 @@
 ---
 name: git-topic-commit-push
-description: Create one or more Git commits grouped by coherent change topic, then push the current branch. Use when the user asks to commit and push, submit by topic, split current changes into topical commits, or do "按照主题提交 commit 并 push"; especially when a worktree has mixed staged, unstaged, or untracked changes that need honest commit boundaries before `git push`.
+description: Create one or more Git commits grouped by coherent change topic, then push the current branch. Use when the user asks to commit and push, submit by topic, split current changes into topical commits, or do "按照主题提交 commit 并 push"; especially when a worktree has mixed staged, unstaged, or untracked changes that need honest commit boundaries before `git push`. Commit messages must be written in Chinese unless the user explicitly requests another language.
 ---
 
 # Git Topic Commit Push
@@ -30,8 +30,9 @@ Group the current worktree into honest topic commits, create them non-interactiv
 
 4. Stage and commit each topic.
    - Stage only the files or hunks for the current topic.
-   - Use Conventional Commit subjects: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`, `build`.
-   - Use 2-5 body bullets that describe behavior or outcome, not only file names.
+   - Use Conventional Commit types: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`, `build`.
+   - Write the commit subject and body in Chinese by default; keep only the Conventional Commit type prefix in English, for example `fix: 更新申请注册文案`.
+   - Use 2-5 Chinese body bullets that describe behavior or outcome, not only file names.
    - Prefer stable non-interactive commands. In PowerShell, use multiple `-m` flags instead of shell heredocs.
 
 5. Verify before pushing.
@@ -50,9 +51,9 @@ Use this PowerShell-safe pattern:
 
 ```powershell
 git add -- path/to/file-a path/to/file-b
-git commit -m "feat: concise topic subject" `
-  -m "- Result or behavior change 1" `
-  -m "- Result or behavior change 2"
+git commit -m "feat: 更新赛事首页内容" `
+  -m "- 优化首页横幅在宽屏和窄屏下的展示效果" `
+  -m "- 更新主席称谓和赞助入口展示"
 ```
 
 For a second topic, repeat with a fresh staged set:
@@ -60,9 +61,9 @@ For a second topic, repeat with a fresh staged set:
 ```powershell
 git reset
 git add -- docs/example.md scripts/example.mjs
-git commit -m "docs: update deployment workflow" `
-  -m "- Clarify the production package command" `
-  -m "- Document the required environment defaults"
+git commit -m "docs: 更新部署流程说明" `
+  -m "- 明确生产包构建命令" `
+  -m "- 补充必需环境变量默认值"
 ```
 
 ## Safety Rules
