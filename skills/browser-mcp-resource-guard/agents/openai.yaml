@@ -1,0 +1,4 @@
+interface:
+  display_name: "Browser MCP Resource Guard"
+  short_description: "Control browser MCP CPU, memory, and cleanup risk"
+  default_prompt: "Use $browser-mcp-resource-guard to check whether browser automation MCP tools should be used or cleaned up safely."

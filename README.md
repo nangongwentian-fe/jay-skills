@@ -60,6 +60,7 @@ export EXA_API_KEY=...
 | Skill | 描述 |
 |-------|------|
 | [buddy-reroll](#buddy-reroll) | 重新掷骰 Claude Code 伙伴，获取指定物种、稀有度或闪光变体 |
+| [browser-mcp-resource-guard](#browser-mcp-resource-guard) | 控制浏览器自动化 MCP 的 CPU、内存、能耗和清理风险 |
 | [clean-wechat-wps-storage](#clean-wechat-wps-storage) | 清理 macOS 微信和 WPS 本机占用，先扫描、确认计划，再移到废纸篓 |
 | [code-review-uncommitted](#code-review-uncommitted) | 对 git 未提交变更进行多维度 code review，含规范合规性、Bug 扫描、置信度过滤 |
 | [codex-imagegen](#codex-imagegen) | 通过 Codex CLI 的 image_gen 工具在 Claude Code 中生成 AI 图片 |
@@ -97,6 +98,19 @@ export EXA_API_KEY=...
 - 用户说 "give me a legendary dragon"
 - 用户说 "/buddy-reroll"
 - 任何自定义 Claude Code 伙伴的请求
+
+---
+
+## browser-mcp-resource-guard
+
+**描述：** 控制浏览器自动化 MCP 工具带来的 CPU、内存、电池、风扇和重复进程风险，覆盖 Chrome DevTools MCP、Playwright MCP、`@playwright/mcp` 及相关 Chrome Helper 进程。
+
+**触发场景：**
+
+- 准备使用、正在使用或刚用完 Chrome DevTools MCP、Playwright MCP、`@playwright/mcp` 等浏览器自动化 MCP
+- 用户提到高 CPU、高能耗、电池消耗、风扇、发热、卡顿
+- 用户提到重复浏览器 MCP 进程、残留 Chrome Helper、MCP 清理
+- 长时间 Codex 会话可能留下浏览器自动化 MCP 辅助进程
 
 ---
 
