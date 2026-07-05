@@ -75,6 +75,13 @@ git rebase origin/<目标分支>
    git rebase --continue
    ```
 
+   在非交互环境或自动化执行中，避免 `rebase --continue` 打开编辑器后挂起。可临时禁用编辑器：
+   ```bash
+   GIT_EDITOR=true git rebase --continue
+   ```
+
+   如果命令已因编辑器挂起，先确认当前进程和 rebase 状态，再结束卡住的编辑器进程；不要中止 rebase 或重复执行会改写状态的命令。
+
 6. **如需中止 rebase：**
    ```bash
    git rebase --abort
