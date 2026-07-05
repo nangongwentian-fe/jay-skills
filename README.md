@@ -73,6 +73,7 @@ export EXA_API_KEY=...
 | [goal-loop-builder](#goal-loop-builder) | 生成文件引用式 `/goal` prompt、可验证 `goal.md` 和 `/loop` 运行契约 |
 | [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
+| [post-task-learning-review](#post-task-learning-review) | 任务完成后维护经验，判断应新增、更新、合并或删除项目文档、memory 或 skill |
 | [show-dont-tell](#show-dont-tell) | 信息可视化呈现，让 GPT 优先用表格、代码块、列表呈现结构化信息 |
 | [sync-skill-to-jay](#sync-skill-to-jay) | 创建或更新 skill 后，询问是否同步到 jay-skills 仓库并发布 |
 | [update-claude-code](#update-claude-code) | 更新 Claude Code CLI 到最新版本 |
@@ -350,6 +351,24 @@ Output: Recommend `/goal`, create a real `flaky-test.goal.md`, then return a sho
 - 判断内容应该放进已有文档还是新建专题文档
 - 为项目文档、规则文档、skill 文档设计层级和入口
 - 发现文档越来越大、主题混杂，需要拆分或重组
+
+---
+
+## post-task-learning-review
+
+**描述：** 任务完成后维护长期可复用经验，判断本次经验应该新增、更新、合并、删除，还是不处理，并在项目文档、Codex memory、已有 skill 或新 skill 之间选择合适位置。
+
+**触发场景：**
+
+- 完成复杂排障、部署、线上验证、文档维护、重复 workflow 发现
+- 创建或更新 skill 后，需要判断经验是否应继续进入项目文档、memory 或 skill
+- 用户问“这次有什么值得记忆/写进文档/做成 skill”
+
+**安装后额外步骤：**
+
+```bash
+~/.agents/skills/post-task-learning-review/scripts/install.sh
+```
 
 ---
 
