@@ -1,9 +1,6 @@
 ---
 name: web-content-fetcher
-description: >
-  网页内容获取技巧集合。当用户需要抓取网页内容、提取文章正文、获取社交媒体帖子内容、读取任意 URL 的文本或 Markdown 格式内容时使用。
-  无论用户是想"获取某个网页的内容"、"抓取这个链接"、"读取这篇文章"、"把这个页面转成 Markdown"，还是想访问 X/Twitter、微信、知乎、Medium 等平台的内容，都应触发此 skill。
-  包含多种方法，覆盖不同场景：Markdown 提取、绕过付费墙、结构化数据抓取等。持续迭代更新中。
+description: 获取公开网页的正文或 Markdown 内容。当用户要求抓取链接、读取文章、提取网页正文、将页面转为 Markdown，或获取 X/Twitter、微信、知乎、Medium 等公开页面的文字内容时使用。支持在直接抓取失败或内容不完整时，通过内容提取代理和网页搜索逐级回退；不适用于需要登录的页面、付费墙绕过、媒体下载或结构化数据抓取。
 ---
 
 # 网页内容获取技巧集合
@@ -39,6 +36,7 @@ https://r.jina.ai/https://any-website.com/any-page
 ```
 
 **特点**
+
 - 会自动执行 JS 渲染，对动态页面和 SPA 支持好
 - 返回经过清洗的 Markdown 格式正文
 - 响应稍慢但内容覆盖面广
@@ -62,6 +60,7 @@ https://defuddle.md/https://any-website.com/any-page
 ```
 
 **特点**
+
 - 自动去除广告、导航栏等干扰元素，只保留正文
 - 返回 Markdown 格式
 - 响应较快
