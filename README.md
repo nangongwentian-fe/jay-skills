@@ -64,6 +64,7 @@ export EXA_API_KEY=...
 | [clean-wechat-wps-storage](#clean-wechat-wps-storage) | 清理 macOS 微信和 WPS 本机占用，先扫描、确认计划，再移到废纸篓 |
 | [code-review-uncommitted](#code-review-uncommitted) | 对 git 未提交变更进行多维度 code review，含规范合规性、Bug 扫描、置信度过滤 |
 | [codex-imagegen](#codex-imagegen) | 通过 Codex CLI 的 image_gen 工具在 Claude Code 中生成 AI 图片 |
+| [daily-work-summary](#daily-work-summary) | 按指定项目和日期从 Git 提交记录生成中文工作内容总结 |
 | [de-gpt-ify](#de-gpt-ify) | 中文输出去黑话化，让 GPT 像人一样说中文，告别咨询黑话和 AI 味表达 |
 | [exa-unified-research](#exa-unified-research) | 偏好网络研究工具，使用 Exa 神经语义搜索替代内置 WebSearch/WebFetch |
 | [figma-use](#figma-use) | Figma Plugin API 操作的前置必读 skill，必须在调用 use_figma 前加载 |
@@ -156,6 +157,25 @@ export EXA_API_KEY=...
 - "帮我生成一张暖色调的咖啡店内部照片" → 通过 Codex 生成写实风格咖啡店图片
 - "Generate a pixel art sword icon, transparent background" → 生成像素剑 + chroma-key 去绿幕
 - "给项目生成一张 hero image，蓝紫科技感" → 生成 AI 主题 landing page 配图并保存到指定路径
+
+---
+
+## daily-work-summary
+
+**描述：** 根据指定 Git 仓库和日期，从 commit、提交正文、文件变更及必要的 diff 中提炼每日工作内容。用于用户要求按项目和日期生成日报、每日工作总结、根据 Git commit 总结工作，或要求用 1、2、3 编号列出某天或某段日期完成事项的场景。
+
+**触发场景：**
+
+- 按指定项目和日期生成日报或每日工作总结
+- 根据 Git commit 汇总单日、多个日期或日期区间的完成事项
+- 用简洁的中文编号清单列出工作内容
+
+**效果示例：**
+
+- `总结 E:\Code\Project\Demo 2026-07-16 的工作内容。` → 输出当天的编号工作事项
+- `总结当前项目 7 月 16 日和 7 月 17 日的工作内容。` → 按日期分组并分别编号
+- `总结 D:\work\app 2026-07-01 至 2026-07-05 的每日工作。` → 覆盖区间内每个日期
+- 指定日期没有提交 → 输出“该日期没有已提交工作内容。”
 
 ---
 
