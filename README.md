@@ -84,7 +84,7 @@ export EXA_API_KEY=...
 
 | Playbook | 描述 |
 |----------|------|
-| [codex-clash-proxy](./playbooks/codex-clash-proxy/) | 在 macOS 和 Windows 里让 Codex CLI 或 Codex.app 单独走 Clash 代理 |
+| [codex-clash-proxy](./playbooks/codex-clash-proxy/) | 让 macOS/Windows 的 Codex CLI 或 Codex.app 单独走本地代理，包含 Clash 与 Windows 365VPN 启动器 |
 
 ---
 
