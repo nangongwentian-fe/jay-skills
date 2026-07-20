@@ -57,6 +57,7 @@ codex plugin add andrej-karpathy-skills@jay-skills
 | [git-topic-commit-push](#git-topic-commit-push) | 按主题拆分 Git 改动，默认使用中文 commit message 创建一个或多个 commit 并推送当前分支 |
 | [goal-loop-builder](#goal-loop-builder) | 生成文件引用式 `/goal` prompt、可验证 `goal.md` 和 `/loop` 运行契约 |
 | [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
+| [llm-wiki](#llm-wiki) | 查询和操作本地 LLM Wiki，支持 API、MCP 与固定项目文件回退 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
 | [post-task-learning-review](#post-task-learning-review) | 任务完成后直接维护经验，自动新增、更新、合并或删除项目文档、memory 或 skill |
 | [show-dont-tell](#show-dont-tell) | 信息可视化呈现，让 GPT 优先用表格、代码块、列表呈现结构化信息 |
@@ -342,6 +343,19 @@ Output: Recommend `/goal`, create a real `flaky-test.goal.md`, then return a sho
 - "用 flash 生成一个皮卡丘吃蛋糕的图片，保存到当前目录"
 - "基于这张产品图，把背景改成雪山，主体不要变"
 - "帮我批量出 3 张 16:9 封面图，分辨率 2K"
+
+---
+
+## llm-wiki
+
+**描述：** Operate the user's locally running LLM Wiki desktop app and its project files. Use when the user explicitly names LLM Wiki, my wiki, 知识库, a Wiki page/project, graph, review queue, Wiki Agent chat, or source rescan; also use when another skill such as search-jay-llm-wiki requests LLM Wiki retrieval or authorized filesystem maintenance. Covers LLM Wiki 0.6.4 health, projects, file listing/read, reviews, hybrid search, Agent chat and cancellation, graph navigation, source rescan, and the fixed jay-llm-wiki filesystem fallback. Do not trigger for Obsidian, Notion, generic notes, or unrelated knowledge tools.
+
+**触发场景：**
+
+- 用户明确提到 LLM Wiki、知识库、Wiki 页面或项目
+- 查询 Review、图谱、Wiki Agent Chat 或重扫来源
+- `$search-jay-llm-wiki` 请求任务前知识检索
+- 已授权的 Wiki 文件维护
 
 ---
 

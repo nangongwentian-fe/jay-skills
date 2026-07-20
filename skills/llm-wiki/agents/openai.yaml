@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki"
+  short_description: "Query and operate the local LLM Wiki 0.6.4 service"
+  default_prompt: "Use $llm-wiki to search the local Wiki, cite relevant pages, and use review or Agent features when requested."
