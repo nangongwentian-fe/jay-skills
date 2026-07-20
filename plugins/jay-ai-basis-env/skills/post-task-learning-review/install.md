@@ -40,7 +40,7 @@ grep "post-task-learning-review" ~/.codex/AGENTS.md
 
 | 层 | 文件 | 加载方式 | 作用 |
 |---|---|---|---|
-| 第 1 层 | `~/.codex/AGENTS.md` 中的规则块 | 每次对话始终加载 | 提醒 agent 在非平凡任务后主动做经验维护判断 |
-| 第 2 层 | `SKILL.md` 完整内容 | 按需加载 | 判断经验应新增、更新、合并、删除，还是不处理 |
+| 第 1 层 | `~/.codex/AGENTS.md` 中的规则块 | 每次对话始终加载 | 提醒 agent 在非平凡任务后主动执行经验维护 |
+| 第 2 层 | `SKILL.md` 完整内容 | 按需加载 | 判断并直接执行新增、更新、合并、删除或不处理 |
 
 `install.sh` 负责第 1 层的写入。写入内容带有 `<!-- post-task-learning-review:start/end -->` 标记，支持幂等安装和干净卸载。
