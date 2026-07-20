@@ -1,0 +1,7 @@
+interface:
+  display_name: "Search Jay LLM Wiki"
+  short_description: "Proactively retrieve prior research from jay-llm-wiki"
+  default_prompt: "Use $search-jay-llm-wiki to check prior research before solving this task."
+
+policy:
+  allow_implicit_invocation: true

@@ -60,6 +60,7 @@ codex plugin add andrej-karpathy-skills@jay-skills
 | [llm-wiki](#llm-wiki) | 查询和操作本地 LLM Wiki，支持 API、MCP 与固定项目文件回退 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
 | [post-task-learning-review](#post-task-learning-review) | 任务完成后直接维护经验，自动新增、更新、合并或删除项目文档、memory 或 skill |
+| [search-jay-llm-wiki](#search-jay-llm-wiki) | 在相关非平凡任务前主动检索 jay-llm-wiki 中的既有研究与工程经验 |
 | [show-dont-tell](#show-dont-tell) | 信息可视化呈现，让 GPT 优先用表格、代码块、列表呈现结构化信息 |
 | [sync-skill-to-jay](#sync-skill-to-jay) | 创建或更新 skill 后，询问是否同步到 jay-skills 仓库并发布 |
 | [update-claude-code](#update-claude-code) | 更新 Claude Code CLI 到最新版本 |
@@ -388,6 +389,18 @@ Output: Recommend `/goal`, create a real `flaky-test.goal.md`, then return a sho
 ```bash
 ~/.agents/skills/post-task-learning-review/scripts/install.sh
 ```
+
+---
+
+## search-jay-llm-wiki
+
+**描述：** Proactively search the fixed jay-llm-wiki before relevant non-trivial research, architecture, technology selection, complex debugging, or complex implementation tasks when prior Deep Research or reusable engineering knowledge may help. Use even when the user does not explicitly mention LLM Wiki. Invoke `$llm-wiki` for transport, cite the Wiki paths used, and verify time-sensitive claims with current first-party sources. Skip translation, formatting, simple calculations, one-line commands, casual conversation, and clearly unrelated self-contained tasks.
+
+**触发场景：**
+
+- 研究、架构设计、技术选型、复杂调试或复杂开发
+- 可能复用既有 Deep Research、跨项目结论或工程经验的非平凡任务
+- 用户未明确提到 Wiki，但既有知识可能影响任务方法
 
 ---
 
