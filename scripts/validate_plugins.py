@@ -20,6 +20,7 @@ SEMVER_RE = re.compile(
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 INSTALL_POLICIES = {"NOT_AVAILABLE", "AVAILABLE", "INSTALLED_BY_DEFAULT"}
 AUTH_POLICIES = {"ON_INSTALL", "ON_USE"}
+SKILL_FRONTMATTER_KEYS = {"name", "description", "license", "allowed-tools", "metadata"}
 
 
 class ValidationError(RuntimeError):
@@ -60,6 +61,11 @@ def parse_skill_frontmatter(path: Path) -> dict[str, str]:
         fields[key.strip()] = value.strip().strip('"\'')
     for key in ("name", "description"):
         require_string(fields.get(key), f"{path}: frontmatter {key}")
+    unsupported = fields.keys() - SKILL_FRONTMATTER_KEYS
+    if unsupported:
+        raise ValidationError(
+            f"{path}: unsupported frontmatter keys: {', '.join(sorted(unsupported))}"
+        )
     return fields
 
 

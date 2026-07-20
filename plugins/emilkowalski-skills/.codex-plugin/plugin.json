@@ -1,0 +1,34 @@
+{
+  "name": "emilkowalski-skills",
+  "version": "1.0.0+codex.upstream-6bf24434f773",
+  "description": "Design engineering and animation skills by Emil Kowalski.",
+  "author": {
+    "name": "Emil Kowalski",
+    "url": "https://github.com/emilkowalski"
+  },
+  "homepage": "https://github.com/emilkowalski/skills",
+  "repository": "https://github.com/emilkowalski/skills",
+  "license": "MIT",
+  "keywords": [
+    "animation",
+    "motion",
+    "design-engineering",
+    "ui"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Emil Kowalski Skills",
+    "shortDescription": "Review and improve interface motion and design craft.",
+    "longDescription": "Design engineering skills for reviewing animations, planning motion improvements, finding animation opportunities, and applying polished interface principles.",
+    "developerName": "Emil Kowalski",
+    "category": "Design",
+    "capabilities": [
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Review the animations in this interface.",
+      "Find high-value animation opportunities in this UI.",
+      "Create a plan to improve this codebase's motion design."
+    ]
+  }
+}

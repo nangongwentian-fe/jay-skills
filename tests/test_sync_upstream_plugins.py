@@ -84,14 +84,25 @@ class ValidationTests(unittest.TestCase):
             )
             self.assertEqual(validate.parse_skill_frontmatter(path)["name"], "demo")
 
+    def test_rejects_unsupported_skill_frontmatter(self):
+        with tempfile.TemporaryDirectory() as temp_value:
+            path = Path(temp_value) / "SKILL.md"
+            path.write_text(
+                "---\nname: demo\ndescription: Demo skill\ndisable-model-invocation: true\n---\n",
+                encoding="utf-8",
+            )
+            with self.assertRaises(validate.ValidationError):
+                validate.parse_skill_frontmatter(path)
+
     def test_repository_is_valid(self):
         results = validate.validate_repository()
         self.assertEqual([name for name, _ in results], [
             "taste-skill",
             "code-honor-skill",
             "andrej-karpathy-skills",
+            "emilkowalski-skills",
         ])
-        self.assertEqual(sum(count for _, count in results), 15)
+        self.assertEqual(sum(count for _, count in results), 21)
 
 
 if __name__ == "__main__":

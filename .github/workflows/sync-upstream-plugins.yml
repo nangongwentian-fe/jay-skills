@@ -25,6 +25,7 @@ jobs:
           - taste-skill
           - code-honor-skill
           - andrej-karpathy-skills
+          - emilkowalski-skills
 
     steps:
       - name: Checkout repository
