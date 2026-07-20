@@ -1,6 +1,0 @@
-interface:
-  display_name: De-GPT-ify
-  short_description: 中文回复去黑话、去 AI 味。
-  default_prompt: 使用中文时保持简洁、直接、自然。
-policy:
-  allow_implicit_invocation: true

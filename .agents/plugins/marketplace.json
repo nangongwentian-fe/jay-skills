@@ -5,16 +5,40 @@
   },
   "plugins": [
     {
-      "name": "jay-ai-basis-env",
+      "name": "taste-skill",
       "source": {
         "source": "local",
-        "path": "./plugins/jay-ai-basis-env"
+        "path": "./plugins/taste-skill"
       },
       "policy": {
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Productivity"
+      "category": "Design"
+    },
+    {
+      "name": "code-honor-skill",
+      "source": {
+        "source": "local",
+        "path": "./plugins/code-honor-skill"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    },
+    {
+      "name": "andrej-karpathy-skills",
+      "source": {
+        "source": "local",
+        "path": "./plugins/andrej-karpathy-skills"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
     }
   ]
 }

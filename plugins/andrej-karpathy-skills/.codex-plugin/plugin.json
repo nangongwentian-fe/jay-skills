@@ -1,0 +1,34 @@
+{
+  "name": "andrej-karpathy-skills",
+  "version": "1.0.0+codex.upstream-2c606141936f",
+  "description": "Behavioral guidelines that reduce common LLM coding mistakes.",
+  "author": {
+    "name": "forrestchang",
+    "url": "https://github.com/forrestchang"
+  },
+  "homepage": "https://github.com/multica-ai/andrej-karpathy-skills",
+  "repository": "https://github.com/multica-ai/andrej-karpathy-skills",
+  "license": "MIT",
+  "keywords": [
+    "guidelines",
+    "best-practices",
+    "coding",
+    "karpathy"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Andrej Karpathy Skills",
+    "shortDescription": "Think first, simplify, edit surgically, and verify.",
+    "longDescription": "Karpathy-inspired coding guidelines covering explicit assumptions, minimal solutions, surgical changes, and goal-driven verification.",
+    "developerName": "forrestchang",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Apply the Karpathy guidelines to this coding task.",
+      "Review this change for overengineering and unrelated edits.",
+      "Turn this request into verifiable success criteria."
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/xxxily/code-honor-skill.git",
+  "ref": "main",
+  "commit": "f5826ca60b7074b79d6a50adb449151f8c8219ba",
+  "syncedAt": "2026-07-20",
+  "copies": [
+    {
+      "source": "skills/code-honor",
+      "target": "skills/code-honor"
+    },
+    {
+      "source": "LICENSE",
+      "target": "LICENSE"
+    }
+  ],
+  "patches": [
+    "patches/fix-analyzer-wrapper.patch"
+  ]
+}

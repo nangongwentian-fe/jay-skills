@@ -1,4 +1,0 @@
-interface:
-  display_name: "Progressive Disclosure Docs"
-  short_description: "Create and split docs so detail loads only when needed."
-  default_prompt: "Create or revise Markdown documentation using progressive disclosure. Choose the right document, keep the common path concise, split unrelated detail into topic docs, and preserve the target doc language."

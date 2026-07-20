@@ -1,0 +1,34 @@
+{
+  "name": "code-honor-skill",
+  "version": "1.0.0+codex.upstream-f5826ca60b70",
+  "description": "Code Honor principles and review workflows for Codex.",
+  "author": {
+    "name": "xxxily",
+    "url": "https://github.com/xxxily"
+  },
+  "homepage": "https://github.com/xxxily/code-honor-skill",
+  "repository": "https://github.com/xxxily/code-honor-skill",
+  "license": "MIT",
+  "keywords": [
+    "code-quality",
+    "code-review",
+    "coding-guidelines",
+    "refactoring"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Code Honor Skill",
+    "shortDescription": "Apply the programmer Code Honor principles.",
+    "longDescription": "Coding, review, debugging, architecture, and refactoring guidelines based on the programmer Code Honor principles.",
+    "developerName": "xxxily",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用程序员八荣八耻检查这次编码任务。",
+      "用八荣八耻 review 当前代码改动。",
+      "扫描代码库中的荣耻问题。"
+    ]
+  }
+}

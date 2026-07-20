@@ -7,7 +7,7 @@
 | 模块 | 目录 | 用途 |
 |------|------|------|
 | Skills | [`skills/`](./skills/) | 可通过 `npx skills add` 安装，由 Agent 按场景触发 |
-| Plugins | [`plugins/`](./plugins/) | 可通过 Codex 插件市场安装，打包 skills 和 MCP 配置 |
+| Plugins | [`plugins/`](./plugins/) | 可通过 Codex 插件市场安装，打包一组相关 skills |
 | Playbooks | [`playbooks/`](./playbooks/) | 给 Agent 读取并按步骤执行的专题教程，不是可安装 skill |
 
 ## 安装
@@ -22,38 +22,22 @@ npx skills add https://github.com/nangongwentian-fe/jay-skills -g -y -a claude-c
 npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-name> -g -y -a claude-code codex
 ```
 
-## Codex 插件安装
+## Codex 插件
+
+| Plugin | 来源 | 内容 |
+|--------|------|------|
+| [taste-skill](./plugins/taste-skill/) | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) | 前端设计、改版、image-to-code、视觉风格和图片生成 skills |
+| [code-honor-skill](./plugins/code-honor-skill/) | [xxxily/code-honor-skill](https://github.com/xxxily/code-honor-skill) | 程序员八荣八耻编码准则、Code Review 模板和代码扫描工具 |
+| [andrej-karpathy-skills](./plugins/andrej-karpathy-skills/) | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | 思考优先、保持简单、精准修改和目标驱动验证的编码准则 |
 
 ```bash
 codex plugin marketplace add nangongwentian-fe/jay-skills --ref main
-codex plugin add jay-ai-basis-env@jay-skills
+codex plugin add taste-skill@jay-skills
+codex plugin add code-honor-skill@jay-skills
+codex plugin add andrej-karpathy-skills@jay-skills
 ```
 
-`jay-ai-basis-env` 包含本仓常用 skills，以及 `chrome-devtools`、`context7`、`exa` 三个 MCP 配置。使用 `context7` 和 `exa` 前，需要在运行环境提供 `CONTEXT7_API_KEY` 和 `EXA_API_KEY`。
-
-## Plugins 列表
-
-| Plugin | 描述 |
-|--------|------|
-| [jay-ai-basis-env](./plugins/jay-ai-basis-env/) | Jay 的 Codex 基础环境插件，打包常用写作、文档、代码、Git、网页研究类 skills，并内置 `chrome-devtools`、`context7`、`exa` 三个 MCP 配置 |
-
-### jay-ai-basis-env
-
-**描述：** 面向 Codex 的个人基础工作环境插件。安装后可一次性获得本仓常用 skills，以及浏览器调试、库文档查询、语义搜索三个 MCP 能力配置。
-
-**包含能力：**
-
-- 常用中文输出、结构化表达、文档维护、代码准则、Git 提交和网页内容获取 skills
-- `chrome-devtools`：用于网页调试、浏览器自动化和网络请求检查
-- `context7`：用于查询库、框架、接口和命令行工具的最新文档
-- `exa`：用于网页研究、人物/公司检索、代码示例和资料抓取
-
-**使用前配置：**
-
-```bash
-export CONTEXT7_API_KEY=...
-export EXA_API_KEY=...
-```
+三个外部插件每周检查一次上游更新，发现变化后分别创建 PR。手动检查、同步和验证命令见 [`docs/upstream-sync.md`](./docs/upstream-sync.md)。
 
 ## Skills 列表
 

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Post-Task Learning Review"
-  short_description: "Directly maintain task lessons across docs, memory, and skills."
-  default_prompt: "Use $post-task-learning-review to review this completed task and directly apply qualified lesson updates across project docs, memory, and skills."

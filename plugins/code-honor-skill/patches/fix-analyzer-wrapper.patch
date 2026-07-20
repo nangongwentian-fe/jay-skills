@@ -1,0 +1,11 @@
+diff --git a/skills/code-honor/scripts/code_conduct_analyzer.py b/skills/code-honor/scripts/code_conduct_analyzer.py
+--- a/skills/code-honor/scripts/code_conduct_analyzer.py
++++ b/skills/code-honor/scripts/code_conduct_analyzer.py
+@@ -1,7 +1,2 @@
+-# Code Conduct Analyzer
+-
+-> 用途：批量扫描代码仓库，对照八荣八耻检查潜在违反行为
+-
+-```python
+ """
+ code_conduct_analyzer.py

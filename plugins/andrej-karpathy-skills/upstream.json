@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/multica-ai/andrej-karpathy-skills.git",
+  "ref": "main",
+  "commit": "2c606141936f1eeef17fa3043a72095b4765b9c2",
+  "syncedAt": "2026-07-20",
+  "copies": [
+    {
+      "source": "skills/karpathy-guidelines",
+      "target": "skills/karpathy-guidelines"
+    }
+  ],
+  "patches": []
+}
