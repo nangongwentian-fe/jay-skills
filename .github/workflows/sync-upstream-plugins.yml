@@ -26,6 +26,7 @@ jobs:
           - code-honor-skill
           - andrej-karpathy-skills
           - emilkowalski-skills
+          - langchain-skills
 
     steps:
       - name: Checkout repository

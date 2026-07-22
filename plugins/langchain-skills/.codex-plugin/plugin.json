@@ -1,0 +1,34 @@
+{
+  "name": "langchain-skills",
+  "version": "0.1.0+codex.upstream-3c3c4f6e7cf0",
+  "description": "Agent skills for building with LangChain, LangGraph, and Deep Agents.",
+  "author": {
+    "name": "LangChain",
+    "url": "https://langchain.com"
+  },
+  "homepage": "https://github.com/langchain-ai/langchain-skills",
+  "repository": "https://github.com/langchain-ai/langchain-skills",
+  "license": "MIT",
+  "keywords": [
+    "langchain",
+    "langgraph",
+    "deep-agents",
+    "rag"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "LangChain Skills",
+    "shortDescription": "Build agents with LangChain, LangGraph, and Deep Agents.",
+    "longDescription": "Official LangChain skills covering framework selection, agent fundamentals, middleware, RAG, LangGraph persistence, human review, Deep Agents, and managed deployments.",
+    "developerName": "LangChain",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Help me choose between LangChain, LangGraph, and Deep Agents.",
+      "Build a LangChain or LangGraph agent using the relevant skills.",
+      "Review this agent architecture against current LangChain patterns."
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/langchain-ai/langchain-skills.git",
+  "ref": "main",
+  "commit": "3c3c4f6e7cf0eba00254342c01ec58e31886fafb",
+  "syncedAt": "2026-07-22",
+  "copies": [
+    {
+      "source": "config/skills",
+      "target": "skills"
+    }
+  ],
+  "patches": [
+    "patches/move-swarm-compatibility-to-metadata.patch"
+  ]
+}

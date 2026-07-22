@@ -101,8 +101,9 @@ class ValidationTests(unittest.TestCase):
             "code-honor-skill",
             "andrej-karpathy-skills",
             "emilkowalski-skills",
+            "langchain-skills",
         ])
-        self.assertEqual(sum(count for _, count in results), 21)
+        self.assertEqual(sum(count for _, count in results), 35)
 
 
 if __name__ == "__main__":

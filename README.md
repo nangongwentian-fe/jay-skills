@@ -30,6 +30,7 @@ npx skills add https://github.com/nangongwentian-fe/jay-skills --skill <skill-na
 | [code-honor-skill](./plugins/code-honor-skill/) | [xxxily/code-honor-skill](https://github.com/xxxily/code-honor-skill) | 程序员八荣八耻编码准则、Code Review 模板和代码扫描工具 |
 | [andrej-karpathy-skills](./plugins/andrej-karpathy-skills/) | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | 思考优先、保持简单、精准修改和目标驱动验证的编码准则 |
 | [emilkowalski-skills](./plugins/emilkowalski-skills/) | [emilkowalski/skills](https://github.com/emilkowalski/skills) | 动画审查、动画改进、动效机会识别和设计工程准则 |
+| [langchain-skills](./plugins/langchain-skills/) | [langchain-ai/langchain-skills](https://github.com/langchain-ai/langchain-skills) | LangChain、LangGraph、Deep Agents、RAG 和 Agent 编排 skills |
 
 ```bash
 codex plugin marketplace add nangongwentian-fe/jay-skills --ref main
@@ -37,9 +38,10 @@ codex plugin add taste-skill@jay-skills
 codex plugin add code-honor-skill@jay-skills
 codex plugin add andrej-karpathy-skills@jay-skills
 codex plugin add emilkowalski-skills@jay-skills
+codex plugin add langchain-skills@jay-skills
 ```
 
-四个外部插件每周检查一次上游更新，发现变化后分别创建 PR。手动检查、同步和验证命令见 [`docs/upstream-sync.md`](./docs/upstream-sync.md)。
+五个外部插件每周检查一次上游更新，发现变化后分别创建 PR。手动检查、同步和验证命令见 [`docs/upstream-sync.md`](./docs/upstream-sync.md)。
 
 ## Skills 列表
 

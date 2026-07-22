@@ -1,0 +1,14 @@
+diff --git a/skills/swarm/SKILL.md b/skills/swarm/SKILL.md
+--- a/skills/swarm/SKILL.md
++++ b/skills/swarm/SKILL.md
+@@ -3,9 +3,8 @@ name: swarm
+ description: >-
+   Dispatches many independent items in parallel: create a table, fan out to
+   subagents, aggregate results. One row = one unit of work.
+-compatibility: >-
+-  Requires @langchain/quickjs code interpreter with swarm_task PTC tool
+ metadata:
++  compatibility: Requires @langchain/quickjs code interpreter with swarm_task PTC tool
+   entrypoint: scripts/index.ts
+   required-ptc-tools: swarm_task read_file write_file edit_file glob
+ ---
