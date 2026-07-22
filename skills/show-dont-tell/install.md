@@ -36,17 +36,9 @@ grep "show-dont-tell" ~/.codex/AGENTS.md
 
 ## 工作原理
 
-与 de-gpt-ify 相同的两层架构：
+show-dont-tell 使用两层架构：
 
 | 层 | 文件 | 加载方式 | 作用 |
 |---|---|---|---|
 | 第 1 层 | `~/.codex/AGENTS.md` 中的规则块 | 每次对话始终加载 | 核心可视化规则 |
 | 第 2 层 | `SKILL.md` 完整内容 | 按需加载 | 详细场景对照、四组对比示范 |
-
-## 与 de-gpt-ify 的关系
-
-两个 skill 互补，各自独立：
-- **de-gpt-ify**：解决"怎么说话"（语言风格）
-- **show-dont-tell**：解决"怎么呈现"（输出格式）
-
-两个 skill 的 install.sh 各自往 AGENTS.md 写入自己的规则块（用不同的标记注释），互不干扰。

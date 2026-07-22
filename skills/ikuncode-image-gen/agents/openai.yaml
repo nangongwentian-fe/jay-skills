@@ -1,4 +1,0 @@
-interface:
-  display_name: "IKunCode 生图"
-  short_description: "用 IKunCode Gemini 接口稳定生成与编辑图片"
-  default_prompt: "Use $ikuncode-image-gen to generate or edit an image with IKunCode using an environment variable API key."

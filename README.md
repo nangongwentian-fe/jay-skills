@@ -46,19 +46,11 @@ codex plugin add emilkowalski-skills@jay-skills
 | Skill | 描述 |
 |-------|------|
 | [buddy-reroll](#buddy-reroll) | 重新掷骰 Claude Code 伙伴，获取指定物种、稀有度或闪光变体 |
-| [browser-mcp-resource-guard](#browser-mcp-resource-guard) | 控制浏览器自动化 MCP 的 CPU、内存、能耗和清理风险 |
 | [clean-wechat-wps-storage](#clean-wechat-wps-storage) | 清理 macOS 微信和 WPS 本机占用，先扫描、确认计划，再移到废纸篓 |
-| [code-review-uncommitted](#code-review-uncommitted) | 对 git 未提交变更进行多维度 code review，含规范合规性、Bug 扫描、置信度过滤 |
 | [codex-imagegen](#codex-imagegen) | 通过 Codex CLI 的 image_gen 工具在 Claude Code 中生成 AI 图片 |
 | [daily-work-summary](#daily-work-summary) | 按指定项目和日期从 Git 提交记录生成中文工作内容总结 |
-| [de-gpt-ify](#de-gpt-ify) | 中文输出去黑话化，让 GPT 像人一样说中文，告别咨询黑话和 AI 味表达 |
-| [exa-unified-research](#exa-unified-research) | 偏好网络研究工具，使用 Exa 神经语义搜索替代内置 WebSearch/WebFetch |
 | [figma-use](#figma-use) | Figma Plugin API 操作的前置必读 skill，必须在调用 use_figma 前加载 |
-| [git-commit](#git-commit) | 基于当前 git 工作区变更生成并创建单个提交 |
-| [git-rebase-workflow](#git-rebase-workflow) | Git Rebase 分支同步流程，保持提交历史整洁 |
 | [git-topic-commit-push](#git-topic-commit-push) | 按主题拆分 Git 改动，默认使用中文 commit message 创建一个或多个 commit 并推送当前分支 |
-| [goal-loop-builder](#goal-loop-builder) | 生成文件引用式 `/goal` prompt、可验证 `goal.md` 和 `/loop` 运行契约 |
-| [ikuncode-image-gen](#ikuncode-image-gen) | 使用 IKunCode Gemini 图像预览模型生成或编辑图片 |
 | [llm-wiki](#llm-wiki) | 查询和操作本地 LLM Wiki，支持 API、MCP 与固定项目文件回退 |
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 用渐进式披露设计、拆分和维护文档，避免 README 或单个文档无限膨胀 |
 | [post-task-learning-review](#post-task-learning-review) | 任务完成后直接维护经验，自动新增、更新、合并或删除项目文档、memory 或 skill |
@@ -91,19 +83,6 @@ codex plugin add emilkowalski-skills@jay-skills
 
 ---
 
-## browser-mcp-resource-guard
-
-**描述：** 控制浏览器自动化 MCP 工具带来的 CPU、内存、电池、风扇和重复进程风险，覆盖 Chrome DevTools MCP、Playwright MCP、`@playwright/mcp` 及相关 Chrome Helper 进程。
-
-**触发场景：**
-
-- 准备使用、正在使用或刚用完 Chrome DevTools MCP、Playwright MCP、`@playwright/mcp` 等浏览器自动化 MCP
-- 用户提到高 CPU、高能耗、电池消耗、风扇、发热、卡顿
-- 用户提到重复浏览器 MCP 进程、残留 Chrome Helper、MCP 清理
-- 长时间 Codex 会话可能留下浏览器自动化 MCP 辅助进程
-
----
-
 ## clean-wechat-wps-storage
 
 **描述：** 清理 macOS 上微信和 WPS Office 的本机磁盘占用。流程固定为先扫描占用、采访用户清理范围、给出清理计划，用户确认后再把应用数据移动到废纸篓。
@@ -114,18 +93,6 @@ codex plugin add emilkowalski-skills@jay-skills
 - 用户想清理微信聊天记录、聊天图片、视频、表情、附件或缓存
 - 用户想清理 WPS 云文档本地缓存、插件、字体、日志或临时文件
 - 用户要求清理前先确认范围、给出计划，再执行移动到废纸篓
-
----
-
-## code-review-uncommitted
-
-**描述：** 对 git 中未提交的代码变更进行多维度 code review，包括项目规范合规性、Bug 扫描、代码注释合规性、组件封装/架构设计合理性审查，并通过置信度评分过滤误报。当用户要求 review 未提交的代码、review 当前改动、或使用 /code-review-uncommitted 时触发。
-
-**触发场景：**
-
-- 要求 review 未提交的代码
-- 要求 review 当前改动 / diff
-- 使用 `/code-review-uncommitted`
 
 ---
 
@@ -167,48 +134,6 @@ codex plugin add emilkowalski-skills@jay-skills
 
 ---
 
-## de-gpt-ify
-
-**描述：** 中文输出去黑话化行为准则。让 Codex/ChatGPT 的中文输出像 Claude 一样简洁、直接、自然，避免咨询黑话、网络流行语、虚假紧迫感、情感绑架等 AI 味表达。
-
-**触发场景：**
-
-- 用户说"讲人话""去油""去黑话""去 AI 味""别那么 GPT""正常说话"
-- 用户说"这段话太 GPT 了""帮我改成人话""输出太油了"
-- 模型生成中文回复时自动生效
-
-**安装后额外步骤：**
-
-运行安装脚本将核心规则写入 `~/.codex/AGENTS.md`（始终生效）：
-
-```bash
-~/.agents/skills/de-gpt-ify/scripts/install.sh
-```
-
-**效果示范：**
-
-❌ GPT 式：我已经把差异**收窄**了，**根因基本坐实**，**稳稳兜住**，**落盘**之后就能**收口**了。
-
-✅ 人话：已缩小排查范围，初步确认根因是连接池泄漏。下一步做排除验证，确认后给出结论。
-
----
-
-## exa-unified-research
-
-**描述：** PREFERRED web research tool — use INSTEAD OF built-in WebSearch/WebFetch for any task requiring current online information. Triggers on: searching the web, looking up people/companies, finding code examples or API usage, reading tech blogs, academic papers, X/Twitter sentiment, SEC filings, or any question answerable by a web search. Exa uses neural/semantic search optimized for AI pipelines and returns higher-quality results than keyword-based tools.
-
-**触发场景：**
-
-- 搜索网页信息
-- 查找人物/公司信息
-- 查找代码示例或 API 用法
-- 阅读技术博客、学术论文
-- X/Twitter 情绪分析
-- SEC 财报检索
-- 任何需要网络当前信息的场景
-
----
-
 ## figma-use
 
 **描述：** MANDATORY prerequisite — you MUST invoke this skill BEFORE every `use_figma` tool call. NEVER call `use_figma` directly without loading this skill first. Skipping it causes common, hard-to-debug failures. Trigger whenever the user wants to perform a write action or a unique read action that requires JavaScript execution in the Figma file context — e.g. create/edit/delete nodes, set up variables or tokens, build components and variants, modify auto-layout or fills, bind variables to properties, or inspect file structure programmatically.
@@ -225,68 +150,6 @@ codex plugin add emilkowalski-skills@jay-skills
 
 ---
 
-## git-commit
-
-**描述：** 基于当前 git 工作区变更生成并创建单个提交。用于用户要求"帮我提交代码""根据当前 diff 生成 commit""创建一次 git commit""整理 staged/unstaged 变更并提交"，或明确提供 `git status`、`git diff HEAD`、当前分支和最近提交记录时。适用于需要分析改动、编写结构化 commit message，并执行 `git add` 和 `git commit` 的场景。
-
-**触发场景：**
-
-- 用户说"帮我提交代码"
-- 用户说"根据当前 diff 生成 commit"
-- 用户说"创建一次 git commit"
-- 用户说"整理 staged/unstaged 变更并提交"
-- 用户提供了 `git status`、`git diff HEAD`、分支和提交记录
-
-**效果示例：**
-
-### 示例 1
-
-用户说：
-
-```text
-$git-commit 创建一个 git commit：
-## Context
-- Current git status: !`git status`
-- Current git diff (staged and unstaged changes): !`git diff HEAD`
-- Current branch: !`git branch --show-current`
-- Recent commits: !`git log --oneline -10`
-```
-
-期望行为：
-
-- 读取当前改动和最近提交风格。
-- 归纳单一提交主题。
-- 在一次回复里完成 `git add -A` 和 `git commit`。
-
-### 示例 2
-
-用户说：
-
-```text
-帮我把当前改动提交掉，只要工具调用，不要解释。
-```
-
-期望行为：
-
-- 不输出任何说明性文字。
-- 直接执行提交。
-- commit message 使用结构化标题和中文要点。
-
----
-
-## git-rebase-workflow
-
-**描述：** Git Rebase 分支同步流程，用于将当前功能分支 rebase 到最新的目标分支（如 master/main），保持提交历史整洁。适用于功能分支落后于目标分支时，需要同步最新代码的场景。
-
-**触发场景：**
-
-- 将功能分支 rebase 到最新的 master/main
-- 保持提交历史整洁
-- 提交 MR/PR 前同步代码
-- 避免使用 `git merge` 产生的合并提交
-
----
-
 ## git-topic-commit-push
 
 **描述：** Create one or more Git commits grouped by coherent change topic, then push the current branch. Use when the user asks to commit and push, submit by topic, split current changes into topical commits, or do "按照主题提交 commit 并 push"; especially when a worktree has mixed staged, unstaged, or untracked changes that need honest commit boundaries before `git push`. Commit messages must be written in Chinese unless the user explicitly requests another language.
@@ -297,55 +160,6 @@ $git-commit 创建一个 git commit：
 - 用户要求按照主题提交、分主题提交或拆分当前改动
 - 工作区同时存在 staged、unstaged 或 untracked 改动，需要先判断 commit 边界
 - 需要创建一个或多个诚实概括改动范围的 commit 后推送当前分支
-
----
-
-## goal-loop-builder
-
-**描述：** Create copy-ready, verifiable run contracts for long-horizon agent work. Use when the user asks to write, improve, or review Codex `/goal` prompts, Claude Code `/goal` conditions, Claude `/loop` prompts, `.claude/loop.md`, `goal.md`, loop engineering prompts, autonomous run instructions, stop/pause conditions, verification criteria, bounded iteration policy, or persistent Markdown instructions for agents.
-
-**触发场景：**
-
-- 编写、改进或评审 Codex `/goal` prompt
-- 编写 Claude Code `/goal` 完成条件或运行契约
-- 编写 Claude `/loop` 定时轮询 prompt
-- 编写 `.claude/loop.md` 或 `goal.md` 持久化说明
-- 为长任务定义验证证据、边界、迭代策略、停止条件和暂停条件
-
-**效果示例：**
-
-User: "帮我做个 App"
-
-Output: Recommend Codex or Claude `/goal`, create a real `app-mvp.goal.md`, then return a short one-line `/goal Read @/absolute/path/app-mvp.goal.md ...` prompt.
-
-User: "让它每 5 分钟检查部署是否完成"
-
-Output: Recommend Claude `/loop 5m ...`, include observation signals, reporting format, stop/escalation conditions, and optional `.claude/loop.md`.
-
-User: "修复现有仓库的 flaky test"
-
-Output: Recommend `/goal`, create a real `flaky-test.goal.md`, then return a short `/goal` prompt that references it and requires discovery of test commands, isolated fix boundaries, regression evidence, and pause on missing repro or environment blockers.
-
----
-
-## ikuncode-image-gen
-
-**描述：** 使用 IKunCode 的 Gemini 图像预览模型生成或编辑图片，并把结果保存到本地文件。用于用户要求文生图、图生图、批量出图、指定宽高比或分辨率、基于 IKunCode 文档落地图片生成脚本，或明确要求使用 IKunCode `gemini-3.1-flash-image-preview` / `gemini-3-pro-image-preview` 时。始终通过环境变量 `IKUNCODE_API_KEY` 读取密钥，不要把 API Key 写入代码、skill 文件、日志或提交记录。
-
-**触发场景：**
-
-- 文生图
-- 图生图
-- 批量出图
-- 指定宽高比或分辨率
-- 基于 IKunCode 文档落地图片生成脚本
-- 明确要求使用 IKunCode `gemini-3.1-flash-image-preview` / `gemini-3-pro-image-preview`
-
-**效果示例：**
-
-- "用 flash 生成一个皮卡丘吃蛋糕的图片，保存到当前目录"
-- "基于这张产品图，把背景改成雪山，主体不要变"
-- "帮我批量出 3 张 16:9 封面图，分辨率 2K"
 
 ---
 
@@ -408,7 +222,7 @@ Output: Recommend `/goal`, create a real `flaky-test.goal.md`, then return a sho
 
 ## show-dont-tell
 
-**描述：** 信息可视化呈现行为准则。让 GPT 在回复中优先使用表格、代码块、编号列表、树形结构等格式呈现结构化信息，而不是纯文字堆砌。与 de-gpt-ify 互补：de-gpt-ify 解决"怎么说话"，show-dont-tell 解决"怎么呈现"。
+**描述：** 信息可视化呈现行为准则。让 GPT 在回复中优先使用表格、代码块、编号列表、树形结构等格式呈现结构化信息，而不是纯文字堆砌。
 
 **触发场景：**
 
