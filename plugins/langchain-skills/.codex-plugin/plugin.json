@@ -1,6 +1,6 @@
 {
   "name": "langchain-skills",
-  "version": "0.1.0+codex.upstream-3c3c4f6e7cf0",
+  "version": "0.1.0+codex.upstream-f3ea282efb82",
   "description": "Agent skills for building with LangChain, LangGraph, and Deep Agents.",
   "author": {
     "name": "LangChain",

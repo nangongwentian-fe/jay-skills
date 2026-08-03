@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "repository": "https://github.com/langchain-ai/langchain-skills.git",
   "ref": "main",
-  "commit": "3c3c4f6e7cf0eba00254342c01ec58e31886fafb",
-  "syncedAt": "2026-07-22",
+  "commit": "f3ea282efb82c84f1093ae58006841e66ca28a94",
+  "syncedAt": "2026-08-03",
   "copies": [
     {
       "source": "config/skills",
