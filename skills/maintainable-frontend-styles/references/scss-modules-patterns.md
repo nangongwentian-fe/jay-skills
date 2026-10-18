@@ -143,7 +143,7 @@ components/
 - 不把相同属性同时交给 Tailwind 和 Module，以免形成难以预测的覆盖。
 - Tailwind v4 不与 Sass 组成同一预处理链；不要在 `.module.scss` 中大量 `@apply`。
 - 需要共享 Tailwind 主题值时，优先读取其 CSS 变量。
-- 如果项目未安装 Sass，先请求批准；未获批时使用框架原生 `.module.css`。
+- 如果项目未安装 Sass 且新增依赖尚未获授权，先说明影响并请求批准；已有授权无需重复确认。否则使用框架已支持的 `.module.css`。
 
 ## 检查清单
 

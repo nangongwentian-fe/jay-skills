@@ -53,12 +53,12 @@
     {
       "id": 4,
       "prompt": "A private formatting helper in one module was changed to trim a trailing space. A focused behavioral unit test covers the old and new cases, passes, and no public API, persistence, security, deployment, concurrency, global lifecycle, or cross-module behavior is touched. Complete the handoff.",
-      "expected_output": "The agent invokes the skill, classifies the change as bounded low risk, performs a structured local review without spawning a subagent, records the skip reason, and reports the focused test.",
+      "expected_output": "The agent performs a proportional local review without spawning a subagent or starting a full gate ceremony, relies on the focused behavioral test, and reports the result concisely.",
       "files": [],
       "expectations": [
-        "The gate level is explicitly classified using the low-risk criteria.",
-        "No subagent is spawned because every local-review condition is satisfied.",
-        "The skip reason and focused behavioral verification are reported concisely."
+        "No subagent is spawned because no material risk signal is present.",
+        "The focused behavioral verification is used without repeating an unrelated suite.",
+        "The response remains concise; formal gate classification is not required."
       ]
     },
     {

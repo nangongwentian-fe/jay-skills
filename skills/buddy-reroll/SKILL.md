@@ -1,9 +1,6 @@
 ---
 name: buddy-reroll
-description: >
-  Reroll your Claude Code buddy (companion) to get a specific species, rarity, or shiny variant.
-  Use when the user says "reroll buddy", "change my buddy", "I want a shiny buddy",
-  "give me a legendary dragon", "/buddy-reroll", or any request to customize their Claude Code companion pet.
+description: "Reroll a Claude Code companion to match a requested species, rarity or shiny variant. Use for explicit buddy customization."
 ---
 
 # Buddy Reroll

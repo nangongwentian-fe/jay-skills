@@ -1,0 +1,4 @@
+interface:
+  display_name: "Current Documentation"
+  short_description: "Look up current library and CLI contracts with Context7"
+  default_prompt: "Use $find-docs to verify the current documentation for this library or CLI question."

@@ -85,7 +85,7 @@ flowchart TD
 - 把一个控件模式的角色、状态、属性、键盘模型、焦点和反馈视为同一职责。
 - 拆分后继续使用原生语义元素；不要用组件包装把 `button`、`label`、标题或 landmark 关系拆散。
 - 焦点陷阱、roving tabindex、组合控件键盘导航等应保留单一明确所有者。
-- 验证 loading、empty、error、disabled、read-only、expanded、selected 和 retry 等真实状态。
+- 按改动影响验证已有的相关状态，例如 loading、empty、error、disabled、read-only、expanded、selected 或 retry；不为本次改动未涉及的状态扩展验证范围。
 - 可访问性责任可以跨文件实现，但必须有一个组件或逻辑单元负责完整契约。
 
 ## Smells
@@ -103,9 +103,9 @@ flowchart TD
 ## Verification
 
 1. 比较重构前后的公开导出和调用方。
-2. 验证主要成功路径以及 loading、empty、error、retry 状态。
-3. 验证键盘、焦点、可访问名称和语义结构。
-4. 运行项目类型检查、测试、构建及必要的浏览器检查。
+2. 验证受影响的主要成功路径，以及已有且受影响的 loading、empty、error、retry 等状态。
+3. 涉及交互或语义结构变化时，验证相关键盘、焦点和可访问名称契约。
+4. 按受影响的契约选择相关类型、行为、构建或浏览器检查，并保留项目强制门禁。
 5. 只在有测量数据时声明性能改善。
 
 ## Evidence

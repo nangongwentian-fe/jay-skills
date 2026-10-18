@@ -11,7 +11,8 @@
         "Unrelated worktree changes are preserved and excluded from the commit.",
         "The authorized publish branch is the remote default branch used by installation.",
         "The install command uses --skill, --global, and --yes without --agent.",
-        "Success requires matching content under ~/.agents/skills/<skill-name>."
+        "Success requires matching content under ~/.agents/skills/<skill-name>.",
+        "Existing complete release authorization is reused without a redundant confirmation."
       ]
     },
     {
@@ -28,7 +29,7 @@
     {
       "id": 3,
       "prompt": "I changed a Skill but have not authorized a Git push or a global installation. Run sync-skill-to-jay.",
-      "expected_output": "The agent asks once for explicit authorization covering repository synchronization, the publish branch, push, and global installation, and performs no external write before approval.",
+      "expected_output": "The agent prepares the authorized local inspection and validation with a reviewable diff, then asks once for the missing publication and installation authority without performing external writes.",
       "files": [],
       "expectations": [
         "The requested confirmation names the Skill, repository, publish branch, push, and installation.",

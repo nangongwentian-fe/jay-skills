@@ -1,4 +1,4 @@
 interface:
   display_name: "Maintainable Frontend Styles"
-  short_description: "¹æ·¶ React¡¢Next.js Óë Vite µÄ¿ÉÎ¬»¤Ç°¶ËÑùÊ½ÊµÏÖ"
-  default_prompt: "Ê¹ÓÃ $maintainable-frontend-styles ÊµÏÖ¡¢ÆÀÉó»òÖØ¹¹Õâ¸ö React ½çÃæµÄÑùÊ½¡£"
+  short_description: "è§„èŒƒ Reactã€Next.js ä¸ Vite çš„å¯ç»´æŠ¤å‰ç«¯æ ·å¼å®ç°"
+  default_prompt: "ä½¿ç”¨ $maintainable-frontend-styles å®ç°ã€è¯„å®¡æˆ–é‡æ„è¿™ä¸ª React ç•Œé¢çš„æ ·å¼ã€‚"

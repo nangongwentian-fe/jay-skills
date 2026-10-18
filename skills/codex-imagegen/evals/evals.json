@@ -10,7 +10,7 @@
     {
       "id": 2,
       "prompt": "Generate a pixel art sword icon for a game, transparent background, 256x256",
-      "expected_output": "A pixel art sword icon PNG, ideally with transparent background via chroma-key removal",
+      "expected_output": "A pixel art sword icon with verified output dimensions and supported transparency, or an explicit capability limitation before choosing a different credential, dependency or image-treatment workflow.",
       "files": []
     },
     {

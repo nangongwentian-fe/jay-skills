@@ -1,82 +1,42 @@
 ---
 name: maintainable-frontend-styles
-description: "Implement, review, and refactor maintainable styles for React, Next.js, and Vite applications. Use when choosing between Tailwind CSS, CSS Modules, SCSS Modules, global CSS, and inline styles; creating component variants or reusable style compositions; splitting oversized .module.scss files; removing raw global component CSS; or reviewing frontend style architecture, specificity, responsiveness, theming, and accessibility."
+description: "Implement or refactor component styles using the project's Tailwind and CSS/SCSS conventions. Use for style boundaries, reuse, variants and maintainability."
 ---
 
 # Maintainable Frontend Styles
 
-优先沿用仓库约定，在已安装 Tailwind 时用 utility class 完成常规组件样式，并把复杂局部规则收敛到与组件同位置的 CSS/SCSS Module。不要用新的抽象替换一个尚未重复的问题，也不要用一个巨型样式文件替代组件边界。
+沿用仓库的样式方案。已有 Tailwind 时用完整、可静态检测的 utility class 表达常规样式；复杂局部规则可放在组件同位置的 CSS/SCSS Module。
 
-## 核心原则
+## 选择最小充分方案
 
-| 优先级 | 方案 | 适用范围 |
-| --- | --- | --- |
-| 1 | Tailwind class | 布局、间距、排版、颜色、边框、响应式、主题及交互状态 |
-| 2 | `.module.css` / `.module.scss` | 复杂选择器、伪元素、关键帧、内容样式、第三方覆盖或 utilities 明显降低可读性的局部规则 |
-| 3 | 全局 CSS | reset、`@font-face`、主题令牌、Tailwind 入口和真正的全局第三方基础样式 |
-| 4 | inline style | 运行期产生且无法静态枚举的值，优先通过 CSS 自定义属性传递 |
+| 需求 | 方案 |
+| --- | --- |
+| 布局、间距、排版、主题与常规交互状态 | 项目现有 utility、token 和 variant |
+| 复杂选择器、伪元素、关键帧或局部第三方覆盖 | 组件 CSS/SCSS Module |
+| reset、字体、主题令牌及真正的全局基础样式 | 全局样式入口 |
+| 不能静态枚举的运行时值 | 局部 CSS 自定义属性，必要时 inline style |
 
-把仓库明确规则放在本表之前。发现冲突时说明差异并请求决策，不静默改写项目的样式架构。
+明确的项目规则优先于本表，不为遵循个人默认方案而迁移技术栈。常规局部实现可自主完成；新增依赖、构建机制或扩大迁移范围超出既有授权时，先说明具体变更并确认，已有授权不重复询问。
 
-## 工作流
+只读取当前组件和决定本次改动的项目事实。涉及工具语法时确认实际版本；涉及构建、全局入口或样式复用时再检查对应配置和调用方。
 
-### 1. 检查当前仓库
+## 复用与边界
 
-先读取相关组件、相邻样式、`package.json`、框架配置、Tailwind 版本、Sass 依赖、全局样式入口、设计令牌、class 合并工具和 lint/format 脚本。
+- 不为了减少 class 字符数切换方案，不动态拼接有限状态的 Tailwind class。
+- 循环可消除同一上下文的重复；跨消费者共享结构和行为时考虑组件；同一组件的样式差异用现有 variant 机制。
+- 不因一次重复新增依赖或共享抽象，也不把不同组件的局部规则集中成巨型样式文件。
+- 保持样式作用域、可访问性和未要求改变的视觉行为，不顺手重构相邻代码。
 
-确认：
+## 按需参考
 
-- 项目实际使用 Tailwind v3 还是 v4，不把两个版本的语法混用。
-- 是否已有 `clsx`、`cn`、CVA、`tailwind-variants` 或 `tailwind-merge`。
-- 项目是否已有组件库、样式文件命名和 colocate 约定。
-- 改动属于局部实现、代码评审，还是获得授权的迁移。
+- Tailwind 版本差异、class 合并或变体设计：[tailwind-patterns.md](references/tailwind-patterns.md)。
+- Module 作用域、Sass 复用或大型样式文件拆分：[scss-modules-patterns.md](references/scss-modules-patterns.md)。
+- 样式架构评审、迁移或存在交互/视觉回归风险：[review-playbook.md](references/review-playbook.md)。
 
-### 2. 选择样式层级
+已明确的简单 token 或 class 调整无需预读全部参考。
 
-按核心原则选择最浅的可维护方案：
+## 验证与交付
 
-- 能用现有 Tailwind token 和 variant 清楚表达时，直接写完整 class。
-- 需要 DOM 关系、伪元素、关键帧或受控第三方选择器时，使用组件 Module。
-- 需要跨组件复用视觉与结构时，优先抽取 React 组件，而不是共享 CSS 大类。
-- 只有主题、reset、字体或外部全局约束才能进入全局样式。
+选择能覆盖受影响行为的检查：局部样式调整检查实际视觉结果及相关断点/状态；改动 props 或逻辑时做相关类型与行为验证；涉及构建、入口或 CSS 顺序时再执行生产构建。保留项目强制门禁。
 
-不要为了减少 class 字符数而切换方案。不要把运行期可枚举状态写成动态拼接的 Tailwind class。
-
-### 3. 处理依赖与迁移
-
-项目缺少 Tailwind 或 Sass 时：
-
-1. 列出拟新增依赖、配置、入口文件、预期收益和迁移范围。
-2. 请求用户批准。
-3. 获批前不要安装依赖、修改构建配置或展开全仓迁移。
-4. 用户拒绝迁移时，使用现有方案；需要局部作用域时优先使用框架已支持的 `.module.css`。
-
-不得把“实现一个组件”解释成“迁移整个项目”。
-
-### 4. 实现或评审
-
-- Tailwind 任务必须读取 [references/tailwind-patterns.md](references/tailwind-patterns.md)。
-- CSS/SCSS Module、巨型 Module 拆分或 Sass 复用任务必须读取 [references/scss-modules-patterns.md](references/scss-modules-patterns.md)。
-- 代码评审、迁移建议或视觉不变重构必须读取 [references/review-playbook.md](references/review-playbook.md)。
-
-只修改任务需要的文件。保留相邻代码风格，不顺手重构无关样式。
-
-### 5. 验证
-
-运行仓库已有且与改动相关的：
-
-1. formatter 或 Tailwind class sorter；
-2. Stylelint、ESLint 和类型检查；
-3. 组件测试或视觉测试；
-4. Next.js/Vite 生产构建。
-
-至少人工确认响应式断点、hover/focus-visible/disabled 状态、暗色主题、减少动态效果偏好，以及生产构建中的 CSS 顺序。无法运行的检查要明确报告，不能写成已通过。
-
-## 完成标准
-
-- 常规样式没有无理由退回原始全局 CSS。
-- Tailwind class 完整且可静态检测，没有冲突 utility。
-- Module 与组件职责一致，没有新增巨型共享样式文件。
-- 重复样式按“循环 → 组件 → 变体 → 局部组合”顺序处理。
-- 新依赖、配置或迁移都已获得明确授权。
-- 结果通过相关检查，并说明仍未验证的视觉或浏览器风险。
+修复本次改动引入的缺陷，按任务规则清理验证资源，交付实际验证结果及有意义的未验证项。不要每次运行全部 formatter、lint、测试、构建及所有主题状态，也不要为通过检查改写无关文件。

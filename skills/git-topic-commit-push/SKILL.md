@@ -1,84 +1,42 @@
 ---
 name: git-topic-commit-push
-description: Create one or more Git commits grouped by coherent change topic, then push the current branch. Use when the user asks to commit and push, submit by topic, split current changes into topical commits, or do "按照主题提交 commit 并 push"; especially when a worktree has mixed staged, unstaged, or untracked changes that need honest commit boundaries before `git push`. Commit messages must be written in Chinese unless the user explicitly requests another language.
+description: "Group authorized Git changes into coherent commits and push when requested. Use for topical commit or commit-and-push workflows."
 ---
 
 # Git Topic Commit Push
 
-Group the current worktree into honest topic commits, create them non-interactively, and push the current branch.
+Create honest topic commits from the changes the user authorized. Commit and push are distinct actions: a commit-only request does not authorize pushing. Reuse existing explicit authorization instead of asking again for the same action.
 
-## Workflow
+## Inspect and group
 
-1. Collect Git context:
-   - `git status --short --branch`
-   - `git diff --name-status`
-   - `git diff --stat`
-   - `git branch --show-current`
-   - `git log --oneline -10`
-   - `git remote -v`
+Inspect branch/upstream, status, staged and unstaged diffs, relevant untracked files and recent commit conventions. Preserve the user's existing staged work and unrelated edits; a dirty worktree alone is not a reason to stop.
 
-2. Inspect enough diff to classify changes by topic.
-   - Prefer `git diff -- <paths>` and `git diff --cached -- <paths>`.
-   - Include untracked files in the classification.
-   - Treat generated caches, traces, dumps, logs, secrets, local env files, and large temporary artifacts as non-commit candidates unless the user explicitly asks to track them.
+Use one commit per coherent outcome, splitting only independently explainable changes. Prefer paths or reviewed hunks. If unrelated changes overlap so that a safe commit boundary cannot be established, ask for the smallest needed staging decision.
 
-3. Decide commit boundaries.
-   - Create one commit when all changes have one coherent purpose.
-   - Create multiple commits when changes are independently explainable and can be staged cleanly by path or reviewed hunks.
-   - If one file contains unrelated topics and clean non-interactive staging is not safe, ask before forcing a split.
-   - Do not invent vague commits such as `update files` to hide unrelated changes.
+## Stage and commit
 
-4. Stage and commit each topic.
-   - Stage only the files or hunks for the current topic.
-   - Use Conventional Commit types: `feat`, `fix`, `refactor`, `docs`, `chore`, `test`, `build`.
-   - Write the commit subject and body in Chinese by default; keep only the Conventional Commit type prefix in English, for example `fix: 更新申请注册文案`.
-   - Use 2-5 Chinese body bullets that describe behavior or outcome, not only file names.
-   - Prefer stable non-interactive commands. In PowerShell, use multiple `-m` flags instead of shell heredocs.
+- Add only authorized paths or hunks. Do not use a bare `git reset`, `git add .` or `git add -A` to prepare a topic.
+- Inspect the complete staged diff before each commit: a normal `git commit` includes everything in the index, including previously staged user work. Do not commit that work unless it is authorized; do not unstage it merely for convenience.
+- Use Conventional Commit types and Chinese subjects/bodies unless the user requests another language. Body detail should explain the outcome, with 2–5 bullets when the change warrants them.
+- Pass message text as safe arguments or a UTF-8 message file supported by the current shell. Avoid interpolated multiline shell strings.
 
-5. Verify before pushing.
-   - Run `git status --short --branch`.
-   - Run `git log --oneline -5`.
-   - Confirm the branch is ahead by the expected number of commits and the worktree is clean, or explain any remaining uncommitted files.
+For a topic with no unrelated staged changes:
 
-6. Push.
-   - If the branch already tracks a remote, run `git push`.
-   - If there is no upstream, run `git push -u origin <branch>` when `origin` exists.
-   - If no suitable remote exists, stop and report the exact blocker.
-
-## Commit Commands
-
-Use this PowerShell-safe pattern:
-
-```powershell
-git add -- path/to/file-a path/to/file-b
-git commit -m "feat: 更新赛事首页内容" `
-  -m "- 优化首页横幅在宽屏和窄屏下的展示效果" `
-  -m "- 更新主席称谓和赞助入口展示"
+```text
+git add -- <reviewed-paths>
+git diff --cached --stat
+git diff --cached
+git commit -m "fix: 修复已确认的问题"
 ```
 
-For a second topic, repeat with a fresh staged set:
+Inspect the index again before another topic; no blanket reset is needed after a successful commit.
 
-```powershell
-git reset
-git add -- docs/example.md scripts/example.mjs
-git commit -m "docs: 更新部署流程说明" `
-  -m "- 明确生产包构建命令" `
-  -m "- 补充必需环境变量默认值"
-```
+## Verify and push
 
-## Safety Rules
+Check the resulting commit content, branch and remaining worktree status. Apply project-required checks; do not repeat a passed suite solely to create a commit. Report which existing verification supports the change and what was not run.
 
-- Do not run destructive commands such as `git reset --hard`, `git checkout --`, or force push unless the user explicitly asks.
-- Do not amend, rebase, squash, or rewrite existing commits unless requested.
-- Do not commit secrets from `.env`, credentials, tokens, private keys, or copied production config.
-- Do not run tests by default; this skill is for commit and push. If tests were not run, say so in the final response.
-- Do not delete user files while preparing commits. If a temporary artifact should not be committed, leave it untracked or add an ignore rule only when that rule is clearly appropriate.
+Push only when authorized. Use the configured upstream; if none exists, use the confirmed remote and branch, setting an upstream when consistent with the request. Resolve an ambiguous destination before writing remotely. Verify the remote result and report partial success accurately if a push fails.
 
-## Final Response
+No force push, history rewriting, branch switching, secret commits, user-file cleanup or unrelated changes are authorized by this skill.
 
-Report:
-
-- Commit hashes and subjects.
-- Push target and result.
-- Remaining worktree status.
-- Tests or validation commands that were run, or state that tests were not run.
+Report commit hashes and subjects, push outcome when applicable, relevant verification and remaining user work.

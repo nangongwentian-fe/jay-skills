@@ -1,6 +1,6 @@
 ---
 name: clean-wechat-wps-storage
-description: Clean local disk usage from WeChat/微信 and WPS Office on macOS. Use when the user says WeChat, Weixin, 微信, WPS, or WPS Office takes too much space, asks what can be cleaned, wants to clear chat records, chat images, videos, emojis, caches, cloud-document caches, plugins, fonts, logs, or wants an interview-confirm-plan-clean workflow before moving app data to Trash.
+description: "Scan macOS WeChat/WPS disk usage and move selected data to Trash after the cleanup plan is confirmed. Use for app storage cleanup."
 ---
 
 # Clean WeChat And WPS Storage

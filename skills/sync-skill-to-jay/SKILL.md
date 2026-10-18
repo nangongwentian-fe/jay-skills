@@ -1,89 +1,31 @@
 ---
 name: sync-skill-to-jay
-description: Publish a newly created or updated Agent Skill through the jay-skills repository, then reinstall the published version into the canonical global skills directory. Use after a Skill change when the user wants to validate, document, commit, push, and install it. Do not publish private or local-only Skills without explicit approval.
+description: "Publish selected jay-skills changes and reinstall the published version when requested. Use for the authorized source-to-release workflow."
 ---
 
 # Sync Skill to Jay
 
-Treat `jay-skills/skills/<skill-name>` as the sole publishable source of truth. `~/.agents/skills/<skill-name>` is an installation artifact managed by `npx skills add`, not a source to copy back over the repository.
+Use `jay-skills/skills/<skill-name>` as the publishable source of truth. Installed copies under `~/.agents/skills` are derived artifacts, not replacements for an existing repository source.
 
-## Authorization boundary
+## Scope and authorization
 
-After a Skill is created or updated, ask once whether the user wants to synchronize, publish, and reinstall it. The confirmation must identify the repository, Skill name, publish branch, Git push, and global installation. One affirmative answer authorizes the complete workflow below, including the bounded one-time SSH fallback described under "Commit and push". Ask again only when a conflict, unexpected dirty worktree, identity mismatch, new credentials, validation failure, or scope expansion requires a new decision.
+Identify the selected skills, repository, branch and requested actions. Reuse explicit authorization already given for commit, push and installation; do not ask again merely because this skill is activated.
 
-Do not infer permission to publish another Skill, rewrite Git history, force-push, alter remotes, or expose a private Skill.
+If publication or installation is not yet authorized, first prepare the scoped source changes, validation and reviewable diff that the task permits. Then ask once for the missing actions, naming the repository, skills, publish branch, Git push and global installation. Do not publish private or local-only skills by implication.
 
-## Source resolution
+A local validation or installation request does not require publication. For an explicitly authorized local install, derive the selected installation from the validated repository source, verify the complete file set and record that it is an unpublished local version. Do not claim it matches a remote release. The release workflow below continues to install from the verified remote default branch.
 
-1. Locate the local `jay-skills` checkout and verify that its remote represents `nangongwentian-fe/jay-skills`.
-2. Resolve the exact target as `skills/<skill-name>` and prove it stays inside the repository's `skills/` directory.
-3. For an existing Skill, edit and validate the repository target directly.
-4. For a new Skill created elsewhere, import its complete directory only when the repository target does not yet exist.
-5. If an external or installed copy differs from an existing repository target, never copy it over the target. Show the relevant diff and port only the intended changes into the repository source.
+## Source integrity
 
-Never move, delete, or rewrite an explicit project source or an installed copy merely because publication succeeds.
+- Verify the local checkout remote is `nangongwentian-fe/jay-skills` and each selected path stays inside its `skills/` directory.
+- Edit the existing repository source. Import a new external skill only when its target does not exist, retaining known provenance without inventing missing upstream details.
+- If an installed copy differs, inspect the meaningful diff and port only intended changes; never recursively overwrite an existing repository target from it.
+- Preserve unrelated staged, unstaged and untracked work. Resolve overlapping changes that prevent an honest commit boundary; ordinary unrelated dirty files do not require stopping.
 
-## Repository update
+## Validation and release
 
-Before editing, inspect `git status --short --branch`, the current branch, recent commits, remotes, and the remote default branch. Because the install command reads that default branch, the authorized publish branch must be the remote default branch (`main` for `nangongwentian-fe/jay-skills`), and the current branch and upstream must match it. Stop before committing and obtain explicit switch or merge direction when they do not. Preserve unrelated changes and stop if they overlap the target or prevent an honest commit boundary.
+Validate selected skills with the active Skill Creator's `quick_validate.py`, check changed resources with appropriate parsers or focused tests, and inspect the diff for scope and sensitive data. Update the affected README entries and existing evals when behavior changes. Do not run unrelated suites by default.
 
-Update only artifacts owned by the changed Skill:
+For an authorized release, read [release.md](references/release.md). Complete publication and canonical content verification before claiming success; report partial success accurately when installation fails after publication.
 
-- the complete `skills/<skill-name>` directory;
-- its existing targeted documentation or evals;
-- the corresponding root README table row and detail section when the Skill description or usage changed;
-- shared installation examples only when the CLI contract changed.
-
-Do not regenerate the whole README or rewrite unrelated Skill descriptions.
-
-## Validation
-
-Run the active Skill Creator's `scripts/quick_validate.py` against the repository Skill. Validate any changed JSON, scripts, or other resources with their native parser or focused check. Then run `git diff --check` and inspect the complete target diff for secrets, generated artifacts, accidental deletions, and unrelated files.
-
-For a substantial workflow change, add or update realistic eval cases. Evals should exercise decisions and observable outcomes rather than merely matching headings or fixed wording.
-
-Do not publish until every required validation passes.
-
-## Commit and push
-
-Create one coherent commit when all changes serve the same Skill outcome; otherwise split them by honest topic. Stage only the reviewed files.
-
-- Use Conventional Commit types such as `feat`, `fix`, `docs`, or `chore`.
-- Write the subject and 2–5 outcome-focused body bullets in Chinese unless the user requests another language.
-- Do not add a model-specific `Co-Authored-By` trailer unless the user explicitly asks for it.
-- Do not amend, rebase, force-push, or switch branches unless separately authorized.
-
-Push the authorized remote default branch through its configured upstream, then verify that the configured remote-tracking branch (normally `origin/main`) points exactly to the new commit. If an HTTPS push fails only because credentials are unavailable, the initial workflow approval also authorizes this bounded fallback: verify an existing GitHub SSH identity, push once through the equivalent SSH URL without changing `origin`, then fetch the configured remote to refresh its tracking reference. Stop and ask again on identity mismatch, when new credentials or a remote change would be required, or on any non-authentication failure.
-
-## Install the published Skill
-
-Only after the remote commit is verified, reinstall the selected Skill non-interactively under the authorization already granted:
-
-```bash
-npx skills add nangongwentian-fe/jay-skills \
-  --skill <skill-name> \
-  --global \
-  --yes
-```
-
-Do not pass `--agent`. The canonical success target is:
-
-```text
-~/.agents/skills/<skill-name>
-```
-
-Codex can discover this canonical directory directly. Do not require or create `~/.codex/skills` or `~/.claude/skills` links as part of this workflow.
-
-Verify the installed `SKILL.md`, complete file set, and file contents against the pushed repository version. Ignore line-ending-only differences. Do not trust the installer exit code alone: an unsupported unrelated adapter such as PromptScript is a warning when the canonical directory is complete and matches; a missing or mismatched canonical installation is a failure even if the command exits successfully.
-
-If publication succeeds but installation or verification fails, keep the published commit, report the exact installation state, and stop. Do not roll back or rewrite remote history.
-
-## Completion report
-
-Report:
-
-- changed Skill and documentation paths;
-- validation and eval results;
-- commit hash, subject, branch, and push result;
-- canonical installation path and content-verification result;
-- remaining warnings, conflicts, or unrelated worktree changes.
+No force push, history rewrite, remote change, new credentials, unrelated skill publication or arbitrary cleanup is authorized by this workflow.
