@@ -1,209 +1,99 @@
 # Jay Skills
 
-> Jay 的 AI Agent 资源集合，包含可安装的 Skills 和可执行的 Playbooks，适用于 Claude Code / Codex 等 AI 编程工具。
+个人维护的 AI Agent 技能集合，收录开发、文档整理、信息查询和日常工具的可复用工作流程，可通过 Skills CLI 安装到 Codex、Claude Code 等支持技能的工具中。
 
-## 内容模块
+每个技能以 `SKILL.md` 为入口，说明何时使用、如何执行，以及需要哪些工具或环境。部分技能还附带脚本、参考资料或评测样例；安装技能不会自动安装这些外部依赖。
 
-| 模块 | 目录 | 用途 |
-|------|------|------|
-| Skills | [`skills/`](./skills/) | 可通过 `npx skills add` 安装，由 Agent 按场景触发 |
-| Codex Plugin | [`.codex-plugin/`](./.codex-plugin/) | 通过 Codex Marketplace 安装，直接加载本仓全部 Skills |
-| Playbooks | [`playbooks/`](./playbooks/) | 给 Agent 读取并按步骤执行的专题教程，不是可安装 skill |
+## 快速开始
 
-## Skills CLI 安装
-
-以下命令只安装 `skills/` 下的内容，不会安装 `playbooks/`。
+需要 Node.js 和 npm，版本要求见 [Skills CLI 官方文档](https://github.com/vercel-labs/skills#install-a-skill)。
 
 ```bash
-# 安装全部 skills
-npx skills add nangongwentian-fe/jay-skills --global
+# 交互选择要安装的技能和目标 Agent（全局安装）
+npx skills add nangongwentian-fe/jay-skills -g
 
-# 安装单个 skill
-npx skills add nangongwentian-fe/jay-skills --skill <skill-name> --global
+# 只安装一个技能，例如 daily-work-summary
+npx skills add nangongwentian-fe/jay-skills --skill daily-work-summary -g
 ```
 
-## Codex 插件
+如果只想在某个项目中使用，在该项目目录运行命令并去掉 `-g`。建议先从实际需要的技能开始，安装前查看对应说明中的工具和环境要求。
 
-Codex 插件直接加载本仓 `skills/`，不复制 Skill 文件，也不会将 `playbooks/` 作为 Skill 加载。
+```mermaid
+flowchart LR
+    A[按任务选择技能] --> B[阅读 SKILL.md]
+    B --> C[安装到目标 Agent]
+    C --> D[描述任务或指定技能名]
+    D --> E[Agent 按技能流程执行]
+```
 
-### 安装
+安装后，在目标 Agent 中描述需求即可；也可以明确写出技能名，例如：
+
+> 使用 daily-work-summary，汇总当前仓库中我在 2026-10-22 提交的工作，生成中文日报。
+
+技能的实际执行依赖当前 Agent 可用的工具、账户权限和运行环境。平台或服务专用技能的要求见下方说明。
+
+## 技能目录
+
+点击技能名可直接查看完整用法。
+
+### 开发与代码交付
+
+| 技能 | 适合用来做什么 |
+| --- | --- |
+| [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
+| [split-ui-components](./skills/split-ui-components/SKILL.md) | 判断 UI 组件是否需要拆分，按业务职责和状态归属调整边界，保持原有行为。 |
+| [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
+| [post-implementation-review-gate](./skills/post-implementation-review-gate/SKILL.md) | 对涉及兼容性、安全或复杂行为的改动安排独立评审，核验问题并修复。 |
+| [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 将改动按主题组织成 Git 提交，保留无关修改，并在获得授权后推送。 |
+| [sync-skill-to-jay](./skills/sync-skill-to-jay/SKILL.md) | 维护本仓库中的技能源码，按授权完成发布、安装及版本一致性核验。 |
+
+### 文档与工作整理
+
+| 技能 | 适合用来做什么 |
+| --- | --- |
+| [daily-work-summary](./skills/daily-work-summary/SKILL.md) | 按仓库和日期，从本人 Git 提交生成中文日报，不混入其他人的工作。 |
+| [progressive-disclosure-docs](./skills/progressive-disclosure-docs/SKILL.md) | 整理多主题文档，让入口保留必要说明，详细步骤放到按需阅读的文档中。 |
+| [show-dont-tell](./skills/show-dont-tell/SKILL.md) | 将复杂对比、流程和层级关系整理成表格、列表或图示。 |
+| [post-task-learning-review](./skills/post-task-learning-review/SKILL.md) | 把任务中有复用价值的发现补充到合适的项目文档、技能或记忆中。 |
+
+### 网页与信息查询
+
+| 技能 | 适合用来做什么 |
+| --- | --- |
+| [web-content-fetcher](./skills/web-content-fetcher/SKILL.md) | 提取公开网页或文章正文；读取失败时按原因选择替代方式，并说明缺失内容。 |
+| [yeungnam-notices](./skills/yeungnam-notices/SKILL.md) | 查询韩国岭南大学计算机学部公告，按课程编号核对考试安排和附件修订。 |
+| [shenzhen-social-insurance](./skills/shenzhen-social-insurance/SKILL.md) | 在深圳社保官方门户核实医保、养老及失业待遇，查询缴费记录和续保要求。需要相关账户登录状态。 |
+
+### 图像与日常工具
+
+| 技能 | 适合用来做什么 |
+| --- | --- |
+| [codex-imagegen](./skills/codex-imagegen/SKILL.md) | 当前 Agent 缺少原生图像工具时，通过具备图像能力的 Codex CLI 生成、编辑或找回本次调用的图片。 |
+| [clean-wechat-wps-storage](./skills/clean-wechat-wps-storage/SKILL.md) | 扫描 macOS 微信和 WPS 的存储占用，确认清理计划后将选定内容移到废纸篓。 |
+| [buddy-reroll](./skills/buddy-reroll/SKILL.md) | 定制 Claude Code 的 `/buddy` 伙伴物种、稀有度和闪光属性。依赖其内部实现，使用前查看兼容性与操作步骤。 |
+
+## 更新已安装的技能
 
 ```bash
-codex plugin marketplace add nangongwentian-fe/jay-skills --ref main
-codex plugin add jay-skills@jay-skills
+# 检查已安装技能是否有更新
+npx skills check
+
+# 更新指定技能
+npx skills update daily-work-summary
 ```
 
-### 发布 Skill 更新
+更多安装、更新和移除选项见 [Skills CLI 官方文档](https://github.com/vercel-labs/skills)。
 
-修改或新增 Skill 后，提交前刷新插件版本：
+## 仓库结构与维护
 
-```bash
-python3 scripts/update_codex_plugin_version.py
+```text
+skills/
+└── <skill-name>/
+    ├── SKILL.md       # 技能入口与执行流程
+    ├── references/    # 按需阅读的参考资料（可选）
+    ├── scripts/       # 辅助脚本（可选）
+    ├── agents/        # Agent 展示与配置元数据（可选）
+    └── evals/         # 评测样例及相关文件（可选）
 ```
 
-该命令保留基础版本，并将现有 build metadata 替换为 UTC cachebuster。请将 Skill 改动与 `.codex-plugin/plugin.json` 一起提交。`sync-skill-to-jay` 仍可用于 Skills CLI 的发布与全局安装，但不是 Codex 插件更新的必需步骤。
-
-### 获取更新
-
-Codex App 显示新版本后可直接点击更新。CLI 可使用以下回退流程：
-
-```bash
-codex plugin marketplace upgrade jay-skills
-codex plugin add jay-skills@jay-skills
-```
-
-更新完成后，请新建 Codex 任务以加载新版 Skills。
-
-## Skills 列表
-
-| Skill | 描述 |
-|-------|------|
-| [buddy-reroll](#buddy-reroll) | 按明确要求定制 Claude Code 伙伴，保留选择与应用边界。 |
-| [clean-wechat-wps-storage](#clean-wechat-wps-storage) | 扫描 macOS 微信和 WPS 占用，确认具体清理计划后将选定内容移到废纸篓。 |
-| [codex-imagegen](#codex-imagegen) | 宿主缺少原生图像工具时，通过 Codex CLI 生成或编辑位图，并验证本次调用返回的资产。 |
-| [daily-work-summary](#daily-work-summary) | 按指定仓库和日期，仅依据本人 Git 提交生成中文日报。 |
-| [find-docs](#find-docs) | 通过 Context7 核对当前库、API 与 CLI 契约 |
-| [git-topic-commit-push](#git-topic-commit-push) | 按授权范围精确组织主题提交，仅在已授权时推送；保护既有暂存内容。 |
-| [maintainable-frontend-styles](#maintainable-frontend-styles) | 沿用项目样式体系实现或重构局部样式，按受影响行为选择参考与验证。 |
-| [progressive-disclosure-docs](#progressive-disclosure-docs) | 按主题和读者意图组织文档，将细节放到按需引用的所属文档。 |
-| [post-implementation-review-gate](#post-implementation-review-gate) | 对存在实质兼容性、安全或行为风险的实现执行独立评审、证据核验与范围内修复。 |
-| [post-task-learning-review](#post-task-learning-review) | 有可复用发现时维护任务范围内文档或技能；记忆写入遵循当前权威协议。 |
-| [shenzhen-social-insurance](#shenzhen-social-insurance) | 查询深圳医保、养老与失业待遇，核实逐月缴费并指导灵活就业续保。 |
-| [show-dont-tell](#show-dont-tell) | 用合适的表格、列表或图示帮助理解复杂信息，简单回复保持简洁。 |
-| [split-ui-components](#split-ui-components) | 按业务职责与状态归属拆分或评审 UI 组件，保持外部契约并针对性验证。 |
-| [sync-skill-to-jay](#sync-skill-to-jay) | 以仓库为源码入口完成已授权的发布与安装，区分本地版本和已验证远端版本。 |
-| [web-content-fetcher](#web-content-fetcher) | 使用可用工具获取公开网页正文，按实际缺失渐进回退，不绕过登录或付费墙。 |
-| [yeungnam-notices](#yeungnam-notices) | 查询韩国岭南大学计算机学部公告，核对考试安排与附件修订。 |
-
-## Playbooks 列表
-
-| Playbook | 描述 |
-|----------|------|
-| [agent-development-standards](./playbooks/agent-development-standards/) | 按任务路由开发规范、校验命令与技能决策场景 |
-| [codex-clash-proxy](./playbooks/codex-clash-proxy/) | 让 macOS/Windows 的 Codex CLI 或 Codex.app 单独走本地代理，包含 Clash 与 Windows 365VPN 启动器 |
-
----
-
-## buddy-reroll
-
-按明确要求定制 Claude Code 伙伴，保留选择与应用边界。
-
-适用条件与操作约束见 [SKILL.md](./skills/buddy-reroll/SKILL.md)。
-
----
-
-## clean-wechat-wps-storage
-
-扫描 macOS 微信和 WPS 占用，确认具体清理计划后将选定内容移到废纸篓。
-
-适用条件与操作约束见 [SKILL.md](./skills/clean-wechat-wps-storage/SKILL.md)。
-
----
-
-## codex-imagegen
-
-宿主缺少原生图像工具时，通过 Codex CLI 生成或编辑位图，并验证本次调用返回的资产。
-
-适用条件与操作约束见 [SKILL.md](./skills/codex-imagegen/SKILL.md)。
-
----
-
-## daily-work-summary
-
-按指定仓库和日期，仅依据本人 Git 提交生成中文日报。
-
-适用条件与操作约束见 [SKILL.md](./skills/daily-work-summary/SKILL.md)。
-
----
-
-## find-docs
-
-按具体文档问题查询当前库、API 或 CLI 契约，命令流程见 [SKILL.md](./skills/find-docs/SKILL.md)。
-
----
-
-## git-topic-commit-push
-
-按授权范围精确组织主题提交，仅在已授权时推送；保护既有暂存内容。
-
-适用条件与操作约束见 [SKILL.md](./skills/git-topic-commit-push/SKILL.md)。
-
----
-
-## maintainable-frontend-styles
-
-沿用项目样式体系实现或重构局部样式，按受影响行为选择参考与验证。
-
-适用条件与操作约束见 [SKILL.md](./skills/maintainable-frontend-styles/SKILL.md)。
-
----
-
-## progressive-disclosure-docs
-
-按主题和读者意图组织文档，将细节放到按需引用的所属文档。
-
-适用条件与操作约束见 [SKILL.md](./skills/progressive-disclosure-docs/SKILL.md)。
-
----
-
-## post-implementation-review-gate
-
-对存在实质兼容性、安全或行为风险的实现执行独立评审、证据核验与范围内修复。
-
-适用条件与操作约束见 [SKILL.md](./skills/post-implementation-review-gate/SKILL.md)。
-
----
-
-## post-task-learning-review
-
-有可复用发现时维护任务范围内文档或技能；记忆写入遵循当前权威协议。
-
-适用条件与操作约束见 [SKILL.md](./skills/post-task-learning-review/SKILL.md)。
-
----
-
-## shenzhen-social-insurance
-
-查询深圳医保、养老与失业待遇，区分待遇月份和实际缴费入账，并依据当前官方页面指导灵活就业续保。
-
-适用条件与操作边界见 [SKILL.md](./skills/shenzhen-social-insurance/SKILL.md)。
-
----
-
-## show-dont-tell
-
-用合适的表格、列表或图示帮助理解复杂信息，简单回复保持简洁。
-
-适用条件与操作约束见 [SKILL.md](./skills/show-dont-tell/SKILL.md)。
-
----
-
-## split-ui-components
-
-按业务职责与状态归属拆分或评审 UI 组件，保持外部契约并针对性验证。
-
-适用条件与操作约束见 [SKILL.md](./skills/split-ui-components/SKILL.md)。
-
----
-
-## sync-skill-to-jay
-
-以仓库为源码入口完成已授权的发布与安装，区分本地版本和已验证远端版本。
-
-适用条件与操作约束见 [SKILL.md](./skills/sync-skill-to-jay/SKILL.md)。
-
----
-
-## web-content-fetcher
-
-使用可用工具获取公开网页正文，按实际缺失渐进回退，不绕过登录或付费墙。
-
-适用条件与操作约束见 [SKILL.md](./skills/web-content-fetcher/SKILL.md)。
-
----
-
-## yeungnam-notices
-
-查询韩国岭南大学计算机学部公告，按课程编号核对考试时间表、附件修订和来源冲突。
-
-适用条件与操作约束见 [SKILL.md](./skills/yeungnam-notices/SKILL.md)。
+新增或修改技能时，以 `skills/<skill-name>/` 为源码入口，同步更新上方索引，并检查技能引用的文件和命令。发布与安装流程见 [sync-skill-to-jay](./skills/sync-skill-to-jay/SKILL.md)。
