@@ -1,0 +1,6 @@
+interface:
+  display_name: "岭南大学公告与考试查询"
+  short_description: "查询韩国岭南大学计算机学部公告，核对课程考试安排与附件修订"
+  default_prompt: "使用 $yeungnam-notices 查询韩国岭南大学计算机学部公告，按我的课程编号核对考试安排并标出更新及来源。"
+policy:
+  allow_implicit_invocation: true

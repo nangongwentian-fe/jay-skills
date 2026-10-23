@@ -73,6 +73,7 @@ codex plugin add jay-skills@jay-skills
 | [split-ui-components](#split-ui-components) | 按业务职责与状态归属拆分或评审 UI 组件，保持外部契约并针对性验证。 |
 | [sync-skill-to-jay](#sync-skill-to-jay) | 以仓库为源码入口完成已授权的发布与安装，区分本地版本和已验证远端版本。 |
 | [web-content-fetcher](#web-content-fetcher) | 使用可用工具获取公开网页正文，按实际缺失渐进回退，不绕过登录或付费墙。 |
+| [yeungnam-notices](#yeungnam-notices) | 查询韩国岭南大学计算机学部公告，核对考试安排与附件修订。 |
 
 ## Playbooks 列表
 
@@ -200,3 +201,9 @@ codex plugin add jay-skills@jay-skills
 适用条件与操作约束见 [SKILL.md](./skills/web-content-fetcher/SKILL.md)。
 
 ---
+
+## yeungnam-notices
+
+查询韩国岭南大学计算机学部公告，按课程编号核对考试时间表、附件修订和来源冲突。
+
+适用条件与操作约束见 [SKILL.md](./skills/yeungnam-notices/SKILL.md)。
