@@ -1,0 +1,6 @@
+interface:
+  display_name: "深圳社保查询与续保"
+  short_description: "核对深圳医保、养老与失业待遇记录，依据官方页面指导灵活就业续保"
+  default_prompt: "使用 $shenzhen-social-insurance 查询深圳医保与失业待遇，区分核定期限和实际缴费入账，并说明适用的续保步骤。"
+policy:
+  allow_implicit_invocation: true

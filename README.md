@@ -68,6 +68,7 @@ codex plugin add jay-skills@jay-skills
 | [progressive-disclosure-docs](#progressive-disclosure-docs) | 按主题和读者意图组织文档，将细节放到按需引用的所属文档。 |
 | [post-implementation-review-gate](#post-implementation-review-gate) | 对存在实质兼容性、安全或行为风险的实现执行独立评审、证据核验与范围内修复。 |
 | [post-task-learning-review](#post-task-learning-review) | 有可复用发现时维护任务范围内文档或技能；记忆写入遵循当前权威协议。 |
+| [shenzhen-social-insurance](#shenzhen-social-insurance) | 查询深圳医保、养老与失业待遇，核实逐月缴费并指导灵活就业续保。 |
 | [show-dont-tell](#show-dont-tell) | 用合适的表格、列表或图示帮助理解复杂信息，简单回复保持简洁。 |
 | [split-ui-components](#split-ui-components) | 按业务职责与状态归属拆分或评审 UI 组件，保持外部契约并针对性验证。 |
 | [sync-skill-to-jay](#sync-skill-to-jay) | 以仓库为源码入口完成已授权的发布与安装，区分本地版本和已验证远端版本。 |
@@ -157,6 +158,14 @@ codex plugin add jay-skills@jay-skills
 有可复用发现时维护任务范围内文档或技能；记忆写入遵循当前权威协议。
 
 适用条件与操作约束见 [SKILL.md](./skills/post-task-learning-review/SKILL.md)。
+
+---
+
+## shenzhen-social-insurance
+
+查询深圳医保、养老与失业待遇，区分待遇月份和实际缴费入账，并依据当前官方页面指导灵活就业续保。
+
+适用条件与操作边界见 [SKILL.md](./skills/shenzhen-social-insurance/SKILL.md)。
 
 ---
 
