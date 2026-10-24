@@ -1,0 +1,6 @@
+interface:
+  display_name: "任务完成后自动收尾"
+  short_description: "完成任务后保留最终成果，自动清理自有临时文件和重复副本，减少反复确认"
+  default_prompt: "使用 $finish-cleanly 核实本次最终成果并完成收尾，自动清理已无用途的任务自有文件。"
+policy:
+  allow_implicit_invocation: true

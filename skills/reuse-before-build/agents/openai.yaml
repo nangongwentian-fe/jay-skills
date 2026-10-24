@@ -1,0 +1,6 @@
+interface:
+  display_name: "实现前先复用"
+  short_description: "写代码前核实已有能力，缺口先联网选型，说明推荐理由并确认引入方案"
+  default_prompt: "使用 $reuse-before-build 完成本次编码任务：先核实已有能力，缺口先联网比较方案，推荐并确认路线后实现。"
+policy:
+  allow_implicit_invocation: true

@@ -40,6 +40,7 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
+| [reuse-before-build](./skills/reuse-before-build/SKILL.md) | 实现前核实项目已有能力和标准方案；存在缺口时联网比较成熟方案，确认选型后实现。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [split-ui-components](./skills/split-ui-components/SKILL.md) | 判断 UI 组件是否需要拆分，按业务职责和状态归属调整边界，保持原有行为。 |
 | [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
@@ -54,6 +55,7 @@ flowchart LR
 | [daily-work-summary](./skills/daily-work-summary/SKILL.md) | 按仓库和日期，从本人 Git 提交生成中文日报，不混入其他人的工作。 |
 | [progressive-disclosure-docs](./skills/progressive-disclosure-docs/SKILL.md) | 整理多主题文档，让入口保留必要说明，详细步骤放到按需阅读的文档中。 |
 | [show-dont-tell](./skills/show-dont-tell/SKILL.md) | 将复杂对比、流程和层级关系整理成表格、列表或图示。 |
+| [finish-cleanly](./skills/finish-cleanly/SKILL.md) | 交付前核实最终成果，自动清理本任务已无用途的临时文件和重复副本，保留必要证据与回滚资料。 |
 | [post-task-learning-review](./skills/post-task-learning-review/SKILL.md) | 把任务中有复用价值的发现补充到合适的项目文档、技能或记忆中。 |
 
 ### 网页与信息查询
