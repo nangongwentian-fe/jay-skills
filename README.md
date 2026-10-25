@@ -58,6 +58,18 @@ flowchart LR
 | [finish-cleanly](./skills/finish-cleanly/SKILL.md) | 交付前核实最终成果，自动清理本任务已无用途的临时文件和重复副本，保留必要证据与回滚资料。 |
 | [post-task-learning-review](./skills/post-task-learning-review/SKILL.md) | 把任务中有复用价值的发现补充到合适的项目文档、技能或记忆中。 |
 
+### 学习与教学
+
+| 技能 | 适合用来做什么 |
+| --- | --- |
+| [guided-learning](./skills/guided-learning/SKILL.md) | 根据考试、讲义或章节范围安排优先级，逐点讲解、逐题批改，依据独立作答证据判断何时进入下一知识点。 |
+
+```bash
+npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
+```
+
+使用示例：使用 guided-learning，按这份讲义确定学习范围和优先级，中文讲解、韩语出题，每次一道题，掌握后再建议进入下一知识点。
+
 ### 网页与信息查询
 
 | 技能 | 适合用来做什么 |
