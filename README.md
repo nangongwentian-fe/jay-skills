@@ -62,13 +62,13 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
-| [guided-learning](./skills/guided-learning/SKILL.md) | 根据考试、讲义或章节范围安排优先级，逐点讲解、逐题批改，依据独立作答证据判断何时进入下一知识点。 |
+| [guided-learning](./skills/guided-learning/SKILL.md) | 确认学习范围后按讲义顺序逐点讲解、逐题批改，每节核对覆盖，依据独立作答证据判断掌握情况。 |
 
 ```bash
 npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
 ```
 
-使用示例：使用 guided-learning，按这份讲义确定学习范围和优先级，中文讲解、韩语出题，每次一道题，掌握后再建议进入下一知识点。
+使用示例：使用 guided-learning，确认学习范围后按这份讲义的章节和页码顺序学习，中文讲解、韩语出题，每次一道题，每节核对遗漏，掌握后再建议进入下一知识点。
 
 ### 网页与信息查询
 
