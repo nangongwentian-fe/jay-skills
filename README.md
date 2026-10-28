@@ -44,6 +44,7 @@ flowchart LR
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [split-ui-components](./skills/split-ui-components/SKILL.md) | 判断 UI 组件是否需要拆分，按业务职责和状态归属调整边界，保持原有行为。 |
 | [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
+| [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，完成网页调试、交互测试和截图验收；不另启独立浏览器。 |
 | [post-implementation-review-gate](./skills/post-implementation-review-gate/SKILL.md) | 对涉及兼容性、安全或复杂行为的改动安排独立评审，核验问题并修复。 |
 | [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 将改动按主题组织成 Git 提交，保留无关修改，并在获得授权后推送。 |
 | [sync-skill-to-jay](./skills/sync-skill-to-jay/SKILL.md) | 维护本仓库中的技能源码，按授权完成发布、安装及版本一致性核验。 |
