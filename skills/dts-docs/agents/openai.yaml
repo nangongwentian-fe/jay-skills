@@ -1,0 +1,6 @@
+interface:
+  display_name: "DTS 文档助手"
+  short_description: "识别飞渡 DTS 产品与版本，查询对应官方文档并核对项目接入方式"
+  default_prompt: "使用 $dts-docs 识别当前项目的 DTS 产品和版本，查阅匹配的官方文档并解决当前问题。"
+policy:
+  allow_implicit_invocation: true
