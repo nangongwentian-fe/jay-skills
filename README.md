@@ -36,6 +36,12 @@ flowchart LR
 
 点击技能名可直接查看完整用法。
 
+### 判断与协作
+
+| 技能 | 适合用来做什么 |
+| --- | --- |
+| [constructive-challenge](./skills/constructive-challenge/SKILL.md) | 依据目标与证据检验判断和方案，指出实质问题并提出可执行改进，尊重合理取舍与个人偏好。 |
+
 ### 开发与代码交付
 
 | 技能 | 适合用来做什么 |
