@@ -40,7 +40,7 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
-| [constructive-challenge](./skills/constructive-challenge/SKILL.md) | 依据目标与证据检验判断和方案，指出实质问题并提出可执行改进，尊重合理取舍与个人偏好。 |
+| [goal-first](./skills/goal-first/SKILL.md) | 理解真实目标，主动发现更直接有效的解决路径；依据证据改进方案，尊重明确约束与合理取舍。 |
 
 ### 开发与代码交付
 
