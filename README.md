@@ -46,19 +46,14 @@ flowchart LR
 | [split-ui-components](./skills/split-ui-components/SKILL.md) | 判断 UI 组件是否需要拆分，按业务职责和状态归属调整边界，保持原有行为。 |
 | [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
 | [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，完成网页调试、交互测试和截图验收；不另启独立浏览器。 |
-| [post-implementation-review-gate](./skills/post-implementation-review-gate/SKILL.md) | 对涉及兼容性、安全或复杂行为的改动安排独立评审，核验问题并修复。 |
 | [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 将改动按主题组织成 Git 提交，保留无关修改，并在获得授权后推送。 |
-| [sync-skill-to-jay](./skills/sync-skill-to-jay/SKILL.md) | 维护本仓库中的技能源码，按授权完成发布、安装及版本一致性核验。 |
 
 ### 文档与工作整理
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
 | [daily-work-summary](./skills/daily-work-summary/SKILL.md) | 按仓库和日期，从本人 Git 提交生成中文日报，不混入其他人的工作。 |
-| [progressive-disclosure-docs](./skills/progressive-disclosure-docs/SKILL.md) | 整理多主题文档，让入口保留必要说明，详细步骤放到按需阅读的文档中。 |
-| [show-dont-tell](./skills/show-dont-tell/SKILL.md) | 将复杂对比、流程和层级关系整理成表格、列表或图示。 |
 | [finish-cleanly](./skills/finish-cleanly/SKILL.md) | 交付前核实最终成果，自动清理本任务已无用途的临时文件和重复副本，保留必要证据与回滚资料。 |
-| [post-task-learning-review](./skills/post-task-learning-review/SKILL.md) | 把任务中有复用价值的发现补充到合适的项目文档、技能或记忆中。 |
 
 ### 学习与教学
 
@@ -112,4 +107,4 @@ skills/
     └── evals/         # 评测样例及相关文件（可选）
 ```
 
-新增或修改技能时，以 `skills/<skill-name>/` 为源码入口，同步更新上方索引，并检查技能引用的文件和命令。发布与安装流程见 [sync-skill-to-jay](./skills/sync-skill-to-jay/SKILL.md)。
+新增或修改技能时，以 `skills/<skill-name>/` 为源码入口，同步更新上方索引，并检查技能引用的文件和命令。提交前检查本地链接、技能目录覆盖和 `git diff --check`；推送后核对本地提交与远端分支是否一致。安装方法见上方“快速开始”。

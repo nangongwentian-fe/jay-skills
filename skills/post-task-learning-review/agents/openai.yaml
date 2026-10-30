@@ -1,4 +1,0 @@
-interface:
-  display_name: "Post-Task Learning Review"
-  short_description: "Maintain reusable lessons within the authorized scope"
-  default_prompt: "Use $post-task-learning-review to identify reusable lessons and maintain authorized project docs or skills, following the active memory write protocol."

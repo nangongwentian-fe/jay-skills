@@ -1,4 +1,0 @@
-interface:
-  display_name: "Progressive Disclosure Docs"
-  short_description: "Organize docs so detail loads only when needed"
-  default_prompt: "Use $progressive-disclosure-docs to organize this documentation by reader intent while preserving its constraints and language."
