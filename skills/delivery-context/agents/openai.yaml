@@ -1,0 +1,6 @@
+interface:
+  display_name: "交付角度校准"
+  short_description: "先明确作者身份、受众和实际用途，再校准内容、表达方式与交付标准"
+  default_prompt: "使用 $delivery-context，根据实际受众和用途制作可直接使用的交付物。"
+policy:
+  allow_implicit_invocation: true

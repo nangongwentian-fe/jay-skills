@@ -41,6 +41,7 @@ flowchart LR
 | 技能 | 适合用来做什么 |
 | --- | --- |
 | [goal-first](./skills/goal-first/SKILL.md) | 理解真实目标，主动发现更直接有效的解决路径；依据证据改进方案，尊重明确约束与合理取舍。 |
+| [delivery-context](./skills/delivery-context/SKILL.md) | 先明确作者身份、实际受众和用途，再校准内容、表达与交付标准；区分最终成果和协作说明。 |
 
 ### 开发与代码交付
 
