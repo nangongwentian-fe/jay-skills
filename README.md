@@ -54,6 +54,7 @@ flowchart LR
 | [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
 | [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，先发现运行时并分层诊断连接，再完成网页调试、交互测试和截图验收。 |
 | [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 将改动按主题组织成 Git 提交，保留无关修改，并在获得授权后推送。 |
+| [commit-before-deploy](./skills/commit-before-deploy/SKILL.md) | 部署前验证、按主题提交并推送代码，确认远端提交后再构建发布；失败时停止部署。 |
 
 ### 文档与工作整理
 
