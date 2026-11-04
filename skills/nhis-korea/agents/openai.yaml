@@ -1,0 +1,4 @@
+interface:
+  display_name: "韩国国民健康保险"
+  short_description: "查询韩国医保账单、实缴月份与欠费，操作自动扣款和Kakao电子账单"
+  default_prompt: "使用 $nhis-korea，查看国民健康保险官网的当前账单、缴费期限及已缴月份。"
