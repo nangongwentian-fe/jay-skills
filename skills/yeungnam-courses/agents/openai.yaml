@@ -1,0 +1,4 @@
+interface:
+  display_name: "韩国岭南大学课程查询"
+  short_description: "查询岭南大学 URP 专业课表，核对各学期开课班次并导出 CSV"
+  default_prompt: "使用 $yeungnam-courses 查询指定年度及学期的专业课程，核对完整班次并导出 CSV。"

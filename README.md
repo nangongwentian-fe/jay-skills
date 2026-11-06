@@ -82,6 +82,7 @@ npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
 | --- | --- |
 | [web-content-fetcher](./skills/web-content-fetcher/SKILL.md) | 提取公开网页或文章正文；读取失败时按原因选择替代方式，并说明缺失内容。 |
 | [yeungnam-notices](./skills/yeungnam-notices/SKILL.md) | 查询韩国岭南大学计算机学部公告，按课程编号核对考试安排和附件修订。 |
+| [yeungnam-courses](./skills/yeungnam-courses/SKILL.md) | 查询韩国岭南大学 URP 专业课程、教师、课表和学分，完整采集各学期班次并导出 CSV，区分0条与无法查询。 |
 | [shenzhen-social-insurance](./skills/shenzhen-social-insurance/SKILL.md) | 在深圳社保官方门户核实医保、养老及失业待遇，查询缴费记录和续保要求。需要相关账户登录状态。 |
 | [nhis-korea](./skills/nhis-korea/SKILL.md) | 操作韩国国民健康保险个人官网，核对账单、实缴月份、欠费与期限，办理已授权的自动扣款及Kakao电子账单变更。 |
 
