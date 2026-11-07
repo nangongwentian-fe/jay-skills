@@ -1,0 +1,4 @@
+interface:
+  display_name: 'React 工程组织'
+  short_description: '按业务职责组织 React 目录、组件与 Hook，明确状态归属并避免过度拆分'
+  default_prompt: '使用 $react-engineering 检查当前 React 功能的目录、组件与 Hook 边界，并完成任务范围内的改进与验证。'

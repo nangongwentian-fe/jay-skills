@@ -51,6 +51,7 @@ flowchart LR
 | [skill-install-compat](./skills/skill-install-compat/SKILL.md) | 安装或更新技能后，检查手动调用声明并补齐 Codex 伴随配置，保留原版内容及已有配置。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [dts-docs](./skills/dts-docs/SKILL.md) | 识别飞渡 DTS 产品与版本，查询 Cloud、Explorer、Engine 或 SDK 官方文档，并核对项目实际接入方式。 |
+| [react-engineering](./skills/react-engineering/SKILL.md) | 按职责、消费者和依赖方向组织 React 目录、组件与状态；保留结构需有依据，复用库能力并避免过度重构。 |
 | [split-ui-components](./skills/split-ui-components/SKILL.md) | 判断 UI 组件是否需要拆分，按业务职责和状态归属调整边界，保持原有行为。 |
 | [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
 | [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，先发现运行时并分层诊断连接，再完成网页调试、交互测试和截图验收。 |
