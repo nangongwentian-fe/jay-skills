@@ -91,6 +91,7 @@ npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
+| [yizhen-image-download](./skills/yizhen-image-download/SKILL.md) | 从医真云电子胶片保存网页提供的 DICOM 和完整分辨率 PNG，核对全部检查、序列与切片并合并打包。 |
 | [codex-imagegen](./skills/codex-imagegen/SKILL.md) | 当前 Agent 缺少原生图像工具时，通过具备图像能力的 Codex CLI 生成、编辑或找回本次调用的图片。 |
 | [clean-wechat-wps-storage](./skills/clean-wechat-wps-storage/SKILL.md) | 扫描 macOS 微信和 WPS 的存储占用，确认清理计划后将选定内容移到废纸篓。 |
 | [buddy-reroll](./skills/buddy-reroll/SKILL.md) | 定制 Claude Code 的 `/buddy` 伙伴物种、稀有度和闪光属性。依赖其内部实现，使用前查看兼容性与操作步骤。 |

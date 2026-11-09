@@ -1,0 +1,4 @@
+interface:
+  display_name: "医真云影像下载"
+  short_description: "从医真云电子胶片保存 DICOM 与完整分辨率 PNG，并核对全部序列打包"
+  default_prompt: "使用 $yizhen-image-download 保存当前医真云页面中指定检查的影像，并合并为一个 ZIP。"
