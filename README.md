@@ -47,7 +47,7 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
-| [reuse-before-build](./skills/reuse-before-build/SKILL.md) | 实现前核实项目已有能力和标准方案；存在缺口时联网比较成熟方案，确认选型后实现。 |
+| [reuse-first](./skills/reuse-first/SKILL.md) | 主动发现并推荐已有实现、成熟工具、依赖或模板，避免默认从零实现；覆盖代码与非代码任务，按实际取舍和已有授权执行。 |
 | [skill-install-compat](./skills/skill-install-compat/SKILL.md) | 安装或更新技能后，检查手动调用声明并补齐 Codex 伴随配置，保留原版内容及已有配置。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [dts-docs](./skills/dts-docs/SKILL.md) | 识别飞渡 DTS 产品与版本，查询 Cloud、Explorer、Engine 或 SDK 官方文档，并核对项目实际接入方式。 |
