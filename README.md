@@ -48,6 +48,7 @@ flowchart LR
 | 技能 | 适合用来做什么 |
 | --- | --- |
 | [reuse-first](./skills/reuse-first/SKILL.md) | 主动发现并推荐已有实现、成熟工具、依赖或模板，避免默认从零实现；覆盖代码与非代码任务，按实际取舍和已有授权执行。 |
+| [skill-eval](./skills/skill-eval/SKILL.md) | 在 Codex 中独立执行技能行为评测、比较基线并按证据评分；检查回归，明确失败与未验证范围，不额外授权外部操作。 |
 | [skill-install-compat](./skills/skill-install-compat/SKILL.md) | 安装或更新技能后，检查手动调用声明并补齐 Codex 伴随配置，保留原版内容及已有配置。 |
 | [sync-to-jay-skills](./skills/sync-to-jay-skills/SKILL.md) | 新技能完成后询问是否同步到 jay-skills；记住本机仓库路径，获得授权后同步技能、更新 README、提交并推送验证。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |

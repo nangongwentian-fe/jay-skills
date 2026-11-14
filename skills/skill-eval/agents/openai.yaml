@@ -1,0 +1,6 @@
+interface:
+  display_name: "Skill Eval"
+  short_description: "在 Codex 中执行技能行为评测、基线对照和证据评分，检查回归与未验证项"
+  default_prompt: "使用 $skill-eval 评测本次新增或修改的技能，执行关键用例并报告证据、回归和未验证项。"
+policy:
+  allow_implicit_invocation: true
