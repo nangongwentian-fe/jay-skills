@@ -49,6 +49,7 @@ flowchart LR
 | --- | --- |
 | [reuse-first](./skills/reuse-first/SKILL.md) | 主动发现并推荐已有实现、成熟工具、依赖或模板，避免默认从零实现；覆盖代码与非代码任务，按实际取舍和已有授权执行。 |
 | [skill-install-compat](./skills/skill-install-compat/SKILL.md) | 安装或更新技能后，检查手动调用声明并补齐 Codex 伴随配置，保留原版内容及已有配置。 |
+| [sync-to-jay-skills](./skills/sync-to-jay-skills/SKILL.md) | 新技能完成后询问是否同步到 jay-skills；记住本机仓库路径，获得授权后同步技能、更新 README、提交并推送验证。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [dts-docs](./skills/dts-docs/SKILL.md) | 识别飞渡 DTS 产品与版本，查询 Cloud、Explorer、Engine 或 SDK 官方文档，并核对项目实际接入方式。 |
 | [react-engineering](./skills/react-engineering/SKILL.md) | 按职责、消费者和依赖方向组织 React 目录、组件与状态；保留结构需有依据，复用库能力并避免过度重构。 |
