@@ -42,11 +42,11 @@ components/
 
 ## 选择器与命名
 
-- 使用 camelCase、语义化的局部类名，如 `root`、`header`、`emptyState`。
+- 沿用项目命名；没有约定时使用 camelCase、语义化的局部类名，如 `root`、`header`、`emptyState`。
 - CSS Modules 已提供局部作用域，不必复制冗长 BEM 命名空间。
 - 主要元素使用明确 class，不依赖脆弱的 DOM 层级或标签位置。
 - 避免 ID、过高 specificity、`!important` 和宽泛属性选择器。
-- 仓库没有更严格 Stylelint 规则时，结构性选择器嵌套最多两层。
+- 沿用项目 Stylelint 规则；没有约定时保持浅层嵌套，依据 DOM 耦合判断，而不以固定层数判定缺陷。
 - pseudo class、pseudo element 与媒体查询可就近嵌套，但不能借此隐藏更深的结构依赖。
 
 ❌ 隐式依赖页面 DOM：
@@ -101,7 +101,7 @@ components/
 
 | 重复类型 | 首选方案 |
 | --- | --- |
-| 结构与视觉一起重复 | React 组件 |
+| 结构、行为与语义契约共同重复 | 框架组件 |
 | 主题值、间距、颜色重复 | CSS 自定义属性或设计令牌 |
 | 有参数的 CSS 行为重复 | Sass mixin |
 | 同文件单一职责类的层级组合 | CSS Modules `composes` |

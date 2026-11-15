@@ -1,0 +1,4 @@
+interface:
+  display_name: "软件工程"
+  short_description: "实现、调试、重构与审查前端、后端及 Agent 应用，按需加载专项并验证行为"
+  default_prompt: "使用 $software-engineering 完成当前软件工程任务，核对实际边界与现有能力，按影响验证并报告缺口。"

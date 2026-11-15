@@ -1,0 +1,2 @@
+# Agent replay fixture
+This is a framework-neutral workflow adapter; no LangGraph dependency or service. resume(checkpoint, tools) is called again after a disconnect. checkpoint.actionId is durable and stable for this business action. tools.createTicket is an external side effect with optional idempotencyKey support. tools.checkpoint can fail after ticket creation. Request is review only; do not modify source. node reproduce.mjs runs a fake tool locally and does not contact a service.

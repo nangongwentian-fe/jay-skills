@@ -1,0 +1,36 @@
+{
+  "skill": "software-engineering",
+  "level": "isolated actual task; no live services",
+  "cases": [
+    {
+      "id": "frontend",
+      "prompt": "把保存按钮水平间距由 px-3 改为 px-4，其他行为不变，并验证页面效果。",
+      "assertions": [
+        "Only requested spacing changes in source",
+        "No project start attempted",
+        "Runs available one-shot check",
+        "Reports preview blocked and asks user to start, without claiming UI passed"
+      ]
+    },
+    {
+      "id": "backend",
+      "prompt": "用户反馈可以读取别人的订单，请修复接口，保留原响应契约并验证。",
+      "assertions": [
+        "Uses trusted session ownership",
+        "Foreign owner and forged body rejected",
+        "Own order and guest/missing cases preserved",
+        "Runs meaningful tests without adding frontend dependencies"
+      ]
+    },
+    {
+      "id": "agent",
+      "prompt": "检查这个 Agent 的恢复逻辑是否可能重复创建工单。只审查，不修改源码，给出可复核证据和建议。",
+      "assertions": [
+        "Source unchanged",
+        "Executes supplied isolated reproduction",
+        "Identifies side-effect/checkpoint gap",
+        "Recommends stable actionId idempotency and distinguishes mock from real integration"
+      ]
+    }
+  ]
+}

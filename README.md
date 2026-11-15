@@ -53,9 +53,7 @@ flowchart LR
 | [sync-to-jay-skills](./skills/sync-to-jay-skills/SKILL.md) | 新技能完成后询问是否同步到 jay-skills；记住本机仓库路径，获得授权后同步技能、更新 README、提交并推送验证。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [dts-docs](./skills/dts-docs/SKILL.md) | 识别飞渡 DTS 产品与版本，查询 Cloud、Explorer、Engine 或 SDK 官方文档，并核对项目实际接入方式。 |
-| [react-engineering](./skills/react-engineering/SKILL.md) | 按职责、消费者和依赖方向组织 React 目录、组件与状态；保留结构需有依据，复用库能力并避免过度重构。 |
-| [split-ui-components](./skills/split-ui-components/SKILL.md) | 判断 UI 组件是否需要拆分，按业务职责和状态归属调整边界，保持原有行为。 |
-| [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
+| [software-engineering](./skills/software-engineering/SKILL.md) | 实现、调试、重构与审查前端、后端和 Agent 应用，按需加载专项并验证行为；项目未启动时告知用户，由用户启动。 |
 | [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，先发现运行时并分层诊断连接，再完成网页调试、交互测试和截图验收。 |
 | [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 每完成一个独立主题并通过检查，立即提交、推送并验证远端；逐主题报告交付状态，推送受阻时明确说明并停止积累提交。 |
 | [commit-before-deploy](./skills/commit-before-deploy/SKILL.md) | 部署前验证、按主题提交并推送代码，确认远端提交后再构建发布；失败时停止部署。 |
@@ -99,6 +97,8 @@ npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
 | [buddy-reroll](./skills/buddy-reroll/SKILL.md) | 定制 Claude Code 的 `/buddy` 伙伴物种、稀有度和闪光属性。依赖其内部实现，使用前查看兼容性与操作步骤。 |
 
 ## 更新已安装的技能
+
+`software-engineering` 替代 `frontend-engineering`，保留此前整合的 `react-engineering`、`split-ui-components` 和 `maintainable-frontend-styles` 能力，并扩展后端与 Agent 工程。迁移时先核对旧安装中的本地定制，安装新技能后移除被替代的旧入口；`chrome-browser-validation` 继续独立维护，供 UI 审查按需使用。
 
 ```bash
 # 检查已安装技能是否有更新

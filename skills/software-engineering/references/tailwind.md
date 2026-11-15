@@ -45,7 +45,7 @@ function Badge({ tone }: { tone: keyof typeof toneClasses }) {
 
 1. 同一 JSX 由数组循环渲染：没有源代码重复，不抽象 class。
 2. 少量重复只存在于一个文件且不会独立演化：允许保留。
-3. 同一视觉与结构跨文件出现：抽取 React 组件。
+3. 跨消费者共享结构、行为与语义契约时考虑组件；仅样式重复时优先已有 class 组合、token 或 variant，不强制提取组件。
 4. 同一组件存在有限的 tone、size 或 state：建立静态变体映射。
 5. 项目已使用 CVA 或 `tailwind-variants`：沿用现有 helper；否则不要只为一个组件引入依赖。
 
@@ -103,7 +103,7 @@ Tailwind v4 是完整的 CSS 构建工具，不要把 Sass、Less 或 Stylus 接
 - [ ] class 都以完整字符串出现在可扫描源码中。
 - [ ] 没有互相冲突或重复的 utility。
 - [ ] 变体是有限、类型化、语义化的。
-- [ ] 重复优先通过组件边界解决。
+- [ ] 重复按样式语义、结构与行为选择已有组合、token、variant 或组件。
 - [ ] 任意值没有重复模拟设计令牌。
 - [ ] 未把 Tailwind v4 与 SCSS 预处理管线混用。
 - [ ] 响应式、focus-visible、disabled、dark 和 reduced-motion 已检查。
