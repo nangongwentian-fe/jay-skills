@@ -63,7 +63,10 @@ flowchart LR
 | 技能 | 适合用来做什么 |
 | --- | --- |
 | [daily-work-summary](./skills/daily-work-summary/SKILL.md) | 按仓库和日期，从本人 Git 提交生成中文日报，不混入其他人的工作。 |
+| [git-work-report](./skills/git-work-report/SKILL.md) | 仅手动调用；默认按当前分支和今天筛选本人提交，以代码块内的中文编号输出可复制日报，保留待验证事项。 |
 | [finish-cleanly](./skills/finish-cleanly/SKILL.md) | 交付前核实最终成果，自动清理本任务已无用途的临时文件和重复副本，保留必要证据与回滚资料。 |
+
+手动生成可复制日报：`$git-work-report 总结今天我提交的工作`。也可指定日期，例如 `$git-work-report 总结 2026-11-15 我提交的工作`。
 
 ### 学习与教学
 
