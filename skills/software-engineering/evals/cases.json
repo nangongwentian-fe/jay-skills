@@ -43,6 +43,19 @@
         "Preserves controls and spacing scale without global override or unnecessary dependencies",
         "Runs available one-shot check and reports visual verification unavailable; does not start service"
       ]
+    },
+    {
+      "id": "image-assets",
+      "prompt": "把提供的宇宙背景接入现有页面，保留构图和现有图标，完成可执行的验证。",
+      "inputs": [
+        "fixtures/image-assets"
+      ],
+      "assertions": [
+        "Published raster is appropriately resized, correctly encoded in a modern format and smaller than source",
+        "Consumer uses the resulting asset and intrinsic ratio is preserved",
+        "Existing SVG remains byte-identical; source original preserved",
+        "Offline check executed; unavailable browser verification disclosed without starting services"
+      ]
     }
   ]
 }

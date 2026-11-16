@@ -25,3 +25,5 @@
 前端原有依据见 [sources.md](sources.md)。专项参考是实现时的检查线索，不承诺真实数据库、模型或浏览器已经验收。
 
 后端授权边界可按 [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)核查请求级与对象级授权；Agent 状态语义参考 [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)。这些是专项核对入口，不能用文档中的能力介绍推断当前项目已经配置或验收。
+
+图片资产规则来自生成背景接入后的用户纠错：仅把 PNG 转 JPEG，遗漏尺寸优化与现代格式评估。规则限定于图片接入和优化，保留矢量、透明、动画与兼容性边界，不固化某次像素尺寸或质量参数。

@@ -36,7 +36,7 @@ description: 实现、调试、重构或审查软件代码，覆盖前端、后�
 | --- | --- |
 | 跨模块职责、公开契约、重构边界 | [工程边界](references/engineering-boundaries.md) |
 | 运行异常、接口失败、环境或代理问题 | [故障定位](references/debugging.md) |
-| 前端页面、组件、状态、样式或 UI 审查 | [前端路由](references/frontend.md)，再按其中的具体信号读取原有专项 |
+| 前端页面、组件、状态、样式、图片资产或 UI 审查 | [前端路由](references/frontend.md)，再按其中的具体信号读取原有专项 |
 | 后端接口、权限、数据访问、事务或任务执行 | [后端工程](references/backend.md) |
 | 模型调用、工具、Agent 状态、恢复、流式结果或评测 | [Agent 工程](references/agent-engineering.md) |
 | 源码 Review、验证范围与交付证据 | [审查与验证](references/review-and-verification.md) |
