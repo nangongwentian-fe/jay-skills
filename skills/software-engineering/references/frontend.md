@@ -8,7 +8,7 @@
 | 组件欠拆、过拆、共享 API 或交互所有权 | [组件边界](component-boundaries.md) |
 | 边界取舍的具体例子 | [组件示例](component-examples.md) |
 | React 状态、Hook、Effect、身份与服务端边界 | [React 状态与 Hook](react-state-and-hooks.md) |
-| 样式维护、复用与作用域 | [样式组织](styling.md) |
+| 样式维护、复用、区块间距或组件库混排 | [样式组织](styling.md)，含间距失效 bad case；新增布局也须核对 |
 | Tailwind 扫描、版本与 class 组合 | [Tailwind](tailwind.md) |
 | CSS/SCSS Module、Sass 与全局逃逸 | [CSS Modules](css-modules.md) |
 | 前端源码 Review | [源码审查](code-review.md) |

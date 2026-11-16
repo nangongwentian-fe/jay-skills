@@ -31,6 +31,18 @@
         "Identifies side-effect/checkpoint gap",
         "Recommends stable actionId idempotency and distinguishes mock from real integration"
       ]
+    },
+    {
+      "id": "spacing-cascade",
+      "prompt": "步骤条和表单贴在一起，请修复间距并验证。",
+      "inputs": [
+        "fixtures/spacing"
+      ],
+      "assertions": [
+        "Layout-owned spacing survives third-party root margin reset without editing vendor rule",
+        "Preserves controls and spacing scale without global override or unnecessary dependencies",
+        "Runs available one-shot check and reports visual verification unavailable; does not start service"
+      ]
     }
   ]
 }

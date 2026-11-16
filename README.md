@@ -53,7 +53,7 @@ flowchart LR
 | [sync-to-jay-skills](./skills/sync-to-jay-skills/SKILL.md) | 新技能完成后询问是否同步到 jay-skills；记住本机仓库路径，获得授权后同步技能、更新 README、提交并推送验证。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [dts-docs](./skills/dts-docs/SKILL.md) | 识别飞渡 DTS 产品与版本，查询 Cloud、Explorer、Engine 或 SDK 官方文档，并核对项目实际接入方式。 |
-| [software-engineering](./skills/software-engineering/SKILL.md) | 实现、调试、重构与审查前端、后端和 Agent 应用，按需加载专项并验证行为；项目未启动时告知用户，由用户启动。 |
+| [software-engineering](./skills/software-engineering/SKILL.md) | 实现、调试、重构与审查前端、后端和 Agent 应用，按需加载专项并验证行为；包含组件库混排的间距失效案例与实际布局验收，项目未启动时由用户启动。 |
 | [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，先发现运行时并分层诊断连接，再完成网页调试、交互测试和截图验收。 |
 | [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 每完成一个独立主题并通过检查，立即提交、推送并验证远端；逐主题报告交付状态，推送受阻时明确说明并停止积累提交。 |
 | [commit-before-deploy](./skills/commit-before-deploy/SKILL.md) | 部署前验证、按主题提交并推送代码，确认远端提交后再构建发布；失败时停止部署。 |
