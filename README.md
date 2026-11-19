@@ -68,6 +68,7 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
+| [asksia-course-sync](./skills/asksia-course-sync/SKILL.md) | 手动核对 AskSia 课堂转译，统计缺失记录并按课程补存双语 Markdown。 |
 | [guided-learning](./skills/guided-learning/SKILL.md) | 确认学习范围后按讲义顺序逐点讲解、逐题批改，每节核对覆盖，依据独立作答证据判断掌握情况。 |
 
 ```bash

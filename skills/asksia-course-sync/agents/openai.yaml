@@ -1,0 +1,6 @@
+interface:
+  display_name: "AskSia 课堂记录同步"
+  short_description: "核对 AskSia 与本地课程记录，按课程补存缺失的双语转译 Markdown"
+  default_prompt: "使用 $asksia-course-sync 检查 AskSia 中尚未保存的课堂记录，并补存到对应课程目录。"
+policy:
+  allow_implicit_invocation: false
