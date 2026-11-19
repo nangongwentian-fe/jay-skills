@@ -1,4 +1,0 @@
-interface:
-  display_name: "拆分 UI 组件"
-  short_description: "分析、实施并评审跨框架前端组件边界、拆分方案与重构结果"
-  default_prompt: "Use $split-ui-components to analyze this frontend component, choose the smallest sound boundary change, and preserve behavior while validating the result."

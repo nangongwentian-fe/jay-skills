@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh"><meta charset="utf-8"><title>任务向导</title>
+<style>
+@layer utilities { .space-y-6 > :not(:last-child) { margin-bottom: 24px; } }
+/* Third-party component CSS: do not edit. */
+.lib-steps { margin: 0; display: flex; justify-content: space-between; }
+section { border: 1px solid #777; padding: 24px; }
+</style>
+<main class="space-y-6">
+  <nav class="lib-steps" aria-label="任务步骤"><span>类别</span><span>参数</span><span>确认</span></nav>
+  <section><label>任务名称 <input name="taskName"></label></section>
+  <footer><button type="button">下一步</button></footer>
+</main>
+</html>

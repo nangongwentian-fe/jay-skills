@@ -1,4 +1,4 @@
 interface:
   display_name: "Git Topic Commit Push"
-  short_description: "Split Git changes into topical commits and push"
-  default_prompt: "Use $git-topic-commit-push to split current changes into topical commits and push them."
+  short_description: "Commit and verify a push after each completed topic"
+  default_prompt: "Use $git-topic-commit-push throughout this task to commit and push each completed topic immediately after required checks pass, verify remote delivery, and report any unpushed commits explicitly."

@@ -47,14 +47,15 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
-| [reuse-before-build](./skills/reuse-before-build/SKILL.md) | 实现前核实项目已有能力和标准方案；存在缺口时联网比较成熟方案，确认选型后实现。 |
+| [reuse-first](./skills/reuse-first/SKILL.md) | 主动发现并推荐已有实现、成熟工具、依赖或模板，避免默认从零实现；覆盖代码与非代码任务，按实际取舍和已有授权执行。 |
+| [skill-eval](./skills/skill-eval/SKILL.md) | 在 Codex 中独立执行技能行为评测、比较基线并按证据评分；检查回归，明确失败与未验证范围，不额外授权外部操作。 |
 | [skill-install-compat](./skills/skill-install-compat/SKILL.md) | 安装或更新技能后，检查手动调用声明并补齐 Codex 伴随配置，保留原版内容及已有配置。 |
+| [sync-to-jay-skills](./skills/sync-to-jay-skills/SKILL.md) | 新技能完成后询问是否同步到 jay-skills；记住本机仓库路径，获得授权后同步技能、更新 README、提交并推送验证。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [dts-docs](./skills/dts-docs/SKILL.md) | 识别飞渡 DTS 产品与版本，查询 Cloud、Explorer、Engine 或 SDK 官方文档，并核对项目实际接入方式。 |
-| [split-ui-components](./skills/split-ui-components/SKILL.md) | 判断 UI 组件是否需要拆分，按业务职责和状态归属调整边界，保持原有行为。 |
-| [maintainable-frontend-styles](./skills/maintainable-frontend-styles/SKILL.md) | 沿用项目现有样式方案，整理局部样式、复用规则和复杂交互样式。 |
+| [software-engineering](./skills/software-engineering/SKILL.md) | 实现、调试、重构与审查前端、后端和 Agent 应用，按需加载专项并验证行为；包含组件库混排的间距失效与图片资产交付案例，要求按显示用途优化尺寸、编码并验证实际接入；项目未启动时由用户启动。 |
 | [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，先发现运行时并分层诊断连接，再完成网页调试、交互测试和截图验收。 |
-| [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 将改动按主题组织成 Git 提交，保留无关修改，并在获得授权后推送。 |
+| [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 每完成一个独立主题并通过检查，立即提交、推送并验证远端；逐主题报告交付状态，推送受阻时明确说明并停止积累提交。 |
 | [commit-before-deploy](./skills/commit-before-deploy/SKILL.md) | 部署前验证、按主题提交并推送代码，确认远端提交后再构建发布；失败时停止部署。 |
 
 ### 文档与工作整理
@@ -62,7 +63,10 @@ flowchart LR
 | 技能 | 适合用来做什么 |
 | --- | --- |
 | [daily-work-summary](./skills/daily-work-summary/SKILL.md) | 按仓库和日期，从本人 Git 提交生成中文日报，不混入其他人的工作。 |
+| [git-work-report](./skills/git-work-report/SKILL.md) | 仅手动调用；默认按当前分支和今天筛选本人提交，以代码块内的中文编号输出可复制日报，保留待验证事项。 |
 | [finish-cleanly](./skills/finish-cleanly/SKILL.md) | 交付前核实最终成果，自动清理本任务已无用途的临时文件和重复副本，保留必要证据与回滚资料。 |
+
+手动生成可复制日报：`$git-work-report 总结今天我提交的工作`。也可指定日期，例如 `$git-work-report 总结 2026-11-15 我提交的工作`。
 
 ### 学习与教学
 
@@ -84,18 +88,21 @@ npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
 | [web-content-fetcher](./skills/web-content-fetcher/SKILL.md) | 提取公开网页或文章正文；读取失败时按原因选择替代方式，并说明缺失内容。 |
 | [yeungnam-notices](./skills/yeungnam-notices/SKILL.md) | 查询韩国岭南大学计算机学部公告，按课程编号核对考试安排和附件修订。 |
 | [yeungnam-courses](./skills/yeungnam-courses/SKILL.md) | 查询韩国岭南大学 URP 专业课程、教师、课表和学分，完整采集各学期班次并导出 CSV，区分0条与无法查询。 |
-| [shenzhen-social-insurance](./skills/shenzhen-social-insurance/SKILL.md) | 在深圳社保官方门户核实医保、养老及失业待遇，查询缴费记录和续保要求。需要相关账户登录状态。 |
+| [shenzhen-social-insurance](./skills/shenzhen-social-insurance/SKILL.md) | 在深圳社保官方门户核实医保、养老及失业待遇，查询缴费记录，指导灵活就业续保、个缴缴费基数申报与税务缴费核对。需要相关账户登录状态。 |
 | [nhis-korea](./skills/nhis-korea/SKILL.md) | 操作韩国国民健康保险个人官网，核对账单、实缴月份、欠费与期限，办理已授权的自动扣款及Kakao电子账单变更。 |
 
 ### 图像与日常工具
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
+| [yizhen-image-download](./skills/yizhen-image-download/SKILL.md) | 从医真云电子胶片保存网页提供的 DICOM 和完整分辨率 PNG，核对全部检查、序列与切片并合并打包。 |
 | [codex-imagegen](./skills/codex-imagegen/SKILL.md) | 当前 Agent 缺少原生图像工具时，通过具备图像能力的 Codex CLI 生成、编辑或找回本次调用的图片。 |
 | [clean-wechat-wps-storage](./skills/clean-wechat-wps-storage/SKILL.md) | 扫描 macOS 微信和 WPS 的存储占用，确认清理计划后将选定内容移到废纸篓。 |
 | [buddy-reroll](./skills/buddy-reroll/SKILL.md) | 定制 Claude Code 的 `/buddy` 伙伴物种、稀有度和闪光属性。依赖其内部实现，使用前查看兼容性与操作步骤。 |
 
 ## 更新已安装的技能
+
+`software-engineering` 替代 `frontend-engineering`，保留此前整合的 `react-engineering`、`split-ui-components` 和 `maintainable-frontend-styles` 能力，并扩展后端与 Agent 工程。迁移时先核对旧安装中的本地定制，安装新技能后移除被替代的旧入口；`chrome-browser-validation` 继续独立维护，供 UI 审查按需使用。
 
 ```bash
 # 检查已安装技能是否有更新

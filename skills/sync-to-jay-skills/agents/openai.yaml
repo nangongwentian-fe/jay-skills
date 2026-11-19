@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync to Jay Skills"
+  short_description: "Offer to sync completed skills to jay-skills and publish"
+  default_prompt: "Use $sync-to-jay-skills after creating a skill to ask whether to sync it to jay-skills, remember this machine's repository path, and update README, commit and push when authorized."
