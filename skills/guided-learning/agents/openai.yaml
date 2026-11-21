@@ -1,6 +1,0 @@
-interface:
-  display_name: "逐知识点交互学习"
-  short_description: "确定范围后按讲义顺序逐点讲解、逐题验证，每节核对覆盖与掌握情况"
-  default_prompt: "使用 $guided-learning，确认我的学习范围后按讲义顺序建立覆盖清单，逐点讲解、每次只出一道练习，每节核对遗漏并依据掌握情况推进。"
-policy:
-  allow_implicit_invocation: true

@@ -1,4 +1,0 @@
-interface:
-  display_name: "每日工作内容"
-  short_description: "按项目和日期仅从本人 Git 提交生成中文工作总结"
-  default_prompt: "使用 $daily-work-summary 根据指定项目和日期，仅从我本人的 Git 提交生成每日工作内容。"

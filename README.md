@@ -12,8 +12,8 @@
 # 交互选择要安装的技能和目标 Agent（全局安装）
 npx skills add nangongwentian-fe/jay-skills -g
 
-# 只安装一个技能，例如 daily-work-summary
-npx skills add nangongwentian-fe/jay-skills --skill daily-work-summary -g
+# 只安装一个技能，例如 software-engineering
+npx skills add nangongwentian-fe/jay-skills --skill software-engineering -g
 ```
 
 如果只想在某个项目中使用，在该项目目录运行命令并去掉 `-g`。建议先从实际需要的技能开始，安装前查看对应说明中的工具和环境要求。
@@ -28,20 +28,13 @@ flowchart LR
 
 安装后，在目标 Agent 中描述需求即可；也可以明确写出技能名，例如：
 
-> 使用 daily-work-summary，汇总当前仓库中我在 2026-10-22 提交的工作，生成中文日报。
+> 使用 software-engineering，修复订单接口的越权读取问题，保留原响应契约并验证。
 
 技能的实际执行依赖当前 Agent 可用的工具、账户权限和运行环境。平台或服务专用技能的要求见下方说明。
 
 ## 技能目录
 
 点击技能名可直接查看完整用法。
-
-### 判断与协作
-
-| 技能 | 适合用来做什么 |
-| --- | --- |
-| [goal-first](./skills/goal-first/SKILL.md) | 理解真实目标，主动发现更直接有效的解决路径；依据证据改进方案，尊重明确约束与合理取舍。 |
-| [delivery-context](./skills/delivery-context/SKILL.md) | 先明确作者身份、实际受众和用途，再校准内容、表达与交付标准；区分最终成果和协作说明。 |
 
 ### 开发与代码交付
 
@@ -62,7 +55,6 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
-| [daily-work-summary](./skills/daily-work-summary/SKILL.md) | 按仓库和日期，从本人 Git 提交生成中文日报，不混入其他人的工作。 |
 | [git-work-report](./skills/git-work-report/SKILL.md) | 仅手动调用；默认按当前分支和今天筛选本人提交，以代码块内的中文编号输出可复制日报，保留待验证事项。 |
 | [finish-cleanly](./skills/finish-cleanly/SKILL.md) | 交付前核实最终成果，自动清理本任务已无用途的临时文件和重复副本，保留必要证据与回滚资料。 |
 
@@ -73,13 +65,6 @@ flowchart LR
 | 技能 | 适合用来做什么 |
 | --- | --- |
 | [asksia-course-sync](./skills/asksia-course-sync/SKILL.md) | 手动核对 AskSia 课堂转译，统计缺失记录并按课程补存双语 Markdown。 |
-| [guided-learning](./skills/guided-learning/SKILL.md) | 确认学习范围后按讲义顺序逐点讲解、逐题批改，每节核对覆盖，依据独立作答证据判断掌握情况。 |
-
-```bash
-npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
-```
-
-使用示例：使用 guided-learning，确认学习范围后按这份讲义的章节和页码顺序学习，中文讲解、韩语出题，每次一道题，每节核对遗漏，掌握后再建议进入下一知识点。
 
 ### 网页与信息查询
 
@@ -97,7 +82,6 @@ npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
 | --- | --- |
 | [yizhen-image-download](./skills/yizhen-image-download/SKILL.md) | 从医真云电子胶片保存网页提供的 DICOM 和完整分辨率 PNG，核对全部检查、序列与切片并合并打包。 |
 | [codex-imagegen](./skills/codex-imagegen/SKILL.md) | 当前 Agent 缺少原生图像工具时，通过具备图像能力的 Codex CLI 生成、编辑或找回本次调用的图片。 |
-| [clean-wechat-wps-storage](./skills/clean-wechat-wps-storage/SKILL.md) | 扫描 macOS 微信和 WPS 的存储占用，确认清理计划后将选定内容移到废纸篓。 |
 | [buddy-reroll](./skills/buddy-reroll/SKILL.md) | 定制 Claude Code 的 `/buddy` 伙伴物种、稀有度和闪光属性。依赖其内部实现，使用前查看兼容性与操作步骤。 |
 
 ## 更新已安装的技能
@@ -109,7 +93,7 @@ npx skills add nangongwentian-fe/jay-skills --skill guided-learning -g
 npx skills check
 
 # 更新指定技能
-npx skills update daily-work-summary
+npx skills update software-engineering
 ```
 
 更多安装、更新和移除选项见 [Skills CLI 官方文档](https://github.com/vercel-labs/skills)。
