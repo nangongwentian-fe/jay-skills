@@ -40,13 +40,12 @@ flowchart LR
 
 | 技能 | 适合用来做什么 |
 | --- | --- |
-| [reuse-first](./skills/reuse-first/SKILL.md) | 主动发现并推荐已有实现、成熟工具、依赖或模板，避免默认从零实现；覆盖代码与非代码任务，按实际取舍和已有授权执行。 |
 | [skill-eval](./skills/skill-eval/SKILL.md) | 在 Codex 中独立执行技能行为评测、比较基线并按证据评分；检查回归，明确失败与未验证范围，不额外授权外部操作。 |
 | [skill-install-compat](./skills/skill-install-compat/SKILL.md) | 安装或更新技能后，检查手动调用声明并补齐 Codex 伴随配置，保留原版内容及已有配置。 |
 | [sync-to-jay-skills](./skills/sync-to-jay-skills/SKILL.md) | 新技能完成后询问是否同步到 jay-skills；记住本机仓库路径，获得授权后同步技能、更新 README、提交并推送验证。 |
 | [find-docs](./skills/find-docs/SKILL.md) | 通过 Context7 查官方文档，核对库、API 和 CLI 的语法及版本差异。 |
 | [dts-docs](./skills/dts-docs/SKILL.md) | 识别飞渡 DTS 产品与版本，查询 Cloud、Explorer、Engine 或 SDK 官方文档，并核对项目实际接入方式。 |
-| [software-engineering](./skills/software-engineering/SKILL.md) | 实现、调试、重构与审查前端、后端和 Agent 应用，按需加载专项并验证行为；包含组件库混排的间距失效与图片资产交付案例，要求按显示用途优化尺寸、编码并验证实际接入；项目未启动时由用户启动。 |
+| [software-engineering](./skills/software-engineering/SKILL.md) | 实现、调试、重构与审查前端、后端和 Agent 应用，按需加载专项并验证行为；新增依赖或通用机制前先做复用调查（原 reuse-first 已并入）；包含组件库混排的间距失效与图片资产交付案例，要求按显示用途优化尺寸、编码并验证实际接入；项目未启动时由用户启动。 |
 | [chrome-browser-validation](./skills/chrome-browser-validation/SKILL.md) | 通过官方 @Chrome 插件复用现有 Chrome 会话，先发现运行时并分层诊断连接，再完成网页调试、交互测试和截图验收。 |
 | [git-topic-commit-push](./skills/git-topic-commit-push/SKILL.md) | 每完成一个独立主题并通过检查，立即提交、推送并验证远端；逐主题报告交付状态，推送受阻时明确说明并停止积累提交。 |
 | [commit-before-deploy](./skills/commit-before-deploy/SKILL.md) | 部署前验证、按主题提交并推送代码，确认远端提交后再构建发布；失败时停止部署。 |
@@ -87,6 +86,8 @@ flowchart LR
 ## 更新已安装的技能
 
 `software-engineering` 替代 `frontend-engineering`，保留此前整合的 `react-engineering`、`split-ui-components` 和 `maintainable-frontend-styles` 能力，并扩展后端与 Agent 工程。迁移时先核对旧安装中的本地定制，安装新技能后移除被替代的旧入口；`chrome-browser-validation` 继续独立维护，供 UI 审查按需使用。
+
+`reuse-first` 已并入 `software-engineering`（参考文件 `references/reuse-first.md`），只覆盖编码任务；更新后可移除旧的 `reuse-first` 安装：`npx skills remove reuse-first -g`。
 
 ```bash
 # 检查已安装技能是否有更新
